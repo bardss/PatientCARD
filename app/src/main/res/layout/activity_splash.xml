@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jakubaniola.patientcard.SplashActivity">
+    tools:context="com.example.jakubaniola.patientcard.splash.SplashActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/medical_history" />
 
 </RelativeLayout>
