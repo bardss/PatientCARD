@@ -6,6 +6,7 @@ buildscript {
         google()
         jcenter()
         maven { url  "http://dl.bintray.com/6thsolution/easymvp" }
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'

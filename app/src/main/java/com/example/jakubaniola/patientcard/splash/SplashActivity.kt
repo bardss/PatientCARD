@@ -7,14 +7,16 @@ import com.example.jakubaniola.patientcard.R
 import com.example.jakubaniola.patientcard.base.BasePresenter
 import com.example.jakubaniola.patientcard.qrreader.QRReaderActivity
 import com.rsqtechnologies.rsqphysio.base.BaseActivity
+import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 
-class SplashActivity : BaseActivity(), QRReaderView {
+@ActivityView(layout = R.layout.activity_splash, presenter = SplashPresenterImpl::class)
+class SplashActivity : BaseActivity(), SplashView {
 
     @Presenter
-    private var presenter: QRReaderPresenter? = null
+    lateinit var presenter: SplashPresenter
 
-    override fun providePresenter(): BasePresenter? {
+    override fun providePresenter(): BasePresenter {
         return presenter
     }
 

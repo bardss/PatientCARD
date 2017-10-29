@@ -4,16 +4,19 @@ import android.os.Bundle
 import com.example.jakubaniola.patientcard.R
 import com.example.jakubaniola.patientcard.base.BasePresenter
 import com.example.jakubaniola.patientcard.splash.QRReaderPresenter
+import com.example.jakubaniola.patientcard.splash.QRReaderPresenterImpl
 import com.example.jakubaniola.patientcard.splash.QRReaderView
 import com.rsqtechnologies.rsqphysio.base.BaseActivity
+import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 
+@ActivityView(layout = R.layout.activity_qr__reader, presenter = QRReaderPresenterImpl::class)
 class QRReaderActivity : BaseActivity(), QRReaderView {
 
     @Presenter
-    private var presenter: QRReaderPresenter? = null
+    lateinit var presenter: QRReaderPresenter
 
-    override fun providePresenter(): BasePresenter? {
+    override fun providePresenter(): BasePresenter {
         return presenter
     }
 
