@@ -24,7 +24,7 @@ class SplashActivity : BaseActivity(), SplashView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        Handler().postDelayed({ openActivity() }, 1500)
+        Handler().postDelayed({ openActivity() }, 1000)
     }
 
     private fun openActivity() {

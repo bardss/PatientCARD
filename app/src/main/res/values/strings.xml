@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PatientCARD</string>
     <string name="progress_loading_text">Loading data...</string>
+    <string name="login">LOGIN</string>
+    <string name="hello">Witaj!</string>
+    <string name="id_email">Identyfikator / E-mail</string>
+    <string name="password">Hasło</string>
 </resources>
