@@ -1,7 +1,6 @@
 package com.example.jakubaniola.patientcard.splash
 
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
 import com.example.jakubaniola.patientcard.R
 import com.example.jakubaniola.patientcard.access.AccessActivity
@@ -20,14 +19,12 @@ class SplashActivity : BaseActivity(), SplashView {
         return presenter
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        Handler().postDelayed({ openActivity() }, 1000)
+    override fun onStart() {
+        super.onStart()
+        presenter.handleSplashScreen(Handler())
     }
 
-    private fun openActivity() {
+    override fun openAccessActivity() {
         startActivity(Intent(this, AccessActivity::class.java))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
