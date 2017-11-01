@@ -28,7 +28,8 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     private fun openActivity() {
-        val activityToOpen = Intent(this, AccessActivity::class.java)
-        startActivity(activityToOpen)
+        startActivity(Intent(this, AccessActivity::class.java))
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        finish()
     }
 }

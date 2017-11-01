@@ -57,13 +57,8 @@ abstract class BaseFragment : Fragment(), BaseView {
         }
     }
 
-    fun openActivity(classTo: Class<*>) {
-        (activity as BaseActivity).openActivity(classTo)
-    }
-
-
     fun performOnBackPressed() {
         activity.onBackPressed()
     }
 
-}// Required empty public constructor
+}

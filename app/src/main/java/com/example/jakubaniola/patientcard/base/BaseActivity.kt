@@ -2,7 +2,6 @@ package com.rsqtechnologies.rsqphysio.base
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -50,10 +49,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     }
 
     abstract fun providePresenter(): BasePresenter?
-
-    fun openActivity(classTo: Class<*>) {
-        startActivity(Intent(this, classTo))
-    }
 
     fun performOnBackPressed() {
         onBackPressed()
