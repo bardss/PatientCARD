@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".qrreader.QRReaderActivity"></activity>
+        <activity android:name=".qrreader.QRReaderActivity"/>
+        <activity android:name=".access.AccessActivity"/>
     </application>
 
 </manifest>
