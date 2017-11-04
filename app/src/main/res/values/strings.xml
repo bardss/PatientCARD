@@ -5,4 +5,5 @@
     <string name="hello">Witaj!</string>
     <string name="id_email">Identyfikator / E-mail</string>
     <string name="password">Hasło</string>
+    <string name="scan_patient_qr_code">Zeskanuj QR kod pacjenta</string>
 </resources>
