@@ -8,4 +8,7 @@
     <string name="scan_patient_qr_code">Zeskanuj QR kod pacjenta</string>
     <string name="name_placeholder">Marian Kowalski</string>
     <string name="pesel_placeholder">95011916435</string>
+    <string name="fever_card">KARTA GORĄCZKOWA</string>
+    <string name="medical_order_card">KARTA ZALECEŃ LEKARSKICH</string>
+    <string name="medical_observation_card">KARTA CIĄGŁEJ OBSERWACJI</string>
 </resources>
