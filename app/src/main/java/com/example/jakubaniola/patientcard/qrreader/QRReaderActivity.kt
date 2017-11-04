@@ -1,6 +1,8 @@
 package com.example.jakubaniola.patientcard.qrreader
 
+import android.content.Intent
 import com.example.jakubaniola.patientcard.R
+import com.example.jakubaniola.patientcard.demographic.DemographicActivity
 import com.example.jakubaniola.patientcard.base.BasePresenter
 import com.example.jakubaniola.patientcard.splash.QRReaderPresenter
 import com.example.jakubaniola.patientcard.splash.QRReaderPresenterImpl
@@ -51,6 +53,7 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
     private fun setupQRReader() {
         qrReader = QREader.Builder(this, qr_reader_surface_view, QRDataListener { data ->
             Timber.e("QREader", "Value : " + data)
+            openPatientDemographic();
         }).facing(QREader.BACK_CAM)
                 .enableAutofocus(true)
                 .height(qr_reader_surface_view!!.height)
@@ -74,5 +77,9 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
                 })
                 .start()
 
+    }
+
+    private fun openPatientDemographic() {
+        startActivity(Intent(this, DemographicActivity::class.java))
     }
 }

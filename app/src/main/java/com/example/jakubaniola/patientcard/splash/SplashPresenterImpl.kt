@@ -6,18 +6,18 @@ import com.example.jakubaniola.patientcard.base.BaseAbstractPresenter
 
 class SplashPresenterImpl : BaseAbstractPresenter<SplashView>(), SplashPresenter {
 
-    private var model : SplashModelImpl? = null;
+    private var model : SplashModel? = null;
 
     override fun initExtras(intent: Intent) {
         // no extras
     }
 
-    val presentationModel: SplashModelImpl
+    val presentationModel: SplashModel
         get() {
             if (model == null) {
-                model = SplashModelImpl()
+                model = SplashModel()
             }
-            return model as SplashModelImpl
+            return model as SplashModel
         }
 
     override fun handleSplashScreen(handler: Handler) {

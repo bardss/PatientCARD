@@ -1,5 +1,4 @@
 package com.example.jakubaniola.patientcard.access
 
-import com.example.jakubaniola.patientcard.base.BaseModel
+class AccessModel
 
-interface AccessModel : BaseModel

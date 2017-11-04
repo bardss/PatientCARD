@@ -1,5 +1,6 @@
 package com.example.jakubaniola.patientcard.splash
 
-import com.example.jakubaniola.patientcard.base.BaseModel
+class SplashModel {
+    val animDuration = 1000
+}
 
-interface SplashModel : BaseModel

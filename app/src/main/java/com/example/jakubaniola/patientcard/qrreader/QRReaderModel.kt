@@ -1,5 +1,4 @@
 package com.example.jakubaniola.patientcard.splash
 
-import com.example.jakubaniola.patientcard.base.BaseModel
+class QRReaderModel
 
-interface QRReaderModel : BaseModel
