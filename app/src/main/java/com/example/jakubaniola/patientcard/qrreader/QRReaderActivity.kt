@@ -2,8 +2,8 @@ package com.example.jakubaniola.patientcard.qrreader
 
 import android.content.Intent
 import com.example.jakubaniola.patientcard.R
-import com.example.jakubaniola.patientcard.demographic.DemographicActivity
 import com.example.jakubaniola.patientcard.base.BasePresenter
+import com.example.jakubaniola.patientcard.demographic.DemographicActivity
 import com.example.jakubaniola.patientcard.splash.QRReaderPresenter
 import com.example.jakubaniola.patientcard.splash.QRReaderPresenterImpl
 import com.example.jakubaniola.patientcard.splash.QRReaderView

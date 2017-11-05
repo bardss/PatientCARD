@@ -23,7 +23,7 @@
             android:layout_height="90dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="30dp"
-            android:src="@drawable/patient_avatar" />
+            android:src="@drawable/rounded_fever_icon" />
 
         <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             android:layout_toEndOf="@id/patient_avatar_image_view"
             android:text="@string/name_placeholder"
             android:textColor="@android:color/white"
-            android:textSize="22sp" />
+            android:textSize="19sp" />
 
         <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
@@ -41,9 +41,9 @@
             android:layout_below="@id/top_accent_view"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/patient_avatar_image_view"
-            android:text="@string/pesel_placeholder"
+            android:text="@string/fever_card"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
@@ -55,119 +55,116 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/fever_menu_relative_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_frame_white_with_grey_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_weight="6"
+            android:background="@drawable/rounded_frame_white_with_grey_border">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/fever_card_frame_layout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/fever_icon" />
-
-            <FrameLayout
-                android:id="@+id/fever_card_frame_layout"
+            <LinearLayout
+                android:id="@+id/fever_card_table_frame_layout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_frame_accent_with_grey_border">
+
+                <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/date"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryDark"/>
+
+                <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/pulse"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryDark"/>
+
+                <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/temperature"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/short_fever_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/fever_card_table_frame_layout"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/more_frame_layout"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
                 <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/fever_card"
+                    android:text="@string/more"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
             </FrameLayout>
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/orders_menu_relative_layout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_frame_white_with_grey_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/order_card_frame_layout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/medical_orders_icon" />
-
             <FrameLayout
-                android:id="@+id/order_card_frame_layout"
-                android:layout_width="match_parent"
+                android:id="@+id/add_frame_layout"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
                 <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/medical_order_card"
+                    android:text="@string/add"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
             </FrameLayout>
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/observation_menu_relative_layout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_frame_white_with_grey_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/observation_card_frame_layout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/medical_observation_icon" />
-
-            <FrameLayout
-                android:id="@+id/observation_card_frame_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/rounded_frame_accent_with_grey_border">
-
-                <com.example.jakubaniola.patientcard.customviews.TitilliumLightTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/medical_observation_card"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-
-            </FrameLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </LinearLayout>

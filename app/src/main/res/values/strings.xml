@@ -11,4 +11,9 @@
     <string name="fever_card">KARTA GORĄCZKOWA</string>
     <string name="medical_order_card">KARTA ZALECEŃ LEKARSKICH</string>
     <string name="medical_observation_card">KARTA CIĄGŁEJ OBSERWACJI</string>
+    <string name="more">WIĘCEJ</string>
+    <string name="add">DODAJ</string>
+    <string name="date">data</string>
+    <string name="pulse">tętno</string>
+    <string name="temperature">ciepłota</string>
 </resources>

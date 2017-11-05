@@ -22,9 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".qrreader.QRReaderActivity"/>
-        <activity android:name=".access.AccessActivity"/>
-        <activity android:name=".demographic.DemographicActivity"/>
+        <activity android:name=".qrreader.QRReaderActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".access.AccessActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".shortfever.ShortFeverActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".demographic.DemographicActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>
