@@ -25,7 +25,7 @@ class AccessActivity : BaseActivity(), AccessView {
     }
 
     private fun setupLoginButton() {
-        login_button.setOnClickListener { openQRReaderActivity() }
+        loginButton.setOnClickListener { openQRReaderActivity() }
     }
 
     private fun openQRReaderActivity() {

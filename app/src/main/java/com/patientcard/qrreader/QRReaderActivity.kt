@@ -37,7 +37,7 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
 
     override fun onResume() {
         super.onResume()
-        qrReader?.initAndStart(qr_reader_surface_view)
+        qrReader?.initAndStart(qrReaderSurfaceView)
     }
 
     override fun onPause() {
@@ -46,15 +46,15 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
     }
 
     private fun setupQRReader() {
-        qrReader = QREader.Builder(this, qr_reader_surface_view, QRDataListener { data ->
+        qrReader = QREader.Builder(this, qrReaderSurfaceView, QRDataListener { data ->
             Timber.e("QREader", "Value : " + data)
             openPatientDemographic();
         }).facing(QREader.BACK_CAM)
                 .enableAutofocus(true)
-                .height(qr_reader_surface_view!!.height)
-                .width(qr_reader_surface_view.width)
+                .height(qrReaderSurfaceView!!.height)
+                .width(qrReaderSurfaceView.width)
                 .build()
-        qrReader?.initAndStart(qr_reader_surface_view)
+        qrReader?.initAndStart(qrReaderSurfaceView)
     }
 
     private fun checkPermission(){

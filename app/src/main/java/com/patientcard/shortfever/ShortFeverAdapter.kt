@@ -28,9 +28,9 @@ internal class ShortFeverAdapter : RecyclerView.Adapter<ShortFeverAdapter.ViewHo
     }
 
     internal class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val dateTextView = view.item_date_text_view
-        val pulseTextView = view.item_pulse_text_view
-        val temperatureTextView = view.item_temperature_text_view
+        val dateTextView = view.itemDateTextView
+        val pulseTextView = view.itemPulseTextView
+        val temperatureTextView = view.itemTemperatureTextView
     }
 
 }

@@ -25,14 +25,14 @@ class DemographicActivity : BaseActivity(), DemographicView {
     }
 
     private fun setupMenuClicks() {
-        fever_menu_relative_layout.setOnClickListener {
+        feverMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, ShortFeverActivity::class.java))
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
-        orders_menu_relative_layout.setOnClickListener {
+        ordersMenuRelativeLayout.setOnClickListener {
 
         }
-        observation_menu_relative_layout.setOnClickListener {
+        observationMenuRelativeLayout.setOnClickListener {
 
         }
     }

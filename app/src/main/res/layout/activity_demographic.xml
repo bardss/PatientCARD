@@ -12,13 +12,13 @@
         android:layout_height="110dp">
 
         <View
-            android:id="@+id/top_accent_view"
+            android:id="@+id/topAccentView"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/colorAccent" />
 
         <ImageView
-            android:id="@+id/patient_avatar_image_view"
+            android:id="@+id/patientAvatarImageView"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_centerVertical="true"
@@ -28,9 +28,9 @@
         <com.patientcard.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/top_accent_view"
+            android:layout_alignBottom="@id/topAccentView"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patient_avatar_image_view"
+            android:layout_toEndOf="@id/patientAvatarImageView"
             android:text="@string/name_placeholder"
             android:textColor="@android:color/white"
             android:textSize="22sp" />
@@ -38,9 +38,9 @@
         <com.patientcard.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/top_accent_view"
+            android:layout_below="@id/topAccentView"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patient_avatar_image_view"
+            android:layout_toEndOf="@id/patientAvatarImageView"
             android:text="@string/pesel_placeholder"
             android:textColor="@android:color/black"
             android:textSize="22sp" />
@@ -55,7 +55,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/fever_menu_relative_layout"
+            android:id="@+id/feverMenuRelativeLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
@@ -68,13 +68,13 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/fever_card_frame_layout"
+                android:layout_above="@id/feverMenuFrameLayout"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/fever_icon" />
 
             <FrameLayout
-                android:id="@+id/fever_card_frame_layout"
+                android:id="@+id/feverMenuFrameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
@@ -93,7 +93,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/orders_menu_relative_layout"
+            android:id="@+id/ordersMenuRelativeLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
@@ -106,13 +106,13 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/order_card_frame_layout"
+                android:layout_above="@id/ordersMenuFrameLayout"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/medical_orders_icon" />
 
             <FrameLayout
-                android:id="@+id/order_card_frame_layout"
+                android:id="@+id/ordersMenuFrameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
@@ -131,7 +131,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/observation_menu_relative_layout"
+            android:id="@+id/observationMenuRelativeLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
@@ -144,13 +144,13 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/observation_card_frame_layout"
+                android:layout_above="@id/observationMenuFrameLayout"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/medical_observation_icon" />
 
             <FrameLayout
-                android:id="@+id/observation_card_frame_layout"
+                android:id="@+id/observationMenuFrameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"

@@ -1,9 +1,9 @@
 package com.patientcard.shortfever
 
 import com.patientcard.R
+import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
 import com.patientcard.demographic.ShortFeverPresenterImpl
-import com.patientcard.base.BaseActivity
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_short_fever.*
@@ -24,7 +24,7 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
     }
 
     private fun setupShortFeverAdapter() {
-        short_fever_recycler_view.adapter = ShortFeverAdapter()
+        shortFeverRecyclerView.adapter = ShortFeverAdapter()
     }
 
 }

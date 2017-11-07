@@ -8,7 +8,7 @@
     tools:context="com.patientcard.qrreader.QRReaderActivity">
 
     <com.patientcard.customviews.TitilliumSemiBoldTextView
-        android:id="@+id/title_text_view"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
@@ -19,7 +19,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <SurfaceView
-        android:id="@+id/qr_reader_surface_view"
+        android:id="@+id/qrReaderSurfaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
