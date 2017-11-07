@@ -9,6 +9,8 @@ import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_short_fever.*
 
+
+
 @ActivityView(layout = R.layout.activity_short_fever, presenter = ShortFeverPresenterImpl::class)
 class ShortFeverActivity : BaseActivity(), ShortFeverView {
 
@@ -27,6 +29,7 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
     private fun setupShortFeverList() {
         shortFeverRecyclerView.layoutManager = LinearLayoutManager(this)
         shortFeverRecyclerView.adapter = ShortFeverAdapter(shortFeverRecyclerView)
+        shortFeverRecyclerView.setOnTouchListener { _, _ -> true }
     }
 
 }

@@ -16,7 +16,6 @@ import easymvp.annotation.Presenter
 import github.nisrulz.qreader.QRDataListener
 import github.nisrulz.qreader.QREader
 import kotlinx.android.synthetic.main.activity_qr_reader.*
-import timber.log.Timber
 
 @ActivityView(layout = R.layout.activity_qr_reader, presenter = QRReaderPresenterImpl::class)
 class QRReaderActivity : BaseActivity(), QRReaderView {
@@ -47,7 +46,6 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
 
     private fun setupQRReader() {
         qrReader = QREader.Builder(this, qrReaderSurfaceView, QRDataListener { data ->
-            Timber.e("QREader", "Value : " + data)
             openPatientDemographic();
         }).facing(QREader.BACK_CAM)
                 .enableAutofocus(true)

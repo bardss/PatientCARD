@@ -4,6 +4,8 @@ import android.content.Intent
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
+import com.patientcard.recommendations.ObservationsActivity
+import com.patientcard.recommendations.RecommendationsActivity
 import com.patientcard.shortfever.ShortFeverActivity
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
@@ -27,13 +29,12 @@ class DemographicActivity : BaseActivity(), DemographicView {
     private fun setupMenuClicks() {
         feverMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, ShortFeverActivity::class.java))
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
-        ordersMenuRelativeLayout.setOnClickListener {
-
+        recommendationsMenuRelativeLayout.setOnClickListener {
+            startActivity(Intent(this, RecommendationsActivity::class.java))
         }
-        observationMenuRelativeLayout.setOnClickListener {
-
+        observationsMenuRelativeLayout.setOnClickListener {
+            startActivity(Intent(this, ObservationsActivity::class.java))
         }
     }
 

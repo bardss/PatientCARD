@@ -20,10 +20,10 @@ class RecommendationsActivity : BaseActivity(), RecomendationsView {
 
     override fun onStart() {
         super.onStart()
-        setupShortFeverList()
+        setupRecommendationsList()
     }
 
-    private fun setupShortFeverList() {
+    private fun setupRecommendationsList() {
         recommendationsRecyclerView.layoutManager = LinearLayoutManager(this)
         recommendationsRecyclerView.adapter = RecommendationsAdapter()
     }
