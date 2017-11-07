@@ -15,7 +15,7 @@
         android:roundIcon="@drawable/medical_history"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.patientcard.shortfever.ShortFeverActivity">
+        <activity android:name="com.patientcard.recommendations.RecommendationsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,6 +32,9 @@
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.patientcard.demographic.DemographicActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.patientcard.shortfever.ShortFeverActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
     </application>

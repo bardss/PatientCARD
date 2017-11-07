@@ -25,7 +25,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimaryGrey"/>
 
         <com.patientcard.customviews.TitilliumLightTextView
             android:id="@+id/itemPulseTextView"
@@ -41,7 +41,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimaryGrey"/>
 
         <com.patientcard.customviews.TitilliumLightTextView
             android:id="@+id/itemTemperatureTextView"
@@ -60,6 +60,6 @@
         android:id="@+id/dividerView"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/colorPrimaryGrey"/>
 
 </LinearLayout>

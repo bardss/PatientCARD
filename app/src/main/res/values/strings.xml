@@ -16,4 +16,12 @@
     <string name="date">data</string>
     <string name="pulse">tętno</string>
     <string name="temperature">ciepłota</string>
+    <string name="recommendation_placeholder">Zlecenie 12.12.2017</string>
+    <string name="drug">Lek:</string>
+    <string name="drug_placeholder">Ketanol 100mg</string>
+    <string name="morning">Rano</string>
+    <string name="time_placeholder">00:00</string>
+    <string name="noon">Południe</string>
+    <string name="evening">Wieczór</string>
+    <string name="night">Noc</string>
 </resources>

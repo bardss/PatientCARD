@@ -109,7 +109,7 @@
                 android:layout_above="@id/ordersMenuFrameLayout"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/medical_orders_icon" />
+                android:src="@drawable/recommendations_icon" />
 
             <FrameLayout
                 android:id="@+id/ordersMenuFrameLayout"
@@ -147,7 +147,7 @@
                 android:layout_above="@id/observationMenuFrameLayout"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/medical_observation_icon" />
+                android:src="@drawable/observations_icon" />
 
             <FrameLayout
                 android:id="@+id/observationMenuFrameLayout"
