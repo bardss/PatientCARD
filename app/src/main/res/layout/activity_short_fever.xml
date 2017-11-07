@@ -33,7 +33,7 @@
             android:layout_toEndOf="@id/patientAvatarImageView"
             android:text="@string/name_placeholder"
             android:textColor="@android:color/white"
-            android:textSize="19sp" />
+            android:textSize="21sp" />
 
         <com.patientcard.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
             android:layout_toEndOf="@id/patientAvatarImageView"
             android:text="@string/fever_card"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
@@ -76,7 +76,7 @@
                     android:layout_gravity="center"
                     android:text="@string/date"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:gravity="center_horizontal"/>
 
                 <View
@@ -91,7 +91,7 @@
                     android:layout_gravity="center"
                     android:text="@string/pulse"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:gravity="center_horizontal"/>
 
                 <View
@@ -106,7 +106,7 @@
                     android:layout_gravity="center"
                     android:text="@string/temperature"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:gravity="center_horizontal"/>
 
             </LinearLayout>

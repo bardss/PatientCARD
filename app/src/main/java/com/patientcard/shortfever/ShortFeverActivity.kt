@@ -1,5 +1,6 @@
 package com.patientcard.shortfever
 
+import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
@@ -20,11 +21,12 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
 
     override fun onStart() {
         super.onStart()
-        setupShortFeverAdapter()
+        setupShortFeverList()
     }
 
-    private fun setupShortFeverAdapter() {
-        shortFeverRecyclerView.adapter = ShortFeverAdapter()
+    private fun setupShortFeverList() {
+        shortFeverRecyclerView.layoutManager = LinearLayoutManager(this)
+        shortFeverRecyclerView.adapter = ShortFeverAdapter(shortFeverRecyclerView)
     }
 
 }

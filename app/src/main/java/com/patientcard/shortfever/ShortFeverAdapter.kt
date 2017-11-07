@@ -4,13 +4,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.widget.LinearLayout
 import com.patientcard.R
 import kotlinx.android.synthetic.main.item_short_fever.view.*
 
 
-internal class ShortFeverAdapter : RecyclerView.Adapter<ShortFeverAdapter.ViewHolder>() {
-
-    private val ANIM_DURATION = 300
+internal class ShortFeverAdapter(private val shortFeverRecyclerView: RecyclerView) : RecyclerView.Adapter<ShortFeverAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_short_fever, parent, false)
@@ -18,7 +18,8 @@ internal class ShortFeverAdapter : RecyclerView.Adapter<ShortFeverAdapter.ViewHo
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.dateTextView.text = position.toString()
+        holder.itemLinearLayout.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, shortFeverRecyclerView.height/6)
+        holder.dateTextView.text = (position + 1).toString()
         holder.temperatureTextView.text = (36 + position).toString()
         holder.pulseTextView.text = (120 + position).toString()
     }
@@ -28,6 +29,7 @@ internal class ShortFeverAdapter : RecyclerView.Adapter<ShortFeverAdapter.ViewHo
     }
 
     internal class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val itemLinearLayout = view.itemLinearLayout
         val dateTextView = view.itemDateTextView
         val pulseTextView = view.itemPulseTextView
         val temperatureTextView = view.itemTemperatureTextView
