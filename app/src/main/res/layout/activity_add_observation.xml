@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+            <View
+                android:id="@+id/topAccentView"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/colorAccent" />
+
+            <ImageView
+                android:id="@+id/patientAvatarImageView"
+                android:layout_width="90dp"
+                android:layout_height="110dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:paddingBottom="20dp"
+                android:src="@drawable/rounded_recommendations_icon" />
+
+            <com.patientcard.customviews.TitilliumLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/topAccentView"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/patientAvatarImageView"
+                android:text="@string/name_placeholder"
+                android:textColor="@android:color/white"
+                android:textSize="21sp" />
+
+            <com.patientcard.customviews.TitilliumLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topAccentView"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/patientAvatarImageView"
+                android:text="@string/fever_card"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp">
+
+            <com.patientcard.customviews.TitilliumSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/observations_placeholder"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_frame_white_with_grey_border"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp">
+
+                    <com.patientcard.customviews.TitilliumLightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/person"
+                        android:textColor="@color/colorPrimaryGrey"
+                        android:textSize="16sp" />
+
+                    <com.patientcard.customviews.TitilliumLightEditText
+                        android:id="@+id/personValueTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"
+                        android:layout_marginEnd="32dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="-16dp"
+                    android:background="@color/colorPrimaryGrey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+                    <com.patientcard.customviews.TitilliumLightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/note"
+                        android:textColor="@color/colorPrimaryGrey"
+                        android:textSize="16sp" />
+
+                    <com.patientcard.customviews.TitilliumLightEditText
+                        android:id="@+id/note_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@android:color/white"
+                        android:gravity="top"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="10"
+                        android:minLines="5"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/checkFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="22dp"
+        android:visibility="visible"
+        app:elevation="0dp"
+        app:fab_addButtonColorNormal="@color/colorAccent"
+        app:fab_addButtonColorPressed="@color/colorPrimary"
+        app:fab_addButtonPlusIconColor="@android:color/white"
+        app:srcCompat="@drawable/check_icon"/>
+
+</RelativeLayout>
+

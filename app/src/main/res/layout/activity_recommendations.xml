@@ -1,55 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.patientcard.qrreader.QRReaderActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <View
-            android:id="@+id/topAccentView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/colorAccent" />
+            android:layout_height="130dp">
 
-        <ImageView
-            android:id="@+id/patientAvatarImageView"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/rounded_recommendations_icon" />
+            <View
+                android:id="@+id/topAccentView"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/colorAccent" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/topAccentView"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/name_placeholder"
-            android:textColor="@android:color/white"
-            android:textSize="21sp" />
+            <ImageView
+                android:id="@+id/patientAvatarImageView"
+                android:layout_width="90dp"
+                android:layout_height="110dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:paddingBottom="20dp"
+                android:src="@drawable/rounded_recommendations_icon" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/topAccentView"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/fever_card"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            <com.patientcard.customviews.TitilliumLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/topAccentView"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/patientAvatarImageView"
+                android:text="@string/name_placeholder"
+                android:textColor="@android:color/white"
+                android:textSize="21sp" />
 
-    </RelativeLayout>
+            <com.patientcard.customviews.TitilliumLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topAccentView"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/patientAvatarImageView"
+                android:text="@string/medical_order_card"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recommendationsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        </RelativeLayout>
 
-</LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recommendationsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="22dp"
+        android:visibility="visible"
+        app:elevation="0dp"
+        app:fab_addButtonColorNormal="@color/colorAccent"
+        app:fab_addButtonColorPressed="@color/colorPrimary"
+        app:fab_addButtonPlusIconColor="@android:color/white"
+        app:srcCompat="@drawable/add_icon"/>
+
+</RelativeLayout>
+

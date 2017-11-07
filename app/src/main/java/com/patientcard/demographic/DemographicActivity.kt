@@ -4,7 +4,7 @@ import android.content.Intent
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
-import com.patientcard.recommendations.ObservationsActivity
+import com.patientcard.observations.ObservationsActivity
 import com.patientcard.recommendations.RecommendationsActivity
 import com.patientcard.shortfever.ShortFeverActivity
 import easymvp.annotation.ActivityView

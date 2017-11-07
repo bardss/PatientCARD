@@ -1,4 +1,4 @@
-package com.patientcard.recommendations
+package com.patientcard.observations
 
 import android.content.Intent
 import com.patientcard.base.BaseAbstractPresenter

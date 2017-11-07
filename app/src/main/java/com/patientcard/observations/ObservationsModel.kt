@@ -1,4 +1,4 @@
-package com.patientcard.recommendations
+package com.patientcard.observations
 
 class ObservationsModel
 

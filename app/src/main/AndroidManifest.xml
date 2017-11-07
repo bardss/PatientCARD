@@ -28,7 +28,7 @@
         <activity android:name="com.patientcard.access.AccessActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.recommendations.ObservationsActivity"
+        <activity android:name="com.patientcard.recommendations.RecommendationsActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.patientcard.demographic.DemographicActivity"
@@ -37,7 +37,10 @@
         <activity android:name="com.patientcard.shortfever.ShortFeverActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.recommendations.RecommendationsActivity"
+        <activity android:name="com.patientcard.observations.ObservationsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.patientcard.addobservation.AddObservationActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
     </application>

@@ -1,4 +1,4 @@
-package com.patientcard.recommendations
+package com.patientcard.observations
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
