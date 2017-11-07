@@ -3,4 +3,6 @@
     <color name="colorPrimary">#F2F2F2</color>
     <color name="colorPrimaryDark">#95989A</color>
     <color name="colorAccent">#007C92</color>
+    <color name="colorPulse">#FF0076</color>
+    <color name="colorTemperature">#0076FF</color>
 </resources>

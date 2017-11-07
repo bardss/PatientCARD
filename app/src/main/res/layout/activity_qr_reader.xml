@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.jakubaniola.patientcard.qrreader.QRReaderActivity">
+    tools:context="com.patientcard.qrreader.QRReaderActivity">
 
-    <com.example.jakubaniola.patientcard.customviews.TitilliumSemiBoldTextView
+    <com.patientcard.customviews.TitilliumSemiBoldTextView
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
