@@ -4,7 +4,6 @@ import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
-import com.patientcard.demographic.ShortFeverPresenterImpl
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_short_fever.*

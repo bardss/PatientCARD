@@ -34,10 +34,16 @@
         <activity android:name="com.patientcard.demographic.DemographicActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.patientcard.feverchart.FeverChartActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape"/>
         <activity android:name="com.patientcard.shortfever.ShortFeverActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.patientcard.observations.ObservationsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.patientcard.addrecommendation.AddRecommendationActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.patientcard.addobservation.AddObservationActivity"

@@ -18,6 +18,8 @@
     <string name="temperature">ciepłota</string>
     <string name="recommendation_placeholder">Zlecenie 12.12.2017</string>
     <string name="observations_placeholder">Obserwacja 12.12.2017</string>
+    <string name="new_recommendation_placeholder">Nowe zlecenie 12.12.2017</string>
+    <string name="new_observations_placeholder">Nowa obserwacja 12.12.2017</string>
     <string name="drug">Lek:</string>
     <string name="drug_placeholder">Ketanol 100mg</string>
     <string name="morning">Rano</string>
