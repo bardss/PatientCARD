@@ -4,4 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:id="@+id/feverLineChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.github.mikephil.charting.charts.CombinedChart>
+
 </LinearLayout>
