@@ -1,29 +1,21 @@
 package com.patientcard.feverchart
 
-import android.graphics.Color
-import android.view.WindowManager
-import com.github.mikephil.charting.charts.CombinedChart.DrawOrder
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.XAxis.XAxisPosition
-import com.github.mikephil.charting.components.YAxis
-import com.github.mikephil.charting.data.CombinedData
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.jjoe64.graphview.helper.StaticLabelsFormatter
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
+import com.patientcard.utils.ResUtil
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_fever_chart.*
-import java.util.*
+
+
 
 
 @ActivityView(layout = R.layout.activity_fever_chart, presenter = FeverChartPresenterImpl::class)
 class FeverChartActivity : BaseActivity(), FeverChartView {
-
-    var entries: List<Entry> = ArrayList()
-
 
     @Presenter
     lateinit var presenter: FeverChartPresenter
@@ -34,109 +26,49 @@ class FeverChartActivity : BaseActivity(), FeverChartView {
 
     override fun onStart() {
         super.onStart()
-        setupChart()
+        setupFeverGraph()
     }
 
-    private fun setupChart() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    private fun setupFeverGraph() {
+        val series = LineGraphSeries<DataPoint>(arrayOf<DataPoint>(
+                DataPoint(0.0, 1.0),
+                DataPoint(1.0, 5.0),
+                DataPoint(2.0, 3.0),
+                DataPoint(3.0, 2.0),
+                DataPoint(4.0, 6.0)
+        ))
 
-        feverLineChart.description.isEnabled = false
-        feverLineChart.setBackgroundColor(Color.WHITE)
-        feverLineChart.setDrawGridBackground(false)
-        feverLineChart.setDrawBarShadow(false)
-        feverLineChart.isHighlightFullBarEnabled = false
+        val series2 = LineGraphSeries<DataPoint>(arrayOf<DataPoint>(
+                DataPoint(0.0, 10.0),
+                DataPoint(1.0, 50.0),
+                DataPoint(2.0, 90.0),
+                DataPoint(3.0, 20.0),
+                DataPoint(4.0, 10.0)
+        ))
 
-        // draw bars behind lines
-        feverLineChart.drawOrder = arrayOf(DrawOrder.BAR, DrawOrder.BUBBLE, DrawOrder.CANDLE, DrawOrder.LINE, DrawOrder.SCATTER)
+        feverGraphView.addSeries(series)
+        feverGraphView.secondScale.addSeries(series2)
+        feverGraphView.secondScale.setMinY(0.0)
+        feverGraphView.secondScale.setMaxY(100.0)
+        feverGraphView.setBackgroundColor(ResUtil.getColor(R.color.colorPrimary)!!)
 
-        val l = feverLineChart.legend
-        l.isWordWrapEnabled = true
-        l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
-        l.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
-        l.orientation = Legend.LegendOrientation.HORIZONTAL
-        l.setDrawInside(false)
+        series.color = ResUtil.getColor(R.color.colorPulse)!!
+        series.title = "Pulse"
+        series.isDrawDataPoints = true
+        series.thickness = 8
 
-        val rightAxis = feverLineChart.axisRight
-        rightAxis.setDrawGridLines(false)
-        rightAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
 
-        val leftAxis = feverLineChart.axisLeft
-        leftAxis.setDrawGridLines(false)
-        leftAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
+        series2.color = ResUtil.getColor(R.color.colorTemperature)!!
+        series2.title = "Temperature"
+        series2.isDrawDataPoints = true
+        series2.thickness = 8
+        feverGraphView.gridLabelRenderer.verticalLabelsSecondScaleColor = ResUtil.getColor(R.color.colorTemperature)!!
 
-        val xAxis = feverLineChart.xAxis
-        xAxis.position = XAxisPosition.BOTH_SIDED
-        xAxis.axisMinimum = 0f
-        xAxis.granularity = 1f
-//        xAxis.setValueFormatter({ value, axis -> mMonths[value.toInt() % mMonths.length] })
+        val staticLabelsFormatter = StaticLabelsFormatter(feverGraphView)
+        staticLabelsFormatter.setHorizontalLabels(arrayOf("Rano\n10.11.2017", "Wieczor\n10.11.2017", "Rano\n11.11.2017", "Wieczor\n11.11.2017", "Rano\n12.11.2017"))
+        feverGraphView.gridLabelRenderer.labelFormatter = staticLabelsFormatter
 
-        val data = CombinedData()
-
-        data.setData(generateLineData())
-        data.setData(generateLineData2())
-//        data.setValueTypeface(mTfLight)
-
-        xAxis.axisMaximum = data.xMax + 0.25f
-
-        feverLineChart.data = data
-        feverLineChart.invalidate()
     }
-
-    private fun generateLineData(): LineData {
-        val d = LineData()
-
-        val entries = ArrayList<Entry>()
-
-        for (index in 0 until 15)
-            entries.add(Entry(index + 0.5f, rand(5, 20).toFloat()))
-
-        val set = LineDataSet(entries, "Line DataSet")
-        set.color = Color.rgb(240, 238, 70)
-        set.lineWidth = 2.5f
-        set.setCircleColor(Color.rgb(240, 238, 70))
-        set.circleRadius = 5f
-        set.fillColor = Color.rgb(240, 238, 70)
-        set.mode = LineDataSet.Mode.CUBIC_BEZIER
-        set.setDrawValues(true)
-        set.valueTextSize = 10f
-        set.valueTextColor = Color.rgb(240, 238, 70)
-
-        set.axisDependency = YAxis.AxisDependency.LEFT
-        d.addDataSet(set)
-
-        return d
-    }
-
-    private fun generateLineData2(): LineData {
-        val d = LineData()
-
-        val entries = ArrayList<Entry>()
-
-        for (index in 0 until 15)
-            entries.add(Entry(index + 0.5f, rand(80, 100).toFloat()))
-
-        val set = LineDataSet(entries, "Line DataSet2")
-        set.color = Color.rgb(240, 210, 70)
-        set.lineWidth = 2.5f
-        set.setCircleColor(Color.rgb(240, 238, 70))
-        set.circleRadius = 5f
-        set.fillColor = Color.rgb(240, 238, 70)
-        set.mode = LineDataSet.Mode.CUBIC_BEZIER
-        set.setDrawValues(true)
-        set.valueTextSize = 10f
-        set.valueTextColor = Color.rgb(240, 238, 70)
-
-        set.axisDependency = YAxis.AxisDependency.LEFT
-        d.addDataSet(set)
-
-        return d
-    }
-
-    fun rand(from: Int, to: Int) : Int {
-        val random = Random()
-        return random.nextInt(to - from) + from
-    }
-
 
 }
+

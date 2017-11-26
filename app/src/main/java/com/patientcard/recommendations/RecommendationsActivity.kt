@@ -1,7 +1,9 @@
 package com.patientcard.recommendations
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
+import com.patientcard.addrecommendation.AddRecommendationActivity
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
 import easymvp.annotation.ActivityView
@@ -21,6 +23,13 @@ class RecommendationsActivity : BaseActivity(), RecomendationsView {
     override fun onStart() {
         super.onStart()
         setupRecommendationsList()
+        setupButtoms()
+    }
+
+    private fun setupButtoms() {
+        addFab.setOnClickListener {
+            startActivity(Intent(this, AddRecommendationActivity::class.java))
+        }
     }
 
     private fun setupRecommendationsList() {
