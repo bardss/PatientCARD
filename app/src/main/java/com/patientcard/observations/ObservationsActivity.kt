@@ -1,7 +1,9 @@
 package com.patientcard.observations
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
+import com.patientcard.addobservation.AddObservationActivity
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
 import easymvp.annotation.ActivityView
@@ -21,14 +23,14 @@ class ObservationsActivity : BaseActivity(), ObservationsView {
     override fun onStart() {
         super.onStart()
         setupShortFeverList()
-//        setupAddObservationClick()
+        setupButtons()
     }
 
-//    private fun setupAddObservationClick() {
-//        addFab.setOnClickListener {
-//            startActivity(Intent(this, AddObservationActivity::class.java))
-//        }
-//    }
+    private fun setupButtons() {
+        addFab.setOnClickListener {
+            startActivity(Intent(this, AddObservationActivity::class.java))
+        }
+    }
 
     private fun setupShortFeverList() {
         observationsRecyclerView.layoutManager = LinearLayoutManager(this)

@@ -4,4 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/feverGraphView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

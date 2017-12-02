@@ -27,6 +27,7 @@ class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
     private fun setupSaveRecommendationClick() {
         checkFab.setOnClickListener {
             startActivity(Intent(this, ObservationsActivity::class.java))
+            finish()
         }
     }
 

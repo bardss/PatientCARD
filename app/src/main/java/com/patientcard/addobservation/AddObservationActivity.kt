@@ -4,8 +4,8 @@ import android.content.Intent
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
-import com.patientcard.recommendations.AddObservationView
 import com.patientcard.observations.ObservationsActivity
+import com.patientcard.recommendations.AddObservationView
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_add_observation.*
@@ -28,6 +28,7 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
     private fun setupSaveRecommendationClick() {
         checkFab.setOnClickListener {
             startActivity(Intent(this, ObservationsActivity::class.java))
+            finish()
         }
     }
 
