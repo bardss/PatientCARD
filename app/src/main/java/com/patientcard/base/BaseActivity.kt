@@ -22,7 +22,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         initExtras(providePresenter())
     }
 
-    override fun startProgressDialog(message: String) {
+    override fun startProgressDialog(message: String?) {
         if ((progress == null || !progress!!.isShowing) && !isFinishing) {
             progress = ProgressDialog.show(this@BaseActivity, getString(R.string.progress_loading_text),
                     message, true)

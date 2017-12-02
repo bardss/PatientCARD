@@ -1,4 +1,4 @@
-package com.example.jakubaniola.patientcard
+package com.patientcard
 
 import org.junit.Test
 

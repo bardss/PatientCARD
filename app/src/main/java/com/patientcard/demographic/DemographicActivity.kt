@@ -4,6 +4,7 @@ import android.content.Intent
 import com.patientcard.R
 import com.patientcard.base.BaseActivity
 import com.patientcard.base.BasePresenter
+import com.patientcard.model.transportobjects.PatientDTO
 import com.patientcard.observations.ObservationsActivity
 import com.patientcard.recommendations.RecommendationsActivity
 import com.patientcard.shortfever.ShortFeverActivity
@@ -24,6 +25,11 @@ class DemographicActivity : BaseActivity(), DemographicView {
     override fun onStart() {
         super.onStart()
         setupMenuClicks()
+    }
+
+    override fun fillFields(patient: PatientDTO) {
+        nameTextView.text = patient.name + " " + patient.surname
+        patientCodeTextView.text = patient.patientcode
     }
 
     private fun setupMenuClicks() {

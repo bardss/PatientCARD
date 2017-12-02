@@ -31,4 +31,6 @@
     <string name="person_placeholder">Roman Karczoch</string>
     <string name="note">Notatka:</string>
     <string name="long_text_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim…</string>
+    <string name="sth_wrong_check_internet_connection">Something went wrong. Check your internet connection and try again.</string>
+    <string name="authorization_error">Authorization problem. Try again later.</string>
 </resources>

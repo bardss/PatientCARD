@@ -41,7 +41,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     abstract fun providePresenter(): BasePresenter
 
-    override fun startProgressDialog(message: String) {
+    override fun startProgressDialog(message: String?) {
         if ((progress == null || !progress!!.isShowing) && !activity.isFinishing) {
             progress = ProgressDialog.show(activity, getString(R.string.progress_loading_text),
                     message, true)

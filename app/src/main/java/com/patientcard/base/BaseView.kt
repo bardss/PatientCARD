@@ -6,7 +6,7 @@ interface BaseView {
 
     val activityContext: Context
 
-    fun startProgressDialog(message: String)
+    fun startProgressDialog(message: String?)
 
     fun stopProgressDialog()
 
