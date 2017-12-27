@@ -2,6 +2,7 @@ package com.patientcard.views.qrreader
 
 import android.content.Intent
 import com.patientcard.R
+import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.demographic.DemographicActivity
@@ -46,7 +47,7 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
 
     private fun setupQRReader() {
         qrReader = QREader.Builder(this, qrReaderSurfaceView, QRDataListener { data ->
-            openPatientDemographic();
+            openPatientDemographic(data)
         }).facing(QREader.BACK_CAM)
                 .enableAutofocus(true)
                 .height(qrReaderSurfaceView!!.height)
@@ -72,7 +73,8 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
 
     }
 
-    private fun openPatientDemographic() {
-        startActivity(Intent(this, DemographicActivity::class.java))
+    private fun openPatientDemographic(qrCode: String) {
+        startActivity(Intent(this, DemographicActivity::class.java)
+                .putExtra(IntentKeys.QR_CODE, qrCode))
     }
 }

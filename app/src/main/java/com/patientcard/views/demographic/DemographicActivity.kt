@@ -2,9 +2,9 @@ package com.patientcard.views.demographic
 
 import android.content.Intent
 import com.patientcard.R
+import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
-import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.views.observations.ObservationsActivity
 import com.patientcard.views.recommendations.RecommendationsActivity
 import com.patientcard.views.shortfever.ShortFeverActivity
@@ -29,7 +29,7 @@ class DemographicActivity : BaseActivity(), DemographicView {
 
     override fun fillFields(patient: PatientDTO) {
         nameTextView.text = patient.name + " " + patient.surname
-        patientCodeTextView.text = patient.patientcode
+        patientCodeTextView.text = patient.patientCode
     }
 
     private fun setupMenuClicks() {

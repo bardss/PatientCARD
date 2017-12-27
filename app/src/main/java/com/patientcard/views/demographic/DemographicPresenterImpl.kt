@@ -2,16 +2,20 @@ package com.patientcard.views.demographic
 
 import android.content.Intent
 import com.patientcard.R
-import com.patientcard.views.base.BaseAbstractPresenter
+import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.logic.services.ServiceManager
 import com.patientcard.logic.services.receivers.GetPatientReciever
 import com.patientcard.logic.utils.ResUtil
+import com.patientcard.views.base.BaseAbstractPresenter
 
 class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), DemographicPresenter, GetPatientReciever {
 
+    private val presentationModel: DemographicModel by lazy { DemographicModel() }
+
     override fun initExtras(intent: Intent) {
-        // no extras
+        val qrCode: String? = intent.getSerializableExtra(IntentKeys.QR_CODE) as String?
+        presentationModel.qrCode = qrCode
     }
 
     override fun onViewAttached(view: DemographicView?) {
@@ -20,8 +24,11 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
     }
 
     private fun getPatientDetails() {
-        view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
-        ServiceManager.getPatient(this, "122075")
+        val qrCode: String? = presentationModel.qrCode
+        if (qrCode != null) {
+            view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
+            ServiceManager.getPatient(this, qrCode)
+        }
     }
 
     override fun onGetPatientError() {

@@ -3,12 +3,12 @@ package com.patientcard.logic.services
 import android.widget.Toast
 import com.google.gson.Gson
 import com.patientcard.R
-import com.patientcard.views.base.ApplicationContext
 import com.patientcard.logic.model.businessobjects.ResponseErrorMessage
 import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.logic.services.receivers.GetPatientReciever
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.logic.utils.ToastUtil
+import com.patientcard.views.base.ApplicationContext
 import retrofit2.HttpException
 import rx.Observable
 import rx.Subscription
@@ -21,10 +21,10 @@ import java.lang.Exception
 
 object ServiceManager {
 
-    fun getPatient(receiver: GetPatientReciever, patientId: String) {
+    fun getPatient(receiver: GetPatientReciever, qrCode: String) {
         setupRequest(ServiceProvider
                 .patientService
-                .getPatient(patientId),
+                .getPatient(qrCode),
                 Action1 { receiver.onGetPatientSuccess(it as PatientDTO) },
                 Action1 {
                     handleError(it)

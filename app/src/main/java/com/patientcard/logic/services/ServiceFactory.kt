@@ -1,4 +1,4 @@
-package com.patientcard.logic.services.api
+package com.patientcard.logic.services
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

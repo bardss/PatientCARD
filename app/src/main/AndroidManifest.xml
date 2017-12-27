@@ -15,7 +15,7 @@
         android:roundIcon="@drawable/medical_history"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.patientcard.views.demographic.DemographicActivity">
+        <activity android:name="com.patientcard.views.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +31,7 @@
         <activity android:name="com.patientcard.views.recommendations.RecommendationsActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.views.splash.SplashActivity"
+        <activity android:name="com.patientcard.views.demographic.DemographicActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.patientcard.views.feverchart.FeverChartActivity"
