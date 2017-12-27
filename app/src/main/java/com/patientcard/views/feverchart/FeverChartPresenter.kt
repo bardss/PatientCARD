@@ -5,9 +5,6 @@ import com.patientcard.views.base.BasePresenter
 
 interface FeverChartPresenter : BasePresenter {
 
-    override fun initExtras(intent: Intent) {
-        // no extras
-    }
-
+    override fun initExtras(intent: Intent)
 }
 

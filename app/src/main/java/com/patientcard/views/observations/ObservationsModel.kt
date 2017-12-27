@@ -1,4 +1,6 @@
 package com.patientcard.views.observations
 
-class ObservationsModel
+class ObservationsModel {
+    var patientId: String? = null
+}
 

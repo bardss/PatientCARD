@@ -1,9 +1,11 @@
 package com.patientcard.logic.services
 
+import com.google.gson.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import org.threeten.bp.LocalDateTime
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,7 +29,7 @@ object ServiceFactory {
                 .baseUrl(endPoint)
                 .client(client)
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(getGson()))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build()
 
@@ -46,6 +48,16 @@ object ServiceFactory {
                 .addInterceptor(interceptor)
                 .build()
     }
+
+    private fun getGson(): Gson {
+        return GsonBuilder()
+                .setLenient()
+                .registerTypeAdapter(LocalDateTime::class.java, JsonDeserializer { json, typeOfT, context -> LocalDateTime.parse(json.asString) })
+                .registerTypeAdapter(LocalDateTime::class.java, JsonSerializer<LocalDateTime> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
+                .serializeNulls()
+                .create()
+    }
+
 
 }
 

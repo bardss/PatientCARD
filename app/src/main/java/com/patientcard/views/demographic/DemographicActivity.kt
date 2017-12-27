@@ -31,15 +31,15 @@ class DemographicActivity : BaseActivity(), DemographicView {
     override fun setupMenuButtons(qrCode: String?) {
         feverMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, ShortFeverActivity::class.java)
-                    .putExtra(IntentKeys.QR_CODE, qrCode))
+                    .putExtra(IntentKeys.PATIENT_ID, qrCode))
         }
         recommendationsMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, RecommendationsActivity::class.java)
-                    .putExtra(IntentKeys.QR_CODE, qrCode))
+                    .putExtra(IntentKeys.PATIENT_ID, qrCode))
         }
         observationsMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, ObservationsActivity::class.java)
-                    .putExtra(IntentKeys.QR_CODE, qrCode))
+                    .putExtra(IntentKeys.PATIENT_ID, qrCode))
         }
     }
 

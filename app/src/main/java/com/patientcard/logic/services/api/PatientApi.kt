@@ -9,5 +9,5 @@ interface PatientApi {
 
     @GET("/patients/findByQr")
     fun getPatient(
-            @Query("qr") patientId: String): Observable<PatientDTO>
+            @Query("qr") qrCode: String): Observable<PatientDTO>
 }

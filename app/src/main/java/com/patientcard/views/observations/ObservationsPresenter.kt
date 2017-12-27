@@ -5,9 +5,7 @@ import com.patientcard.views.base.BasePresenter
 
 interface ObservationsPresenter : BasePresenter {
 
-    override fun initExtras(intent: Intent) {
-        // no extras
-    }
+    override fun initExtras(intent: Intent)
 
 }
 

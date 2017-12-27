@@ -4,7 +4,9 @@ import android.widget.Toast
 import com.google.gson.Gson
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.ResponseErrorMessage
+import com.patientcard.logic.model.transportobjects.ObservationDTO
 import com.patientcard.logic.model.transportobjects.PatientDTO
+import com.patientcard.logic.services.receivers.GetObservationsReciever
 import com.patientcard.logic.services.receivers.GetPatientReciever
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.logic.utils.ToastUtil
@@ -33,6 +35,18 @@ object ServiceManager {
                 Action0 { Timber.e("OnCompleted") })
     }
 
+    fun getObservations(receiver: GetObservationsReciever, patientId: String) {
+        setupRequest(ServiceProvider
+                .observationsService
+                .getObservations(patientId),
+                Action1 { receiver.onGetObservationsSuccess(it as List<ObservationDTO>) },
+                Action1 {
+                    handleError(it)
+                    receiver.onGetObservationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
     private fun setupRequest(observable: Observable<*>, onNext: Action1<Any>, onError: Action1<Throwable>, onCompleted: Action0): Subscription {
         return observable
                 .subscribeOn(Schedulers.newThread())
@@ -40,7 +54,7 @@ object ServiceManager {
                 .subscribe(onNext, onError, onCompleted)
     }
 
-    fun handleError(error: Throwable) {
+    private fun handleError(error: Throwable) {
         val msg = getResponseMessage(error)
 
         if (error is HttpException) {

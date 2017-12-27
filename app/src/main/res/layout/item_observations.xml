@@ -9,10 +9,10 @@
     android:paddingTop="8dp">
 
     <com.patientcard.views.customviews.TitilliumSemiBoldTextView
+        android:id="@+id/observationDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="@string/observations_placeholder"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
@@ -74,7 +74,7 @@
                 android:textSize="16sp" />
 
             <com.patientcard.views.customviews.TitilliumLightTextView
-                android:id="@+id/drugValueTextView"
+                android:id="@+id/noteValueTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp"

@@ -21,7 +21,6 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
     override fun onViewAttached(view: DemographicView?) {
         super.onViewAttached(view)
         getPatientDetails()
-        view?.setupMenuButtons(presentationModel.qrCode)
     }
 
     private fun getPatientDetails() {
@@ -40,6 +39,7 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
     override fun onGetPatientSuccess(patient: PatientDTO) {
         view?.stopProgressDialog()
         view?.fillFields(patient)
+        view?.setupMenuButtons(patient.id?.toString())
     }
 
 }

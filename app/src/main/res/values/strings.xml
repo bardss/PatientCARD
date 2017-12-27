@@ -35,4 +35,5 @@
     <string name="authorization_error">Problem autoryzacji. Zaloguj się ponownie.</string>
     <string name="enter_patient_qr_code">Wpisz QR Code pacjenta</string>
     <string name="open">OTWÓRZ</string>
+    <string name="observation">Obserwacja</string>
 </resources>
