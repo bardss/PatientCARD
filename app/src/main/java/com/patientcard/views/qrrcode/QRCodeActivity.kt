@@ -1,4 +1,4 @@
-package com.patientcard.views.qrreader
+package com.patientcard.views.qrrcode
 
 import android.content.Intent
 import com.patientcard.R
@@ -6,30 +6,25 @@ import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.demographic.DemographicActivity
-import com.patientcard.views.splash.QRReaderPresenter
-import com.patientcard.views.splash.QRReaderPresenterImpl
-import com.patientcard.views.splash.QRReaderView
+import com.patientcard.views.splash.QRCodePresenter
+import com.patientcard.views.splash.QRCodePresenterImpl
+import com.patientcard.views.splash.QRCodeView
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import github.nisrulz.qreader.QRDataListener
 import github.nisrulz.qreader.QREader
 import kotlinx.android.synthetic.main.activity_qr_reader.*
 
-@ActivityView(layout = R.layout.activity_qr_reader, presenter = QRReaderPresenterImpl::class)
-class QRReaderActivity : BaseActivity(), QRReaderView {
+@ActivityView(layout = R.layout.activity_qr_reader, presenter = QRCodePresenterImpl::class)
+class QRCodeActivity : BaseActivity(), QRCodeView {
 
     private var qrReader : QREader? = null
 
     @Presenter
-    lateinit var presenter: QRReaderPresenter
+    lateinit var presenter: QRCodePresenter
 
     override fun providePresenter(): BasePresenter {
         return presenter
-    }
-
-    override fun onStart() {
-        super.onStart()
-        setupQRReader()
     }
 
     override fun onResume() {
@@ -42,7 +37,7 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
         qrReader?.releaseAndCleanup()
     }
 
-    private fun setupQRReader() {
+    override fun setupQRReader() {
         qrReader = QREader.Builder(this, qrReaderSurfaceView, QRDataListener { data ->
             openPatientDemographic(data)
         }).facing(QREader.BACK_CAM)
@@ -51,6 +46,10 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
                 .width(qrReaderSurfaceView.width)
                 .build()
         qrReader?.initAndStart(qrReaderSurfaceView)
+    }
+
+    override fun setupNoPermission() {
+
     }
 
     private fun openPatientDemographic(qrCode: String) {

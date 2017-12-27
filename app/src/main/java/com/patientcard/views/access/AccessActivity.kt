@@ -2,9 +2,10 @@ package com.patientcard.views.access
 
 import android.content.Intent
 import com.patientcard.R
+import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
-import com.patientcard.views.qrreader.QRReaderActivity
+import com.patientcard.views.qrrcode.QRCodeActivity
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
 import com.yanzhenjie.permission.PermissionListener
@@ -31,8 +32,9 @@ class AccessActivity : BaseActivity(), AccessView {
         loginButton.setOnClickListener { checkPermission() }
     }
 
-    private fun openQRReaderActivity() {
-        startActivity(Intent(this, QRReaderActivity::class.java))
+    private fun openQRReaderActivity(cameraPermission: Boolean) {
+        startActivity(Intent(this, QRCodeActivity::class.java)
+                .putExtra(IntentKeys.CAMERA_PERMISSION, cameraPermission))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
     }
@@ -44,10 +46,11 @@ class AccessActivity : BaseActivity(), AccessView {
                 .permission(Permission.CAMERA)
                 .callback(object : PermissionListener {
                     override fun onSucceed(requestCode: Int, grantPermissions: List<String>) {
-                        openQRReaderActivity()
+                        openQRReaderActivity(true)
                     }
 
                     override fun onFailed(requestCode: Int, deniedPermissions: List<String>) {
+                        openQRReaderActivity(false)
                     }
                 })
                 .start()

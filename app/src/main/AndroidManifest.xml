@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.patientcard.views.qrreader.QRReaderActivity"
+        <activity android:name="com.patientcard.views.qrrcode.QRCodeActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
         <activity android:name="com.patientcard.views.access.AccessActivity"
