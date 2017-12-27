@@ -16,6 +16,7 @@
     <string name="date">data</string>
     <string name="pulse">tętno</string>
     <string name="temperature">ciepłota</string>
+    <string name="recommendation">Zlecenie</string>
     <string name="recommendation_placeholder">Zlecenie 12.12.2017</string>
     <string name="observations_placeholder">Obserwacja 12.12.2017</string>
     <string name="new_recommendation_placeholder">Nowe zlecenie 12.12.2017</string>

@@ -9,6 +9,7 @@
     android:paddingTop="8dp">
 
     <com.patientcard.views.customviews.TitilliumSemiBoldTextView
+        android:id="@+id/recommendationDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
@@ -157,7 +158,6 @@
                 android:paddingTop="8dp">
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
-                    android:id="@+id/nightTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/night"
@@ -165,6 +165,7 @@
                     android:textSize="16sp" />
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/nightTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/time_placeholder"

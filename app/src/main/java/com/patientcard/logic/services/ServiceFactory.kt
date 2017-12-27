@@ -5,7 +5,9 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
+import org.threeten.bp.LocalTime
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -54,11 +56,13 @@ object ServiceFactory {
                 .setLenient()
                 .registerTypeAdapter(LocalDateTime::class.java, JsonDeserializer { json, typeOfT, context -> LocalDateTime.parse(json.asString) })
                 .registerTypeAdapter(LocalDateTime::class.java, JsonSerializer<LocalDateTime> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
+                .registerTypeAdapter(LocalDate::class.java, JsonDeserializer { json, typeOfT, context -> LocalDate.parse(json.asString) })
+                .registerTypeAdapter(LocalDate::class.java, JsonSerializer<LocalDate> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
+                .registerTypeAdapter(LocalTime::class.java, JsonDeserializer { json, typeOfT, context -> LocalTime.parse(json.asString) })
+                .registerTypeAdapter(LocalTime::class.java, JsonSerializer<LocalTime> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
                 .serializeNulls()
                 .create()
     }
-
-
 }
 
 class AddHeaderInterceptor(internal var isRefreshToken: Boolean) : Interceptor {
