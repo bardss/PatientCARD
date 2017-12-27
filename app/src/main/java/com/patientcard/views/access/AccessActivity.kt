@@ -5,6 +5,9 @@ import com.patientcard.R
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.qrreader.QRReaderActivity
+import com.yanzhenjie.permission.AndPermission
+import com.yanzhenjie.permission.Permission
+import com.yanzhenjie.permission.PermissionListener
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_access.*
@@ -25,12 +28,29 @@ class AccessActivity : BaseActivity(), AccessView {
     }
 
     private fun setupLoginButton() {
-        loginButton.setOnClickListener { openQRReaderActivity() }
+        loginButton.setOnClickListener { checkPermission() }
     }
 
     private fun openQRReaderActivity() {
         startActivity(Intent(this, QRReaderActivity::class.java))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
+    }
+
+    private fun checkPermission(){
+        AndPermission
+                .with(this)
+                .requestCode(0)
+                .permission(Permission.CAMERA)
+                .callback(object : PermissionListener {
+                    override fun onSucceed(requestCode: Int, grantPermissions: List<String>) {
+                        openQRReaderActivity()
+                    }
+
+                    override fun onFailed(requestCode: Int, deniedPermissions: List<String>) {
+                    }
+                })
+                .start()
+
     }
 }

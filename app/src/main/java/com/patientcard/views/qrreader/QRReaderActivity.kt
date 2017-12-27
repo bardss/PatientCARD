@@ -9,9 +9,6 @@ import com.patientcard.views.demographic.DemographicActivity
 import com.patientcard.views.splash.QRReaderPresenter
 import com.patientcard.views.splash.QRReaderPresenterImpl
 import com.patientcard.views.splash.QRReaderView
-import com.yanzhenjie.permission.AndPermission
-import com.yanzhenjie.permission.Permission
-import com.yanzhenjie.permission.PermissionListener
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import github.nisrulz.qreader.QRDataListener
@@ -32,7 +29,7 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
 
     override fun onStart() {
         super.onStart()
-        checkPermission()
+        setupQRReader()
     }
 
     override fun onResume() {
@@ -54,23 +51,6 @@ class QRReaderActivity : BaseActivity(), QRReaderView {
                 .width(qrReaderSurfaceView.width)
                 .build()
         qrReader?.initAndStart(qrReaderSurfaceView)
-    }
-
-    private fun checkPermission(){
-        AndPermission
-                .with(this)
-                .requestCode(0)
-                .permission(Permission.CAMERA)
-                .callback(object : PermissionListener {
-                    override fun onSucceed(requestCode: Int, grantPermissions: List<String>) {
-                        setupQRReader()
-                    }
-
-                    override fun onFailed(requestCode: Int, deniedPermissions: List<String>) {
-                    }
-                })
-                .start()
-
     }
 
     private fun openPatientDemographic(qrCode: String) {
