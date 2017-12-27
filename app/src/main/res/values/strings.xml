@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PatientCARD</string>
-    <string name="progress_loading_text">Loading data...</string>
+    <string name="progress_loading_text">Pobieranie danych...</string>
     <string name="login">LOGIN</string>
     <string name="hello">Witaj!</string>
     <string name="id_email">Identyfikator / E-mail</string>
@@ -31,8 +31,8 @@
     <string name="person_placeholder">Roman Karczoch</string>
     <string name="note">Notatka:</string>
     <string name="long_text_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim…</string>
-    <string name="sth_wrong_check_internet_connection">Something went wrong. Check your internet connection and try again.</string>
-    <string name="authorization_error">Authorization problem. Try again later.</string>
-    <string name="enter_patient_qr_code">Enter patient QR Code</string>
-    <string name="open">OPEN</string>
+    <string name="sth_wrong_check_internet_connection">Coś poszło nie ta. Sprawdź połączenie internetowe..</string>
+    <string name="authorization_error">Problem autoryzacji. Zaloguj się ponownie.</string>
+    <string name="enter_patient_qr_code">Wpisz QR Code pacjenta</string>
+    <string name="open">OTWÓRZ</string>
 </resources>

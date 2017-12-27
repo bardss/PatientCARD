@@ -2,6 +2,7 @@ package com.patientcard.views.demographic
 
 import android.content.Intent
 import com.patientcard.R
+import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
@@ -22,25 +23,23 @@ class DemographicActivity : BaseActivity(), DemographicView {
         return presenter
     }
 
-    override fun onStart() {
-        super.onStart()
-        setupMenuClicks()
-    }
-
     override fun fillFields(patient: PatientDTO) {
         nameTextView.text = patient.name + " " + patient.surname
         patientCodeTextView.text = patient.patientCode
     }
 
-    private fun setupMenuClicks() {
+    override fun setupMenuButtons(qrCode: String?) {
         feverMenuRelativeLayout.setOnClickListener {
-            startActivity(Intent(this, ShortFeverActivity::class.java))
+            startActivity(Intent(this, ShortFeverActivity::class.java)
+                    .putExtra(IntentKeys.QR_CODE, qrCode))
         }
         recommendationsMenuRelativeLayout.setOnClickListener {
-            startActivity(Intent(this, RecommendationsActivity::class.java))
+            startActivity(Intent(this, RecommendationsActivity::class.java)
+                    .putExtra(IntentKeys.QR_CODE, qrCode))
         }
         observationsMenuRelativeLayout.setOnClickListener {
-            startActivity(Intent(this, ObservationsActivity::class.java))
+            startActivity(Intent(this, ObservationsActivity::class.java)
+                    .putExtra(IntentKeys.QR_CODE, qrCode))
         }
     }
 
