@@ -48,7 +48,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     abstract fun providePresenter(): BasePresenter?
 
-    fun performOnBackPressed() {
+    override fun performOnBackPressed() {
         onBackPressed()
     }
 
@@ -58,14 +58,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         } else {
             super.onBackPressed()
         }
-    }
-
-    fun setDialogCloseable(dialogCloseButton: ImageView) {
-        this.dialogCloseButton = dialogCloseButton
-    }
-
-    fun setCloseBackButton(isCloseableOnBackButton: Boolean) {
-        this.isCloseableOnBackButton = isCloseableOnBackButton
     }
 
 }

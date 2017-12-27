@@ -55,7 +55,7 @@ abstract class BaseFragment : Fragment(), BaseView {
         }
     }
 
-    fun performOnBackPressed() {
+    override fun performOnBackPressed() {
         activity.onBackPressed()
     }
 

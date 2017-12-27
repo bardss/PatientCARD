@@ -29,7 +29,6 @@
             android:layout_alignBottom="@id/topAccentView"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/name_placeholder"
             android:textColor="@android:color/white"
             android:textSize="22sp" />
 
@@ -40,7 +39,6 @@
             android:layout_below="@id/topAccentView"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/pesel_placeholder"
             android:textColor="@android:color/black"
             android:textSize="22sp" />
 

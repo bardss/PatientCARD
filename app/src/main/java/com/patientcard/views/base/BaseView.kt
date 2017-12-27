@@ -10,4 +10,6 @@ interface BaseView {
 
     fun stopProgressDialog()
 
+    fun performOnBackPressed()
+
 }

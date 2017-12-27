@@ -33,6 +33,7 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
 
     override fun onGetPatientError() {
         view?.stopProgressDialog()
+        view?.performOnBackPressed()
     }
 
     override fun onGetPatientSuccess(patient: PatientDTO) {

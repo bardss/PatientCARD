@@ -1,6 +1,7 @@
 package com.patientcard.views.qrrcode
 
 import android.content.Intent
+import android.view.View
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.views.base.BaseActivity
@@ -38,6 +39,7 @@ class QRCodeActivity : BaseActivity(), QRCodeView {
     }
 
     override fun setupQRReader() {
+        qrCodeDialogLayout.visibility = View.GONE
         qrReader = QREader.Builder(this, qrReaderSurfaceView, QRDataListener { data ->
             openPatientDemographic(data)
         }).facing(QREader.BACK_CAM)
@@ -49,7 +51,8 @@ class QRCodeActivity : BaseActivity(), QRCodeView {
     }
 
     override fun setupNoPermission() {
-
+        qrCodeDialogLayout.visibility = View.VISIBLE
+        openButton.setOnClickListener { openPatientDemographic(qrCodeEditText.text.toString()) }
     }
 
     private fun openPatientDemographic(qrCode: String) {
