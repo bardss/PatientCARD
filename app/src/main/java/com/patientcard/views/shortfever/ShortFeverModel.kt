@@ -1,4 +1,6 @@
 package com.patientcard.views.shortfever
 
-class ShortFeverModel
+class ShortFeverModel {
+    var patientId: String? = null
+}
 

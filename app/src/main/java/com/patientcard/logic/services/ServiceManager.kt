@@ -4,9 +4,11 @@ import android.widget.Toast
 import com.google.gson.Gson
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.ResponseErrorMessage
+import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import com.patientcard.logic.model.transportobjects.ObservationDTO
 import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
+import com.patientcard.logic.services.receivers.GetFeverCardReciever
 import com.patientcard.logic.services.receivers.GetObservationsReciever
 import com.patientcard.logic.services.receivers.GetPatientReciever
 import com.patientcard.logic.services.receivers.GetRecommendationsReciever
@@ -57,6 +59,18 @@ object ServiceManager {
                 Action1 {
                     handleError(it)
                     receiver.onGetRecommendationsError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
+    fun getFeverCard(receiver: GetFeverCardReciever, patientId: String) {
+        setupRequest(ServiceProvider
+                .feverCardService
+                .getFeverCard(patientId),
+                Action1 { receiver.onGetFeverCardSuccess(it as List<FeverCardDTO>) },
+                Action1 {
+                    handleError(it)
+                    receiver.onGetFeverCardError()
                 },
                 Action0 { Timber.e("OnCompleted") })
     }

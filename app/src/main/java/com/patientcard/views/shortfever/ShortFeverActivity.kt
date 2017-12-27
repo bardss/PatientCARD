@@ -3,6 +3,7 @@ package com.patientcard.views.shortfever
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
+import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.feverchart.FeverChartActivity
@@ -17,6 +18,8 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
 
     @Presenter
     lateinit var presenter: ShortFeverPresenter
+
+    var feverCardAdapter: ShortFeverAdapter? = null
 
     override fun providePresenter(): BasePresenter {
         return presenter
@@ -36,8 +39,13 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
 
     private fun setupShortFeverList() {
         shortFeverRecyclerView.layoutManager = LinearLayoutManager(this)
-        shortFeverRecyclerView.adapter = ShortFeverAdapter(shortFeverRecyclerView)
+        feverCardAdapter = ShortFeverAdapter(shortFeverRecyclerView)
+        shortFeverRecyclerView.adapter = feverCardAdapter
         shortFeverRecyclerView.setOnTouchListener { _, _ -> true }
+    }
+
+    override fun setFeverCard(feverCard: List<FeverCardDTO>) {
+        feverCardAdapter?.setFeverCard(feverCard)
     }
 
 }

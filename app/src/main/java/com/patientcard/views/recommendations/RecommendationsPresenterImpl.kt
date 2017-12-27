@@ -40,5 +40,4 @@ class RecommendationsPresenterImpl : BaseAbstractPresenter<RecommendationsView>(
         view?.stopProgressDialog()
     }
 
-
 }
