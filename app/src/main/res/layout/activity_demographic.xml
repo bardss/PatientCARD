@@ -22,7 +22,7 @@
             android:layout_marginStart="30dp"
             android:src="@drawable/patient_avatar" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
+        <com.patientcard.views.customviews.TitilliumLightTextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             android:textColor="@android:color/white"
             android:textSize="22sp" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
+        <com.patientcard.views.customviews.TitilliumLightTextView
             android:id="@+id/patientCodeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -117,7 +117,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -155,7 +155,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

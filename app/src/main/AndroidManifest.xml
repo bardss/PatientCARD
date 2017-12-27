@@ -8,45 +8,45 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
-        android:name="com.patientcard.base.ApplicationContext"
+        android:name="com.patientcard.views.base.ApplicationContext"
         android:allowBackup="true"
         android:icon="@drawable/medical_history"
         android:label="@string/app_name"
         android:roundIcon="@drawable/medical_history"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.patientcard.demographic.DemographicActivity">
+        <activity android:name="com.patientcard.views.demographic.DemographicActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.patientcard.qrreader.QRReaderActivity"
+        <activity android:name="com.patientcard.views.qrreader.QRReaderActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.access.AccessActivity"
+        <activity android:name="com.patientcard.views.access.AccessActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.recommendations.RecommendationsActivity"
+        <activity android:name="com.patientcard.views.recommendations.RecommendationsActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.splash.SplashActivity"
+        <activity android:name="com.patientcard.views.splash.SplashActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.feverchart.FeverChartActivity"
+        <activity android:name="com.patientcard.views.feverchart.FeverChartActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorLandscape"/>
-        <activity android:name="com.patientcard.shortfever.ShortFeverActivity"
+        <activity android:name="com.patientcard.views.shortfever.ShortFeverActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.observations.ObservationsActivity"
+        <activity android:name="com.patientcard.views.observations.ObservationsActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.addrecommendation.AddRecommendationActivity"
+        <activity android:name="com.patientcard.views.addrecommendation.AddRecommendationActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name="com.patientcard.addobservation.AddObservationActivity"
+        <activity android:name="com.patientcard.views.addobservation.AddObservationActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
     </application>

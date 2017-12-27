@@ -8,7 +8,7 @@
     android:paddingStart="16dp"
     android:paddingTop="8dp">
 
-    <com.patientcard.customviews.TitilliumSemiBoldTextView
+    <com.patientcard.views.customviews.TitilliumSemiBoldTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
@@ -22,7 +22,7 @@
         android:background="@drawable/rounded_frame_white_with_grey_border"
         android:orientation="vertical">
 
-        <com.patientcard.customviews.TitilliumLightTextView
+        <com.patientcard.views.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
@@ -32,7 +32,7 @@
             android:textColor="@color/colorPrimaryGrey"
             android:textSize="16sp" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
+        <com.patientcard.views.customviews.TitilliumLightTextView
             android:id="@+id/drugValueTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,14 +63,14 @@
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/morning"
                     android:textColor="@color/colorPrimaryGrey"
                     android:textSize="16sp" />
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:id="@+id/morningTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,14 +94,14 @@
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/noon"
                     android:textColor="@color/colorPrimaryGrey"
                     android:textSize="16sp" />
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:id="@+id/noonTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,14 +125,14 @@
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/evening"
                     android:textColor="@color/colorPrimaryGrey"
                     android:textSize="16sp" />
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:id="@+id/eveningTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
                 android:paddingBottom="16dp"
                 android:paddingTop="8dp">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:id="@+id/nightTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                     android:textColor="@color/colorPrimaryGrey"
                     android:textSize="16sp" />
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/time_placeholder"

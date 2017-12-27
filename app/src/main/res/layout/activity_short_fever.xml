@@ -22,7 +22,7 @@
             android:layout_marginStart="30dp"
             android:src="@drawable/rounded_fever_icon" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
+        <com.patientcard.views.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/topAccentView"
@@ -32,7 +32,7 @@
             android:textColor="@android:color/white"
             android:textSize="21sp" />
 
-        <com.patientcard.customviews.TitilliumLightTextView
+        <com.patientcard.views.customviews.TitilliumLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/topAccentView"
@@ -66,7 +66,7 @@
                 android:background="@drawable/rounded_frame_accent_with_grey_border"
                 android:orientation="horizontal">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -81,7 +81,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimaryGrey" />
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -96,7 +96,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimaryGrey" />
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -131,7 +131,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -149,7 +149,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
-                <com.patientcard.customviews.TitilliumLightTextView
+                <com.patientcard.views.customviews.TitilliumLightTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
