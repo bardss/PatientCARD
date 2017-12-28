@@ -11,7 +11,6 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFeverPresenter, GetFeverCardReciever {
 
-
     private val presentationModel: ShortFeverModel by lazy { ShortFeverModel() }
 
     override fun initExtras(intent: Intent) {
@@ -38,6 +37,7 @@ class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFe
 
     override fun onGetFeverCardSuccess(feverCard: List<FeverCardDTO>) {
         view?.stopProgressDialog()
+        view?.setupButtons(feverCard as ArrayList<FeverCardDTO>)
         view?.setFeverCard(feverCard)
     }
 

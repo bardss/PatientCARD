@@ -4,15 +4,15 @@ import com.jjoe64.graphview.helper.StaticLabelsFormatter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.patientcard.R
+import com.patientcard.logic.model.transportobjects.FeverCardDTO
+import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
-import com.patientcard.logic.utils.ResUtil
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_fever_chart.*
-
-
-
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 @ActivityView(layout = R.layout.activity_fever_chart, presenter = FeverChartPresenterImpl::class)
 class FeverChartActivity : BaseActivity(), FeverChartView {
@@ -24,51 +24,48 @@ class FeverChartActivity : BaseActivity(), FeverChartView {
         return presenter
     }
 
-    override fun onStart() {
-        super.onStart()
-        setupFeverGraph()
-    }
+    override fun setupFeverGraph(feverCard: ArrayList<FeverCardDTO>?) {
+        val pulsePoints = arrayOfNulls<DataPoint>(feverCard?.size!!)
+        for (i in 0 until feverCard.size) {
+            pulsePoints[i] = DataPoint(i.toDouble(), feverCard[i].pulse.toDouble())
+        }
+        val seriesPulse = LineGraphSeries<DataPoint>(pulsePoints)
 
-    private fun setupFeverGraph() {
-        val series = LineGraphSeries<DataPoint>(arrayOf<DataPoint>(
-                DataPoint(0.0, 1.0),
-                DataPoint(1.0, 5.0),
-                DataPoint(2.0, 3.0),
-                DataPoint(3.0, 2.0),
-                DataPoint(4.0, 6.0)
-        ))
+        val temperaturePoints = arrayOfNulls<DataPoint>(feverCard.size)
+        for (i in 0 until feverCard.size) {
+            temperaturePoints[i] = DataPoint(i.toDouble(), feverCard[i].temperature.toDouble())
+        }
+        val seriesTemperature = LineGraphSeries<DataPoint>(temperaturePoints)
 
-        val series2 = LineGraphSeries<DataPoint>(arrayOf<DataPoint>(
-                DataPoint(0.0, 10.0),
-                DataPoint(1.0, 50.0),
-                DataPoint(2.0, 90.0),
-                DataPoint(3.0, 20.0),
-                DataPoint(4.0, 10.0)
-        ))
-
-        feverGraphView.addSeries(series)
-        feverGraphView.secondScale.addSeries(series2)
-        feverGraphView.secondScale.setMinY(0.0)
-        feverGraphView.secondScale.setMaxY(100.0)
+        feverGraphView.addSeries(seriesTemperature)
+        feverGraphView.secondScale.addSeries(seriesPulse)
+        feverGraphView.secondScale.setMinY(100.0)
+        feverGraphView.secondScale.setMaxY(135.0)
         feverGraphView.setBackgroundColor(ResUtil.getColor(R.color.colorPrimary)!!)
 
-        series.color = ResUtil.getColor(R.color.colorPulse)!!
-        series.title = "Pulse"
-        series.isDrawDataPoints = true
-        series.thickness = 8
+        seriesTemperature.color = ResUtil.getColor(R.color.colorPulse)!!
+        seriesTemperature.title = ResUtil.getString(R.string.pulse)
+        seriesTemperature.isDrawDataPoints = true
+        seriesTemperature.thickness = 8
 
-
-        series2.color = ResUtil.getColor(R.color.colorTemperature)!!
-        series2.title = "Temperature"
-        series2.isDrawDataPoints = true
-        series2.thickness = 8
+        seriesPulse.color = ResUtil.getColor(R.color.colorTemperature)!!
+        seriesPulse.title = ResUtil.getString(R.string.temperature)
+        seriesPulse.isDrawDataPoints = true
+        seriesPulse.thickness = 8
         feverGraphView.gridLabelRenderer.verticalLabelsSecondScaleColor = ResUtil.getColor(R.color.colorTemperature)!!
 
         val staticLabelsFormatter = StaticLabelsFormatter(feverGraphView)
-        staticLabelsFormatter.setHorizontalLabels(arrayOf("Rano\n10.11.2017", "Wieczor\n10.11.2017", "Rano\n11.11.2017", "Wieczor\n11.11.2017", "Rano\n12.11.2017"))
+        val labels = arrayOfNulls<String>(feverCard.size)
+        for (i in 0 until feverCard.size) {
+            labels[i] = getFormattedDate(feverCard[i].date) + "\n" + feverCard[i].timeOfDay.stringValue
+        }
+        staticLabelsFormatter.setHorizontalLabels(labels)
         feverGraphView.gridLabelRenderer.labelFormatter = staticLabelsFormatter
+    }
 
+    fun getFormattedDate(date: LocalDate?): String? {
+        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        return date?.format(dtf)
     }
 
 }
-

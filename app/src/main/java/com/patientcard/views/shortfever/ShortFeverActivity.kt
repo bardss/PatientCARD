@@ -3,6 +3,7 @@ package com.patientcard.views.shortfever
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
+import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
@@ -28,12 +29,13 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
     override fun onStart() {
         super.onStart()
         setupShortFeverList()
-        setupButtons()
     }
 
-    private fun setupButtons() {
+    override fun setupButtons(feverCard: ArrayList<FeverCardDTO>) {
         moreFrameLayout.setOnClickListener {
-            startActivity(Intent(this, FeverChartActivity::class.java))
+            startActivity(Intent(this, FeverChartActivity::class.java)
+                    .putExtra(IntentKeys.FEVER_CARD, feverCard)
+            )
         }
     }
 

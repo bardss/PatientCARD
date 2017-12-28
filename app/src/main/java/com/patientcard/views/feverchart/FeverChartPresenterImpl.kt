@@ -1,12 +1,21 @@
 package com.patientcard.views.feverchart
 
 import android.content.Intent
+import com.patientcard.logic.model.businessobjects.IntentKeys
+import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import com.patientcard.views.base.BaseAbstractPresenter
 
 class FeverChartPresenterImpl : BaseAbstractPresenter<FeverChartView>(), FeverChartPresenter {
 
+    private val presentationModel: FeverChartModel by lazy { FeverChartModel() }
+
     override fun initExtras(intent: Intent) {
-        // no extras
+        val feverCard = intent.getSerializableExtra(IntentKeys.FEVER_CARD) as ArrayList<FeverCardDTO>?
+        presentationModel.feverCard = feverCard
     }
 
+    override fun onViewAttached(view: FeverChartView?) {
+        super.onViewAttached(view)
+        view?.setupFeverGraph(presentationModel.feverCard)
+    }
 }

@@ -30,7 +30,7 @@ class ShortFeverAdapter(private val shortFeverRecyclerView: RecyclerView) : Recy
     }
 
     override fun getItemCount(): Int {
-        return if (feverCard == null) 0 else 6
+        return if (feverCard == null || feverCard?.size == 0) 0 else 6
     }
 
     fun getFormattedDate(date: LocalDate?): String? {

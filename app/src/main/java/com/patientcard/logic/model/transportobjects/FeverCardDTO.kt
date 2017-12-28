@@ -1,6 +1,7 @@
 package com.patientcard.logic.model.transportobjects
 
 import org.threeten.bp.LocalDate
+import java.io.Serializable
 
 data class FeverCardDTO(
         val id: Long = 0,
@@ -8,4 +9,4 @@ data class FeverCardDTO(
         val date: LocalDate? = null,
         val timeOfDay: TimeOfDay = TimeOfDay.MORNING,
         val pulse: Int = 0,
-        val temperature: Int = 0)
+        val temperature: Int = 0) : Serializable

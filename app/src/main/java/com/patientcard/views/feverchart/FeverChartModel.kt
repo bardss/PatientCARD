@@ -1,4 +1,8 @@
 package com.patientcard.views.feverchart
 
-class FeverChartModel
+import com.patientcard.logic.model.transportobjects.FeverCardDTO
+
+class FeverChartModel {
+    var feverCard: ArrayList<FeverCardDTO>? = null
+}
 
