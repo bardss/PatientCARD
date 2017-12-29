@@ -26,11 +26,6 @@ class TitilliumLightEditText : EditText {
         setMaxLinesInput(1)
     }
 
-    fun customSetText(text: CharSequence) {
-        setText("")
-        append(text)
-    }
-
     private fun setMaxLinesInput(maxLines: Int) {
         setOnKeyListener { v, keyCode, event ->
             if (keyCode === KeyEvent.KEYCODE_ENTER && event.getAction() === KeyEvent.ACTION_UP) {

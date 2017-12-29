@@ -8,10 +8,7 @@ import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import com.patientcard.logic.model.transportobjects.ObservationDTO
 import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
-import com.patientcard.logic.services.receivers.GetFeverCardReciever
-import com.patientcard.logic.services.receivers.GetObservationsReciever
-import com.patientcard.logic.services.receivers.GetPatientReciever
-import com.patientcard.logic.services.receivers.GetRecommendationsReciever
+import com.patientcard.logic.services.receivers.*
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.logic.utils.ToastUtil
 import com.patientcard.views.base.ApplicationContext
@@ -75,6 +72,19 @@ object ServiceManager {
                 Action0 { Timber.e("OnCompleted") })
     }
 
+    fun addObservations(receiver: PostObservationReciever, observation: ObservationDTO) {
+        setupRequest(ServiceProvider
+                .observationsService
+                .addObservation(observation),
+                Action1 { receiver.onPostObservationSuccess(it as ObservationDTO) },
+                Action1 {
+                    handleError(it)
+                    receiver.onPostObservationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
+
     private fun setupRequest(observable: Observable<*>, onNext: Action1<Any>, onError: Action1<Throwable>, onCompleted: Action0): Subscription {
         return observable
                 .subscribeOn(Schedulers.newThread())
@@ -114,6 +124,5 @@ object ServiceManager {
         }
         return msg
     }
-
 
 }

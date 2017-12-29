@@ -3,6 +3,7 @@ package com.patientcard.views.base
 import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 
 class ApplicationContext : MultiDexApplication() {
@@ -10,8 +11,8 @@ class ApplicationContext : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
-        MultiDex.install(this);
-//        Fabric.with(this, Crashlytics())
+        MultiDex.install(this)
+        AndroidThreeTen.init(this)
     }
 
     companion object {

@@ -3,8 +3,9 @@ package com.patientcard.views.customviews
 import android.content.Context
 import android.graphics.Typeface
 import android.util.AttributeSet
+import com.rey.material.widget.TextView
 
-class TitilliumRegularTextView : android.support.v7.widget.AppCompatTextView {
+class TitilliumRegularTextView : TextView {
     constructor(context: Context) : super(context) {
         init()
     }

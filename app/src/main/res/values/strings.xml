@@ -37,4 +37,5 @@
     <string name="enter_patient_qr_code">Wpisz QR Code pacjenta</string>
     <string name="open">OTWÓRZ</string>
     <string name="observation">Obserwacja</string>
+    <string name="fill_data">Wypełnij pole</string>
 </resources>

@@ -5,4 +5,5 @@ import com.patientcard.views.base.BaseView
 
 interface ObservationsView : BaseView {
     fun setObservationList(observations: List<ObservationDTO>)
+    fun setupButtons(patientId: String?)
 }

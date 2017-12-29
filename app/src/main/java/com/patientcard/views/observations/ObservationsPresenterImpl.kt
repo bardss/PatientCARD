@@ -20,10 +20,10 @@ class ObservationsPresenterImpl : BaseAbstractPresenter<ObservationsView>(), Obs
 
     override fun onViewAttached(view: ObservationsView?) {
         super.onViewAttached(view)
-        getObservations()
+        view?.setupButtons(presentationModel.patientId)
     }
 
-    private fun getObservations() {
+    override fun getObservations() {
         val patientId: String? = presentationModel.patientId
         if (patientId != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))

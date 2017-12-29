@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Handler
 import com.patientcard.R
 import com.patientcard.views.access.AccessActivity
-import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.base.BaseActivity
+import com.patientcard.views.base.BasePresenter
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 
@@ -25,7 +25,9 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun openAccessActivity() {
-        startActivity(Intent(this, AccessActivity::class.java))
+        startActivity(Intent(this, AccessActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
     }

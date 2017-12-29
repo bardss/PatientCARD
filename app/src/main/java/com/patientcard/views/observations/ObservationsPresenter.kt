@@ -6,6 +6,7 @@ import com.patientcard.views.base.BasePresenter
 interface ObservationsPresenter : BasePresenter {
 
     override fun initExtras(intent: Intent)
+    fun getObservations()
 
 }
 

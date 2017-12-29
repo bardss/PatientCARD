@@ -125,7 +125,7 @@
                         android:textSize="16sp" />
 
                     <com.patientcard.views.customviews.TitilliumLightEditText
-                        android:id="@+id/note_edit_text"
+                        android:id="@+id/noteEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
