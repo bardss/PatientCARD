@@ -23,12 +23,12 @@
             android:src="@drawable/rounded_fever_icon" />
 
         <com.patientcard.views.customviews.TitilliumLightTextView
+            android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/topAccentView"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/name_placeholder"
             android:textColor="@android:color/white"
             android:textSize="21sp" />
 

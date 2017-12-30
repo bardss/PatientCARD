@@ -15,12 +15,15 @@ class ObservationsPresenterImpl : BaseAbstractPresenter<ObservationsView>(), Obs
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
+        val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
         presentationModel.patientId = patientId
+        presentationModel.patientName = patientName
     }
 
     override fun onViewAttached(view: ObservationsView?) {
         super.onViewAttached(view)
-        view?.setupButtons(presentationModel.patientId)
+        view?.setPatientName(presentationModel.patientName)
+        view?.setupButtons(presentationModel.patientId, presentationModel.patientName)
     }
 
     override fun getObservations() {

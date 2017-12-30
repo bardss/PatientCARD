@@ -34,10 +34,11 @@ class RecommendationsActivity : BaseActivity(), RecommendationsView {
         presenter.getRecommendations()
     }
 
-    override fun setupButtoms(patientId: String?) {
+    override fun setupButtoms(patientId: String?, patientName: String?) {
         addFab.setOnClickListener {
             startActivity(Intent(this, AddRecommendationActivity::class.java)
-                    .putExtra(IntentKeys.PATIENT_ID, patientId))
+                    .putExtra(IntentKeys.PATIENT_ID, patientId)
+                    .putExtra(IntentKeys.PATIENT_NAME, patientName))
         }
     }
 
@@ -49,6 +50,10 @@ class RecommendationsActivity : BaseActivity(), RecommendationsView {
 
     override fun setRecommendationsList(recommendations: List<RecommendationDTO>) {
         recommendationsAdapter?.setRecommendations(recommendations)
+    }
+
+    override fun setPatientName(patientName: String?) {
+        nameTextView.text = patientName
     }
 
 }

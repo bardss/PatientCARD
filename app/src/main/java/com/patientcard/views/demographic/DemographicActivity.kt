@@ -28,18 +28,21 @@ class DemographicActivity : BaseActivity(), DemographicView {
         patientCodeTextView.text = patient.patientCode
     }
 
-    override fun setupMenuButtons(qrCode: String?) {
+    override fun setupMenuButtons(qrCode: String?, name: String?) {
         feverMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, ShortFeverActivity::class.java)
-                    .putExtra(IntentKeys.PATIENT_ID, qrCode))
+                    .putExtra(IntentKeys.PATIENT_ID, qrCode)
+                    .putExtra(IntentKeys.PATIENT_NAME, name))
         }
         recommendationsMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, RecommendationsActivity::class.java)
-                    .putExtra(IntentKeys.PATIENT_ID, qrCode))
+                    .putExtra(IntentKeys.PATIENT_ID, qrCode)
+                    .putExtra(IntentKeys.PATIENT_NAME, name))
         }
         observationsMenuRelativeLayout.setOnClickListener {
             startActivity(Intent(this, ObservationsActivity::class.java)
-                    .putExtra(IntentKeys.PATIENT_ID, qrCode))
+                    .putExtra(IntentKeys.PATIENT_ID, qrCode)
+                    .putExtra(IntentKeys.PATIENT_NAME, name))
         }
     }
 

@@ -15,12 +15,15 @@ class RecommendationsPresenterImpl : BaseAbstractPresenter<RecommendationsView>(
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
+        val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
         presentationModel.patientId = patientId
+        presentationModel.patientName = patientName
     }
 
     override fun onViewAttached(view: RecommendationsView?) {
         super.onViewAttached(view)
-        view?.setupButtoms(presentationModel.patientId)
+        view?.setPatientName(presentationModel.patientName)
+        view?.setupButtoms(presentationModel.patientId, presentationModel.patientName)
     }
 
     override fun getRecommendations() {

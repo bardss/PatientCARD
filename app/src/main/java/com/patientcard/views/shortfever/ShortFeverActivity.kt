@@ -50,4 +50,8 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
         feverCardAdapter?.setFeverCard(feverCard)
     }
 
+    override fun setPatientName(patientName: String?) {
+        nameTextView.text = patientName
+    }
+
 }

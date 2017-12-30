@@ -5,5 +5,6 @@ import com.patientcard.views.base.BaseView
 
 interface RecommendationsView : BaseView {
     fun setRecommendationsList(recommendations: List<RecommendationDTO>)
-    fun setupButtoms(patientId: String?)
+    fun setupButtoms(patientId: String?, patientName: String?)
+    fun setPatientName(patientName: String?)
 }

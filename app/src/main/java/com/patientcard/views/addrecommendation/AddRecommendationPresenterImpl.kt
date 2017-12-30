@@ -16,7 +16,14 @@ class AddRecommendationPresenterImpl : BaseAbstractPresenter<AddRecommendationVi
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
+        val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
         presentationModel.patientId = patientId
+        presentationModel.patientName = patientName
+    }
+
+    override fun onViewAttached(view: AddRecommendationView?) {
+        super.onViewAttached(view)
+        view?.setPatientName(presentationModel.patientName)
     }
 
     override fun saveRecommendation(recommendation: RecommendationDTO) {

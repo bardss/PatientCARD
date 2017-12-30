@@ -34,10 +34,15 @@ class ObservationsActivity : BaseActivity(), ObservationsView {
         presenter.getObservations()
     }
 
-    override fun setupButtons(patientId: String?) {
+    override fun setPatientName(patientName: String?) {
+        nameTextView.text = patientName
+    }
+
+    override fun setupButtons(patientId: String?, patientName: String?) {
         addFab.setOnClickListener {
             startActivity(Intent(this, AddObservationActivity::class.java)
-                    .putExtra(IntentKeys.PATIENT_ID, patientId))
+                    .putExtra(IntentKeys.PATIENT_ID, patientId)
+                    .putExtra(IntentKeys.PATIENT_NAME, patientName))
         }
     }
 

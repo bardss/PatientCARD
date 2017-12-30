@@ -29,6 +29,10 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
         setupSaveObservationClick()
     }
 
+    override fun setPatientName(patientName: String?) {
+        nameTextView.text = patientName
+    }
+
     private fun setupSaveObservationClick() {
         checkFab.setOnClickListener {
             val validData = isEditTextEmpty(personValueTextView) && isEditTextEmpty(noteEditText)

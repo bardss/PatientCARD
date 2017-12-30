@@ -4,4 +4,5 @@ import com.patientcard.views.base.BaseView
 
 interface AddRecommendationView : BaseView {
     fun navigateBack()
+    fun setPatientName(patientName: String?)
 }

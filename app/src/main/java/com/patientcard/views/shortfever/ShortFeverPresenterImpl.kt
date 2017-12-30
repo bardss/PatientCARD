@@ -15,11 +15,14 @@ class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFe
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
+        val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
         presentationModel.patientId = patientId
+        presentationModel.patientName = patientName
     }
 
     override fun onViewAttached(view: ShortFeverView?) {
         super.onViewAttached(view)
+        view?.setPatientName(presentationModel.patientName)
         getFeverCard()
     }
 

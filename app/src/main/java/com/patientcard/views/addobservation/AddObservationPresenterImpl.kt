@@ -16,7 +16,14 @@ class AddObservationPresenterImpl : BaseAbstractPresenter<AddObservationView>(),
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
+        val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
         presentationModel.patientId = patientId
+        presentationModel.patientName = patientName
+    }
+
+    override fun onViewAttached(view: AddObservationView?) {
+        super.onViewAttached(view)
+        view?.setPatientName(presentationModel.patientName)
     }
 
     override fun saveObservation(observation: ObservationDTO) {

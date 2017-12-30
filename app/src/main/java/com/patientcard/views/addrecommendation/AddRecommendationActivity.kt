@@ -24,7 +24,6 @@ import org.threeten.bp.LocalTime
 @ActivityView(layout = R.layout.activity_add_recommendation, presenter = AddRecommendationPresenterImpl::class)
 class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
 
-
     @Presenter
     lateinit var presenter: AddRecommendationPresenter
 
@@ -38,6 +37,10 @@ class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
         super.onStart()
         setupSaveRecommendationClick()
         setupPickers()
+    }
+
+    override fun setPatientName(patientName: String?) {
+        nameTextView.text = patientName
     }
 
     private fun setupSaveRecommendationClick() {

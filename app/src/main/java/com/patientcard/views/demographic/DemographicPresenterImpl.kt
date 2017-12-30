@@ -39,7 +39,7 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
     override fun onGetPatientSuccess(patient: PatientDTO) {
         view?.stopProgressDialog()
         view?.fillFields(patient)
-        view?.setupMenuButtons(patient.id?.toString())
+        view?.setupMenuButtons(patient.id?.toString(), patient.name + " " + patient.surname)
     }
 
 }
