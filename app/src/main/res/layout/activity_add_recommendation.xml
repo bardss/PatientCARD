@@ -47,7 +47,7 @@
                 android:layout_below="@id/topAccentView"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/patientAvatarImageView"
-                android:text="@string/medical_order_card"
+                android:text="@string/add_medical_order"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 

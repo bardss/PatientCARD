@@ -49,6 +49,9 @@
         <activity android:name="com.patientcard.views.addobservation.AddObservationActivity"
             android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"/>
+        <activity android:name="com.patientcard.views.addfevercard.AddFeverCardActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>

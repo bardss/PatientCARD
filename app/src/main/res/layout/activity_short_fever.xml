@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/headerRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="110dp">
 
@@ -38,23 +40,44 @@
             android:layout_below="@id/topAccentView"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/fever_card"
+            android:text="@string/add_examination"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/graphFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/headerRelativeLayout"
+        android:background="@drawable/rounded_frame_accent_with_grey_border">
+
+        <com.patientcard.views.customviews.TitilliumLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/graph"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
+        android:layout_below="@id/graphFrameLayout"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             android:layout_weight="6"
             android:background="@drawable/rounded_frame_white_with_grey_border">
 
@@ -117,51 +140,21 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:id="@+id/moreFrameLayout"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_frame_accent_with_grey_border">
-
-                <com.patientcard.views.customviews.TitilliumLightTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/more"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/addFrameLayout"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_frame_accent_with_grey_border">
-
-                <com.patientcard.views.customviews.TitilliumLightTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/add"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-
-            </FrameLayout>
-
-        </LinearLayout>
-
     </LinearLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="22dp"
+        android:visibility="visible"
+        app:elevation="0dp"
+        app:fab_addButtonColorNormal="@color/colorAccent"
+        app:fab_addButtonColorPressed="@color/colorPrimary"
+        app:fab_addButtonPlusIconColor="@android:color/white"
+        app:srcCompat="@drawable/add_icon"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -40,7 +40,7 @@ class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFe
 
     override fun onGetFeverCardSuccess(feverCard: List<FeverCardDTO>) {
         view?.stopProgressDialog()
-        view?.setupButtons(feverCard as ArrayList<FeverCardDTO>)
+        view?.setupButtons(feverCard as ArrayList<FeverCardDTO>, presentationModel.patientName, presentationModel.patientId)
         view?.setFeverCard(feverCard)
     }
 

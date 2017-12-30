@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,8 +10,9 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/headerRelativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="110dp">
 
             <View
                 android:id="@+id/topAccentView"
@@ -23,11 +23,10 @@
             <ImageView
                 android:id="@+id/patientAvatarImageView"
                 android:layout_width="90dp"
-                android:layout_height="110dp"
+                android:layout_height="90dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="30dp"
-                android:paddingBottom="20dp"
-                android:src="@drawable/rounded_recommendations_icon" />
+                android:src="@drawable/rounded_fever_icon" />
 
             <com.patientcard.views.customviews.TitilliumLightTextView
                 android:id="@+id/nameTextView"
@@ -45,9 +44,9 @@
                 android:layout_below="@id/topAccentView"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/patientAvatarImageView"
-                android:text="@string/add_observation"
+                android:text="@string/add_examination"
                 android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
@@ -61,99 +60,97 @@
             android:paddingTop="8dp">
 
             <com.patientcard.views.customviews.TitilliumSemiBoldTextView
+                android:id="@+id/dateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/new_observations_placeholder"
+                android:text="@string/new_fever_card"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rounded_frame_white_with_grey_border"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="20dp">
-
+                android:background="@drawable/rounded_frame_white_with_grey_border">
                 <LinearLayout
+                    android:id="@+id/feverCardTableFrameLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="8dp">
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/rounded_frame_white_with_grey_border"
+                    android:orientation="horizontal">
 
                     <com.patientcard.views.customviews.TitilliumLightTextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingEnd="16dp"
-                        android:paddingStart="16dp"
-                        android:paddingTop="16dp"
-                        android:text="@string/person"
-                        android:textColor="@color/colorPrimaryGrey"
-                        android:textSize="16sp" />
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/pulse"
+                        android:textColor="@color/colorPulse"
+                        android:textSize="18sp" />
 
-                    <com.patientcard.views.customviews.TitilliumLightEditText
-                        android:id="@+id/personValueTextView"
-                        android:layout_width="match_parent"
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimaryGrey" />
+
+                    <com.patientcard.views.customviews.TitilliumLightTextView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="8dp"
-                        android:layout_marginEnd="32dp"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/temperature"
+                        android:textColor="@color/colorTemperature"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="-16dp"
-                    android:background="@color/colorPrimaryGrey" />
-
                 <LinearLayout
+                    android:id="@+id/feverCardEditTextLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingBottom="20dp">
-
-                    <com.patientcard.views.customviews.TitilliumLightTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingEnd="16dp"
-                        android:paddingStart="16dp"
-                        android:paddingTop="16dp"
-                        android:text="@string/note"
-                        android:textColor="@color/colorPrimaryGrey"
-                        android:textSize="16sp" />
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
 
                     <com.patientcard.views.customviews.TitilliumLightEditText
-                        android:id="@+id/noteEditText"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:inputType="number"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@android:color/white"
-                        android:gravity="top"
-                        android:inputType="textCapSentences|textMultiLine"
-                        android:maxLines="10"
-                        android:minLines="5"
-                        android:overScrollMode="always"
-                        android:scrollbarStyle="insideInset"
-                        android:scrollbars="vertical"
-                        android:textSize="15sp" />
+                        android:background="@color/colorPrimaryGrey" />
+
+                    <com.patientcard.views.customviews.TitilliumLightEditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/checkFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="22dp"
         android:visibility="visible"
@@ -161,7 +158,7 @@
         app:fab_addButtonColorNormal="@color/colorAccent"
         app:fab_addButtonColorPressed="@color/colorPrimary"
         app:fab_addButtonPlusIconColor="@android:color/white"
-        app:srcCompat="@drawable/check_icon"/>
+        app:srcCompat="@drawable/check_icon" />
 
 </RelativeLayout>
 
