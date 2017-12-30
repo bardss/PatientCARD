@@ -4,11 +4,11 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
 
 data class RecommendationDTO(
-        val id: Long = 0,
-        val patientId: Long = 0,
-        val date: LocalDate? = null,
-        val description: String = "",
-        val morning: LocalTime? = null,
-        val noon: LocalTime? = null,
-        val evening: LocalTime? = null,
-        val night: LocalTime? = null)
+        var id: Long? = 0,
+        var patientId: Long? = 0,
+        var date: LocalDate? = null,
+        var description: String = "",
+        var morning: LocalTime? = null,
+        var noon: LocalTime? = null,
+        var evening: LocalTime? = null,
+        var night: LocalTime? = null)

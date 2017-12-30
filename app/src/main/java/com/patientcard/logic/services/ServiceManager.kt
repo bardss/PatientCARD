@@ -84,6 +84,17 @@ object ServiceManager {
                 Action0 { Timber.e("OnCompleted") })
     }
 
+    fun addRecommendation(receiver: PostRecommendationReciever, recommendation: RecommendationDTO) {
+        setupRequest(ServiceProvider
+                .recommendationService
+                .addRecommendation(recommendation),
+                Action1 { receiver.onPostRecommendationSuccess(it as RecommendationDTO) },
+                Action1 {
+                    handleError(it)
+                    receiver.onPostRecommendationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
 
     private fun setupRequest(observable: Observable<*>, onNext: Action1<Any>, onError: Action1<Throwable>, onCompleted: Action0): Subscription {
         return observable

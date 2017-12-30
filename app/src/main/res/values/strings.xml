@@ -24,7 +24,6 @@
     <string name="drug">Lek:</string>
     <string name="drug_placeholder">Ketanol 100mg</string>
     <string name="morning">Rano</string>
-    <string name="time_placeholder">00:00</string>
     <string name="noon">Południe</string>
     <string name="evening">Wieczór</string>
     <string name="night">Noc</string>
@@ -39,7 +38,7 @@
     <string name="observation">Obserwacja</string>
     <string name="fill_data">Wypełnij pole</string>
     <string name="fill_data_with_dots">Wypełnij pole...</string>
-    <string name="time_placeholer">--:--</string>
+    <string name="time_placeholder">--:--</string>
     <string name="set_hour">Wybierz godzine</string>
     <string name="set_date">Wybierz date</string>
     <string name="set">USTAW</string>

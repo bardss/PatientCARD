@@ -26,10 +26,10 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
 
     override fun onStart() {
         super.onStart()
-        setupSaveRecommendationClick()
+        setupSaveObservationClick()
     }
 
-    private fun setupSaveRecommendationClick() {
+    private fun setupSaveObservationClick() {
         checkFab.setOnClickListener {
             val validData = isEditTextEmpty(personValueTextView) && isEditTextEmpty(noteEditText)
             if (validData) presenter.saveObservation(getObservation())

@@ -20,10 +20,10 @@ class RecommendationsPresenterImpl : BaseAbstractPresenter<RecommendationsView>(
 
     override fun onViewAttached(view: RecommendationsView?) {
         super.onViewAttached(view)
-        getRecommendations()
+        view?.setupButtoms(presentationModel.patientId)
     }
 
-    private fun getRecommendations() {
+    override fun getRecommendations() {
         val patientId: String? = presentationModel.patientId
         if (patientId != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))

@@ -3,6 +3,7 @@ package com.patientcard.views.recommendations
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.patientcard.R
+import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
 import com.patientcard.views.addrecommendation.AddRecommendationActivity
 import com.patientcard.views.base.BaseActivity
@@ -26,12 +27,17 @@ class RecommendationsActivity : BaseActivity(), RecommendationsView {
     override fun onStart() {
         super.onStart()
         setupRecommendationsList()
-        setupButtoms()
     }
 
-    private fun setupButtoms() {
+    override fun onResume() {
+        super.onResume()
+        presenter.getRecommendations()
+    }
+
+    override fun setupButtoms(patientId: String?) {
         addFab.setOnClickListener {
-            startActivity(Intent(this, AddRecommendationActivity::class.java))
+            startActivity(Intent(this, AddRecommendationActivity::class.java)
+                    .putExtra(IntentKeys.PATIENT_ID, patientId))
         }
     }
 

@@ -135,7 +135,7 @@
                             android:id="@+id/morningTimeEditText"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/time_placeholer"
+                            android:text="@string/time_placeholder"
                             android:textSize="16sp"
                             android:textAlignment="center"/>
 
@@ -166,7 +166,7 @@
                             android:id="@+id/noonTimeEditText"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/time_placeholer"
+                            android:text="@string/time_placeholder"
                             android:textSize="16sp"
                             android:textAlignment="center"/>
 
@@ -197,7 +197,7 @@
                             android:id="@+id/eveningTimeEditText"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/time_placeholer"
+                            android:text="@string/time_placeholder"
                             android:textSize="16sp"
                             android:textAlignment="center"/>
 
@@ -228,7 +228,7 @@
                             android:id="@+id/nightTimeEditText"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/time_placeholer"
+                            android:text="@string/time_placeholder"
                             android:textSize="16sp"
                             android:textAlignment="center"/>
                     </LinearLayout>

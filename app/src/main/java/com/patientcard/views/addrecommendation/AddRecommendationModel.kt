@@ -1,4 +1,6 @@
 package com.patientcard.views.addrecommendation
 
-class AddRecommendationModel
+class AddRecommendationModel {
+    var patientId: String? = null
+}
 

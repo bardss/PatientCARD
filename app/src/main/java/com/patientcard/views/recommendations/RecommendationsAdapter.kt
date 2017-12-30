@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.item_recommendations.view.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
 import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
 
 
 class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
@@ -37,8 +38,12 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewH
     }
 
     fun getFormattedTime(time: LocalTime?): String? {
-        val dtf = DateTimeFormatter.ofPattern("HH:mm")
-        return time?.format(dtf)
+        return if (time != null) {
+            val dtf = DateTimeFormatter.ofPattern("HH:mm")
+            time.format(dtf)
+        } else {
+            ResUtil.getString(R.string.time_placeholder)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -55,6 +60,7 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewH
     }
 
     fun setRecommendations(recommendations: List<RecommendationDTO>) {
+        Collections.sort<RecommendationDTO>(recommendations) { lhs, rhs -> rhs.date!!.compareTo(lhs.date) }
         recommendationsList = recommendations
         notifyDataSetChanged()
     }
