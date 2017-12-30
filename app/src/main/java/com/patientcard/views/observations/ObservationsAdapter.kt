@@ -10,6 +10,7 @@ import com.patientcard.logic.utils.ResUtil
 import kotlinx.android.synthetic.main.item_observations.view.*
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
 
 
 class ObservationsAdapter : RecyclerView.Adapter<ObservationsAdapter.ViewHolder>() {
@@ -45,6 +46,7 @@ class ObservationsAdapter : RecyclerView.Adapter<ObservationsAdapter.ViewHolder>
     }
 
     fun setObservations(observations: List<ObservationDTO>) {
+        Collections.sort<ObservationDTO>(observations) { lhs, rhs -> rhs.dateTime!!.compareTo(lhs.dateTime) }
         observationsList = observations
         notifyDataSetChanged()
     }

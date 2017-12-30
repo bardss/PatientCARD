@@ -38,4 +38,10 @@
     <string name="open">OTWÓRZ</string>
     <string name="observation">Obserwacja</string>
     <string name="fill_data">Wypełnij pole</string>
+    <string name="fill_data_with_dots">Wypełnij pole...</string>
+    <string name="time_placeholer">--:--</string>
+    <string name="set_hour">Wybierz godzine</string>
+    <string name="set_date">Wybierz date</string>
+    <string name="set">USTAW</string>
+    <string name="cancel">ANULUJ</string>
 </resources>

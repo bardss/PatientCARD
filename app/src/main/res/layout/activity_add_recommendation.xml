@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,10 +90,11 @@
                     android:id="@+id/noteEditText"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:layout_marginBottom="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
                     android:background="@android:color/white"
+                    android:hint="@string/fill_data_with_dots"
                     android:gravity="top"
                     android:inputType="textCapSentences|textMultiLine"
                     android:maxLines="10"
@@ -129,9 +132,12 @@
                             android:textSize="16sp" />
 
                         <com.patientcard.views.customviews.TitilliumLightEditText
-                            android:layout_width="40dp"
+                            android:id="@+id/morningTimeEditText"
+                            android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp" />
+                            android:text="@string/time_placeholer"
+                            android:textSize="16sp"
+                            android:textAlignment="center"/>
 
                     </LinearLayout>
 
@@ -157,9 +163,12 @@
                             android:textSize="16sp" />
 
                         <com.patientcard.views.customviews.TitilliumLightEditText
-                            android:layout_width="40dp"
+                            android:id="@+id/noonTimeEditText"
+                            android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp" />
+                            android:text="@string/time_placeholer"
+                            android:textSize="16sp"
+                            android:textAlignment="center"/>
 
                     </LinearLayout>
 
@@ -185,9 +194,12 @@
                             android:textSize="16sp" />
 
                         <com.patientcard.views.customviews.TitilliumLightEditText
-                            android:layout_width="40dp"
+                            android:id="@+id/eveningTimeEditText"
+                            android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp" />
+                            android:text="@string/time_placeholer"
+                            android:textSize="16sp"
+                            android:textAlignment="center"/>
 
                     </LinearLayout>
 
@@ -206,7 +218,6 @@
                         android:paddingTop="8dp">
 
                         <com.patientcard.views.customviews.TitilliumLightTextView
-                            android:id="@+id/nightTimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/night"
@@ -214,10 +225,12 @@
                             android:textSize="16sp" />
 
                         <com.patientcard.views.customviews.TitilliumLightEditText
-                            android:layout_width="40dp"
+                            android:id="@+id/nightTimeEditText"
+                            android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp" />
-
+                            android:text="@string/time_placeholer"
+                            android:textSize="16sp"
+                            android:textAlignment="center"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -232,8 +245,8 @@
         android:id="@+id/checkFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="22dp"
         android:visibility="visible"
@@ -241,7 +254,7 @@
         app:fab_addButtonColorNormal="@color/colorAccent"
         app:fab_addButtonColorPressed="@color/colorPrimary"
         app:fab_addButtonPlusIconColor="@android:color/white"
-        app:srcCompat="@drawable/check_icon"/>
+        app:srcCompat="@drawable/check_icon" />
 
 </RelativeLayout>
 
