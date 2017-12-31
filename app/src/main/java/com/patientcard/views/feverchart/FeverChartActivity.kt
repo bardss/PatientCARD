@@ -39,7 +39,7 @@ class FeverChartActivity : BaseActivity(), FeverChartView {
 
         feverGraphView.addSeries(seriesTemperature)
         feverGraphView.secondScale.addSeries(seriesPulse)
-        feverGraphView.secondScale.setMinY(100.0)
+        feverGraphView.secondScale.setMinY(60.0)
         feverGraphView.secondScale.setMaxY(135.0)
         feverGraphView.setBackgroundColor(ResUtil.getColor(R.color.colorPrimary)!!)
 

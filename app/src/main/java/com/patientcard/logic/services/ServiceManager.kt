@@ -96,6 +96,18 @@ object ServiceManager {
                 Action0 { Timber.e("OnCompleted") })
     }
 
+    fun addFeverCard(receiver: PostFeverCardReciever, feverCard: FeverCardDTO) {
+        setupRequest(ServiceProvider
+                .feverCardService
+                .addFeverCard(feverCard),
+                Action1 { receiver.onPostFeverCardSuccess(it as FeverCardDTO) },
+                Action1 {
+                    handleError(it)
+                    receiver.onPostFeverCardError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
     private fun setupRequest(observable: Observable<*>, onNext: Action1<Any>, onError: Action1<Throwable>, onCompleted: Action0): Subscription {
         return observable
                 .subscribeOn(Schedulers.newThread())

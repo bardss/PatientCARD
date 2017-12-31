@@ -11,9 +11,10 @@ import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import kotlinx.android.synthetic.main.item_short_fever.view.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
 
 
-class ShortFeverAdapter(private val shortFeverRecyclerView: RecyclerView) : RecyclerView.Adapter<ShortFeverAdapter.ViewHolder>() {
+class ShortFeverAdapter(private val recyclerViewHeight: Int) : RecyclerView.Adapter<ShortFeverAdapter.ViewHolder>() {
 
     private var feverCard: List<FeverCardDTO>? = null
 
@@ -23,7 +24,7 @@ class ShortFeverAdapter(private val shortFeverRecyclerView: RecyclerView) : Recy
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemLinearLayout.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, shortFeverRecyclerView.height/6)
+        holder.itemLinearLayout.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, recyclerViewHeight/6)
         holder.dateTextView.text = getFormattedDate(feverCard?.get(position)?.date) + "\n" + feverCard?.get(position)?.timeOfDay?.stringValue
         holder.temperatureTextView.text = feverCard?.get(position)?.temperature?.toString()
         holder.pulseTextView.text = feverCard?.get(position)?.pulse?.toString()
@@ -39,6 +40,7 @@ class ShortFeverAdapter(private val shortFeverRecyclerView: RecyclerView) : Recy
     }
 
     fun setFeverCard(feverCard: List<FeverCardDTO>) {
+        Collections.sort<FeverCardDTO>(feverCard) { lhs, rhs -> rhs.date!!.compareTo(lhs.date) }
         this.feverCard = feverCard
         notifyDataSetChanged()
     }

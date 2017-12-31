@@ -23,10 +23,9 @@ class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFe
     override fun onViewAttached(view: ShortFeverView?) {
         super.onViewAttached(view)
         view?.setPatientName(presentationModel.patientName)
-        getFeverCard()
     }
 
-    private fun getFeverCard() {
+    override fun getFeverCard() {
         val patientId: String? = presentationModel.patientId
         if (patientId != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))

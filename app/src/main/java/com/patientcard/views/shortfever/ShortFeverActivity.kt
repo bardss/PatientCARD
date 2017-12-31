@@ -32,6 +32,11 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
         setupShortFeverList()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.getFeverCard()
+    }
+
     override fun setupButtons(feverCard: ArrayList<FeverCardDTO>, patientName: String?, patientId: String?) {
         graphFrameLayout.setOnClickListener {
             startActivity(Intent(this, FeverChartActivity::class.java)
@@ -45,10 +50,12 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
     }
 
     private fun setupShortFeverList() {
-        shortFeverRecyclerView.layoutManager = LinearLayoutManager(this)
-        feverCardAdapter = ShortFeverAdapter(shortFeverRecyclerView)
-        shortFeverRecyclerView.adapter = feverCardAdapter
-        shortFeverRecyclerView.setOnTouchListener { _, _ -> true }
+        shortFeverRecyclerView.post({
+            shortFeverRecyclerView.layoutManager = LinearLayoutManager(this)
+            feverCardAdapter = ShortFeverAdapter(shortFeverRecyclerView.height)
+            shortFeverRecyclerView.adapter = feverCardAdapter
+            shortFeverRecyclerView.setOnTouchListener { _, _ -> true }
+        })
     }
 
     override fun setFeverCard(feverCard: List<FeverCardDTO>) {

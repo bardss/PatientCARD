@@ -5,5 +5,5 @@ import com.patientcard.views.base.BaseView
 interface AddFeverCardView : BaseView {
     fun setPatientName(patientName: String?)
     fun setupButton()
-
+    fun navigateBack()
 }

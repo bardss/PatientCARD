@@ -1,10 +1,15 @@
 package com.patientcard.views.addfevercard
 
 import android.content.Intent
+import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
+import com.patientcard.logic.model.transportobjects.FeverCardDTO
+import com.patientcard.logic.services.ServiceManager
+import com.patientcard.logic.services.receivers.PostFeverCardReciever
+import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseAbstractPresenter
 
-class AddFeverCardPresenterImpl : BaseAbstractPresenter<AddFeverCardView>(), AddFeverCardPresenter {
+class AddFeverCardPresenterImpl : BaseAbstractPresenter<AddFeverCardView>(), AddFeverCardPresenter, PostFeverCardReciever {
 
     private val presentationModel: AddFeverCardModel by lazy { AddFeverCardModel() }
 
@@ -19,6 +24,21 @@ class AddFeverCardPresenterImpl : BaseAbstractPresenter<AddFeverCardView>(), Add
         super.onViewAttached(view)
         view?.setPatientName(presentationModel.patientName)
         view?.setupButton()
+    }
+
+    override fun addFeverCard(feverCard: FeverCardDTO) {
+        view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
+        feverCard.patientId = presentationModel.patientId?.toLong()
+        ServiceManager.addFeverCard(this, feverCard)
+    }
+
+    override fun onPostFeverCardError() {
+        view?.stopProgressDialog()
+    }
+
+    override fun onPostFeverCardSuccess(feverCard: FeverCardDTO) {
+        view?.stopProgressDialog()
+        view?.navigateBack()
     }
 
 }
