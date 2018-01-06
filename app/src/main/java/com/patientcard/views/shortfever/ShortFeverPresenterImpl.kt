@@ -11,22 +11,22 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFeverPresenter, GetFeverCardReciever {
 
-    private val presentationModel: ShortFeverModel by lazy { ShortFeverModel() }
+    private val model: ShortFeverModel by lazy { ShortFeverModel() }
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
         val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
-        presentationModel.patientId = patientId
-        presentationModel.patientName = patientName
+        model.patientId = patientId
+        model.patientName = patientName
     }
 
     override fun onViewAttached(view: ShortFeverView?) {
         super.onViewAttached(view)
-        view?.setPatientName(presentationModel.patientName)
+        view?.setPatientName(model.patientName)
     }
 
     override fun getFeverCard() {
-        val patientId: String? = presentationModel.patientId
+        val patientId: String? = model.patientId
         if (patientId != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
             ServiceManager.getFeverCard(this, patientId)
@@ -39,7 +39,7 @@ class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFe
 
     override fun onGetFeverCardSuccess(feverCard: List<FeverCardDTO>) {
         view?.stopProgressDialog()
-        view?.setupButtons(feverCard as ArrayList<FeverCardDTO>, presentationModel.patientName, presentationModel.patientId)
+        view?.setupButtons(feverCard as ArrayList<FeverCardDTO>, model.patientName, model.patientId)
         view?.setFeverCard(feverCard)
     }
 

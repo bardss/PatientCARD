@@ -8,6 +8,7 @@ interface AddObservationPresenter : BasePresenter {
 
     override fun initExtras(intent: Intent)
     fun saveObservation(observation: ObservationDTO)
+    fun deleteObservation()
 
 }
 

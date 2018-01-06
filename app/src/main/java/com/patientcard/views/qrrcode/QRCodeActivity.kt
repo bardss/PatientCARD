@@ -15,6 +15,7 @@ import easymvp.annotation.Presenter
 import github.nisrulz.qreader.QRDataListener
 import github.nisrulz.qreader.QREader
 import kotlinx.android.synthetic.main.activity_qr_reader.*
+import kotlinx.android.synthetic.main.dialog_qr.*
 
 @ActivityView(layout = R.layout.activity_qr_reader, presenter = QRCodePresenterImpl::class)
 class QRCodeActivity : BaseActivity(), QRCodeView {

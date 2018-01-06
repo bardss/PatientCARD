@@ -8,9 +8,8 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
+import com.patientcard.logic.utils.DataTimeFormatUtil
 import kotlinx.android.synthetic.main.item_short_fever.view.*
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 
@@ -25,7 +24,7 @@ class ShortFeverAdapter(private val recyclerViewHeight: Int) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemLinearLayout.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, recyclerViewHeight/6)
-        holder.dateTextView.text = getFormattedDate(feverCard?.get(position)?.date) + "\n" + feverCard?.get(position)?.timeOfDay?.stringValue
+        holder.dateTextView.text = DataTimeFormatUtil.getFormattedDate(feverCard?.get(position)?.date) + "\n" + feverCard?.get(position)?.timeOfDay?.stringValue
         holder.temperatureTextView.text = feverCard?.get(position)?.temperature?.toString()
         holder.pulseTextView.text = feverCard?.get(position)?.pulse?.toString()
     }
@@ -34,10 +33,7 @@ class ShortFeverAdapter(private val recyclerViewHeight: Int) : RecyclerView.Adap
         return if (feverCard == null || feverCard?.size == 0) 0 else 6
     }
 
-    fun getFormattedDate(date: LocalDate?): String? {
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        return date?.format(dtf)
-    }
+
 
     fun setFeverCard(feverCard: List<FeverCardDTO>) {
         Collections.sort<FeverCardDTO>(feverCard) { lhs, rhs -> rhs.date!!.compareTo(lhs.date) }

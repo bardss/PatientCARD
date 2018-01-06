@@ -11,24 +11,24 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class AddFeverCardPresenterImpl : BaseAbstractPresenter<AddFeverCardView>(), AddFeverCardPresenter, PostFeverCardReciever {
 
-    private val presentationModel: AddFeverCardModel by lazy { AddFeverCardModel() }
+    private val model: AddFeverCardModel by lazy { AddFeverCardModel() }
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
         val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
-        presentationModel.patientId = patientId
-        presentationModel.patientName = patientName
+        model.patientId = patientId
+        model.patientName = patientName
     }
 
     override fun onViewAttached(view: AddFeverCardView?) {
         super.onViewAttached(view)
-        view?.setPatientName(presentationModel.patientName)
+        view?.setPatientName(model.patientName)
         view?.setupButton()
     }
 
     override fun addFeverCard(feverCard: FeverCardDTO) {
         view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
-        feverCard.patientId = presentationModel.patientId?.toLong()
+        feverCard.patientId = model.patientId?.toLong()
         ServiceManager.addFeverCard(this, feverCard)
     }
 

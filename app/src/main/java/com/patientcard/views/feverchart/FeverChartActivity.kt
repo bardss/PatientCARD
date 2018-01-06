@@ -5,6 +5,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
+import com.patientcard.logic.utils.DataTimeFormatUtil.getFormattedDate
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
@@ -61,11 +62,6 @@ class FeverChartActivity : BaseActivity(), FeverChartView {
         }
         staticLabelsFormatter.setHorizontalLabels(labels)
         feverGraphView.gridLabelRenderer.labelFormatter = staticLabelsFormatter
-    }
-
-    fun getFormattedDate(date: LocalDate?): String? {
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        return date?.format(dtf)
     }
 
 }

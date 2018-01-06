@@ -12,23 +12,23 @@ import org.threeten.bp.LocalTime
 
 class AddRecommendationPresenterImpl : BaseAbstractPresenter<AddRecommendationView>(), AddRecommendationPresenter, PostRecommendationReciever{
 
-    private val presentationModel: AddRecommendationModel by lazy { AddRecommendationModel() }
+    private val model: AddRecommendationModel by lazy { AddRecommendationModel() }
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
         val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
-        presentationModel.patientId = patientId
-        presentationModel.patientName = patientName
+        model.patientId = patientId
+        model.patientName = patientName
     }
 
     override fun onViewAttached(view: AddRecommendationView?) {
         super.onViewAttached(view)
-        view?.setPatientName(presentationModel.patientName)
+        view?.setPatientName(model.patientName)
     }
 
     override fun saveRecommendation(recommendation: RecommendationDTO) {
         view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
-        recommendation.patientId = presentationModel.patientId?.toLong()
+        recommendation.patientId = model.patientId?.toLong()
         ServiceManager.addRecommendation(this, recommendation)
     }
 

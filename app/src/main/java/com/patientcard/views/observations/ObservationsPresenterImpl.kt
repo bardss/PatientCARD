@@ -11,23 +11,23 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class ObservationsPresenterImpl : BaseAbstractPresenter<ObservationsView>(), ObservationsPresenter, GetObservationsReciever {
 
-    private val presentationModel: ObservationsModel by lazy { ObservationsModel() }
+    private val model: ObservationsModel by lazy { ObservationsModel() }
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
         val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
-        presentationModel.patientId = patientId
-        presentationModel.patientName = patientName
+        model.patientId = patientId
+        model.patientName = patientName
     }
 
     override fun onViewAttached(view: ObservationsView?) {
         super.onViewAttached(view)
-        view?.setPatientName(presentationModel.patientName)
-        view?.setupButtons(presentationModel.patientId, presentationModel.patientName)
+        view?.setPatientName(model.patientName)
+        view?.setupButtons(model.patientId, model.patientName)
     }
 
     override fun getObservations() {
-        val patientId: String? = presentationModel.patientId
+        val patientId: String? = model.patientId
         if (patientId != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
             ServiceManager.getObservations(this, patientId)
@@ -41,6 +41,10 @@ class ObservationsPresenterImpl : BaseAbstractPresenter<ObservationsView>(), Obs
 
     override fun onGetObservationError() {
         view?.stopProgressDialog()
+    }
+
+    override fun openEditObservation(observation: ObservationDTO?) {
+        view?.openEditObservation(model.patientId, model.patientName, observation)
     }
 
 }

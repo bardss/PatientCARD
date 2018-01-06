@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_observations.*
 
 @ActivityView(layout = R.layout.activity_observations, presenter = ObservationsPresenterImpl::class)
 class ObservationsActivity : BaseActivity(), ObservationsView {
-
     @Presenter
     lateinit var presenter: ObservationsPresenter
 
@@ -46,9 +45,20 @@ class ObservationsActivity : BaseActivity(), ObservationsView {
         }
     }
 
+    override fun clickEditObservation(observation: ObservationDTO?) {
+        presenter.openEditObservation(observation)
+    }
+
+    override fun openEditObservation(patientId: String?, patientName: String?, observation: ObservationDTO?) {
+        startActivity(Intent(this, AddObservationActivity::class.java)
+                .putExtra(IntentKeys.PATIENT_ID, patientId)
+                .putExtra(IntentKeys.PATIENT_NAME, patientName)
+                .putExtra(IntentKeys.OBSERVATION, observation))
+    }
+
     private fun setupShortFeverList() {
         observationsRecyclerView.layoutManager = LinearLayoutManager(this)
-        observationsAdapter = ObservationsAdapter()
+        observationsAdapter = ObservationsAdapter(this)
         observationsRecyclerView.adapter = observationsAdapter
     }
 

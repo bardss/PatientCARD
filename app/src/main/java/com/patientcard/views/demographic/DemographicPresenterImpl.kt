@@ -11,11 +11,11 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), DemographicPresenter, GetPatientReciever {
 
-    private val presentationModel: DemographicModel by lazy { DemographicModel() }
+    private val model: DemographicModel by lazy { DemographicModel() }
 
     override fun initExtras(intent: Intent) {
         val qrCode: String? = intent.getSerializableExtra(IntentKeys.QR_CODE) as String?
-        presentationModel.qrCode = qrCode
+        model.qrCode = qrCode
     }
 
     override fun onViewAttached(view: DemographicView?) {
@@ -24,7 +24,7 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
     }
 
     private fun getPatientDetails() {
-        val qrCode: String? = presentationModel.qrCode
+        val qrCode: String? = model.qrCode
         if (qrCode != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
             ServiceManager.getPatient(this, qrCode)

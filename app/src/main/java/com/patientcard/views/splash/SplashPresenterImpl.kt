@@ -6,7 +6,7 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class SplashPresenterImpl : BaseAbstractPresenter<SplashView>(), SplashPresenter {
 
-    private val presentationModel: SplashModel by lazy { SplashModel() }
+    private val model: SplashModel by lazy { SplashModel() }
 
     override fun initExtras(intent: Intent) {
         // no extras
@@ -15,7 +15,7 @@ class SplashPresenterImpl : BaseAbstractPresenter<SplashView>(), SplashPresenter
     override fun handleSplashScreen(handler: Handler) {
         handler.postDelayed({
             view!!.openAccessActivity()
-        }, presentationModel.animDuration.toLong())
+        }, model.animDuration.toLong())
     }
 
 }

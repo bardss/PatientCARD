@@ -1,19 +1,19 @@
 package com.patientcard.views.observations
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.ObservationDTO
+import com.patientcard.logic.utils.DataTimeFormatUtil
 import com.patientcard.logic.utils.ResUtil
 import kotlinx.android.synthetic.main.item_observations.view.*
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 
-class ObservationsAdapter : RecyclerView.Adapter<ObservationsAdapter.ViewHolder>() {
+class ObservationsAdapter(val context: Context) : RecyclerView.Adapter<ObservationsAdapter.ViewHolder>() {
 
     var observationsList: List<ObservationDTO>? = null
 
@@ -26,13 +26,11 @@ class ObservationsAdapter : RecyclerView.Adapter<ObservationsAdapter.ViewHolder>
         holder.personValueTextView.text = observationsList?.get(position)?.employee
         holder.noteValueTextView.text = observationsList?.get(position)?.note
         if (observationsList?.get(position)?.dateTime != null) {
-            holder.observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + getFormattedDateTime(observationsList?.get(position)?.dateTime!!)
+            holder.observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + DataTimeFormatUtil.getFormattedDateTime(observationsList?.get(position)?.dateTime!!)
         }
-    }
-
-    fun getFormattedDateTime(dateTime: LocalDateTime): String {
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
-        return dateTime.format(dtf)
+        holder.editImageView.setOnClickListener {
+            (context as ObservationsActivity).clickEditObservation(observationsList?.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -43,6 +41,7 @@ class ObservationsAdapter : RecyclerView.Adapter<ObservationsAdapter.ViewHolder>
         val personValueTextView = view.personValueTextView
         val observationDateTextView = view.observationDateTextView
         val noteValueTextView = view.noteValueTextView
+        val editImageView = view.editImageView
     }
 
     fun setObservations(observations: List<ObservationDTO>) {

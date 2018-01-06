@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
 
         </RelativeLayout>
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -60,20 +60,37 @@
             android:paddingStart="16dp"
             android:paddingTop="8dp">
 
-            <com.patientcard.views.customviews.TitilliumSemiBoldTextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/new_observations_placeholder"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content">
+
+                <com.patientcard.views.customviews.TitilliumSemiBoldTextView
+                    android:id="@+id/observationDateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:padding="8dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/deleteImageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/delete_icon"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_frame_white_with_grey_border"
-                android:orientation="vertical"
-                android:layout_marginBottom="20dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -95,8 +112,8 @@
                         android:id="@+id/personValueTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="8dp"
                         android:layout_marginEnd="32dp"
+                        android:paddingBottom="8dp"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
@@ -148,12 +165,14 @@
 
     </LinearLayout>
 
+    <include layout="@layout/dialog_delete"/>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/checkFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="22dp"
         android:visibility="visible"
@@ -161,7 +180,7 @@
         app:fab_addButtonColorNormal="@color/colorAccent"
         app:fab_addButtonColorPressed="@color/colorPrimary"
         app:fab_addButtonPlusIconColor="@android:color/white"
-        app:srcCompat="@drawable/check_icon"/>
+        app:srcCompat="@drawable/check_icon" />
 
 </RelativeLayout>
 

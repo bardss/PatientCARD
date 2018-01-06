@@ -108,6 +108,30 @@ object ServiceManager {
                 Action0 { Timber.e("OnCompleted") })
     }
 
+    fun editObservations(receiver: PutObservationReciever, observation: ObservationDTO) {
+        setupRequest(ServiceProvider
+                .observationsService
+                .editObservation(observation),
+                Action1 { receiver.onPutObservationSuccess(it as ObservationDTO) },
+                Action1 {
+                    handleError(it)
+                    receiver.onPutObservationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
+    fun deleteObservations(receiver: DeleteObservationReciever, observationId: String) {
+        setupRequest(ServiceProvider
+                .observationsService
+                .deleteObservation(observationId),
+                Action1 { receiver.onDeleteObservationSuccess() },
+                Action1 {
+                    handleError(it)
+                    receiver.onDeleteObservationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
     private fun setupRequest(observable: Observable<*>, onNext: Action1<Any>, onError: Action1<Throwable>, onCompleted: Action0): Subscription {
         return observable
                 .subscribeOn(Schedulers.newThread())

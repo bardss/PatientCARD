@@ -1,6 +1,7 @@
 package com.patientcard.logic.model.transportobjects
 
 import org.threeten.bp.LocalDateTime
+import java.io.Serializable
 
 data class ObservationDTO(
         var id: Long? = 0,
@@ -8,4 +9,4 @@ data class ObservationDTO(
         var employee: String = "",
         var dateTime: LocalDateTime? = null,
         var note: String = ""
-)
+) : Serializable

@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
+import com.patientcard.logic.utils.DataTimeFormatUtil
 import com.patientcard.logic.utils.ResUtil
 import kotlinx.android.synthetic.main.item_recommendations.view.*
-import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalTime
-import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 
@@ -24,26 +22,12 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewH
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + getFormattedDate(recommendationsList?.get(position)?.date)
+        holder.recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + DataTimeFormatUtil.getFormattedDate(recommendationsList?.get(position)?.date)
         holder.drugTextView.text = recommendationsList?.get(position)?.description
-        holder.morningTimeTextView.text = getFormattedTime(recommendationsList?.get(position)?.morning)
-        holder.noonTimeTextView.text = getFormattedTime(recommendationsList?.get(position)?.noon)
-        holder.eveningTimeTextView.text = getFormattedTime(recommendationsList?.get(position)?.evening)
-        holder.nightTimeTextView.text = getFormattedTime(recommendationsList?.get(position)?.night)
-    }
-
-    fun getFormattedDate(date: LocalDate?): String? {
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        return date?.format(dtf)
-    }
-
-    fun getFormattedTime(time: LocalTime?): String? {
-        return if (time != null) {
-            val dtf = DateTimeFormatter.ofPattern("HH:mm")
-            time.format(dtf)
-        } else {
-            ResUtil.getString(R.string.time_placeholder)
-        }
+        holder.morningTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.morning)
+        holder.noonTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.noon)
+        holder.eveningTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.evening)
+        holder.nightTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.night)
     }
 
     override fun getItemCount(): Int {

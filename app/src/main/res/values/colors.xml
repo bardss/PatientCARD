@@ -6,4 +6,5 @@
     <color name="colorAccent">#007C92</color>
     <color name="colorPulse">#FF0076</color>
     <color name="colorTemperature">#0076FF</color>
+    <color name="colorDelete">#d14d4d</color>
 </resources>

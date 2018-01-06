@@ -51,4 +51,7 @@
     <string name="temperature_have_to_be_more">Wartość temperatury musi być powyżej 30°C</string>
     <string name="pulse_have_to_be_below">Wartość tętna musi być poniżej 165</string>
     <string name="pulse_have_to_be_more">Wartość tętna musi być powyżej 55</string>
+    <string name="are_you_sure_you_want_to_delete">Jesteś pewien, że chcesz usunąć</string>
+    <string name="from_day">z dnia</string>
+    <string name="delete">USUŃ</string>
 </resources>

@@ -11,23 +11,23 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class RecommendationsPresenterImpl : BaseAbstractPresenter<RecommendationsView>(), RecommendationsPresenter, GetRecommendationsReciever {
 
-    private val presentationModel: RecommendationsModel by lazy { RecommendationsModel() }
+    private val model: RecommendationsModel by lazy { RecommendationsModel() }
 
     override fun initExtras(intent: Intent) {
         val patientId: String? = intent.getSerializableExtra(IntentKeys.PATIENT_ID) as String?
         val patientName: String? = intent.getSerializableExtra(IntentKeys.PATIENT_NAME) as String?
-        presentationModel.patientId = patientId
-        presentationModel.patientName = patientName
+        model.patientId = patientId
+        model.patientName = patientName
     }
 
     override fun onViewAttached(view: RecommendationsView?) {
         super.onViewAttached(view)
-        view?.setPatientName(presentationModel.patientName)
-        view?.setupButtoms(presentationModel.patientId, presentationModel.patientName)
+        view?.setPatientName(model.patientName)
+        view?.setupButtoms(model.patientId, model.patientName)
     }
 
     override fun getRecommendations() {
-        val patientId: String? = presentationModel.patientId
+        val patientId: String? = model.patientId
         if (patientId != null) {
             view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
             ServiceManager.getRecommendations(this, patientId)

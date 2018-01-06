@@ -6,11 +6,11 @@ import com.patientcard.views.base.BaseAbstractPresenter
 
 class QRCodePresenterImpl : BaseAbstractPresenter<QRCodeView>(), QRCodePresenter {
 
-    private val presentationModel: QRCodeModel by lazy { QRCodeModel() }
+    private val model: QRCodeModel by lazy { QRCodeModel() }
 
     override fun initExtras(intent: Intent) {
         var cameraPermission = intent.getBooleanExtra(IntentKeys.CAMERA_PERMISSION, false)
-        presentationModel.cameraPermission = cameraPermission
+        model.cameraPermission = cameraPermission
     }
 
     override fun onViewAttached(view: QRCodeView?) {
@@ -19,7 +19,7 @@ class QRCodePresenterImpl : BaseAbstractPresenter<QRCodeView>(), QRCodePresenter
     }
 
     private fun setupViews() {
-        if (presentationModel.cameraPermission) view?.setupQRReader() else view?.setupNoPermission()
+        if (model.cameraPermission) view?.setupQRReader() else view?.setupNoPermission()
     }
 
 }

@@ -4,7 +4,7 @@ import easymvp.RxPresenter
 
 abstract class BaseAbstractPresenter<V : BaseView> : RxPresenter<V>(), BasePresenter {
 
-//    abstract val presentationModel: BaseModel
+//    abstract val model: BaseModel
 
 //    val database: Database
 //        get() = Database()
