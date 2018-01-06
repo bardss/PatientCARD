@@ -5,15 +5,13 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
-import com.patientcard.logic.utils.DataTimeFormatUtil.getFormattedDate
+import com.patientcard.logic.utils.FormatTimeDateUtil.getFormattedDate
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_fever_chart.*
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
 
 @ActivityView(layout = R.layout.activity_fever_chart, presenter = FeverChartPresenterImpl::class)
 class FeverChartActivity : BaseActivity(), FeverChartView {

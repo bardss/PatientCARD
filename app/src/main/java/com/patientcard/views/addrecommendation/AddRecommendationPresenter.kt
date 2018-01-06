@@ -10,5 +10,6 @@ interface AddRecommendationPresenter : BasePresenter {
     override fun initExtras(intent: Intent)
     fun saveRecommendation(recommendation: RecommendationDTO)
     fun getLocalTimeFromString(text: String?): LocalTime?
+    fun deleteRecommendation()
 }
 

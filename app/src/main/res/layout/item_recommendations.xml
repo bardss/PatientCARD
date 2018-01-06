@@ -23,26 +23,45 @@
         android:background="@drawable/rounded_frame_white_with_grey_border"
         android:orientation="vertical">
 
-        <com.patientcard.views.customviews.TitilliumLightTextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
-            android:paddingTop="16dp"
-            android:text="@string/drug"
-            android:textColor="@color/colorPrimaryGrey"
-            android:textSize="16sp" />
+            android:paddingBottom="16dp">
 
-        <com.patientcard.views.customviews.TitilliumLightTextView
-            android:id="@+id/drugValueTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
-            android:text="@string/drug_placeholder"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/drugLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/drug"
+                android:textColor="@color/colorPrimaryGrey"
+                android:textSize="16sp" />
+
+            <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/drugValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/drug_placeholder"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/drugLabelTextView"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/editImageView"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/drugValueTextView"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="-16dp"
+                android:src="@drawable/edit_icon"/>
+
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"

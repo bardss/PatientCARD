@@ -6,7 +6,7 @@ import android.widget.EditText
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.ObservationDTO
 import com.patientcard.logic.utils.AnimUtils
-import com.patientcard.logic.utils.DataTimeFormatUtil
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
@@ -36,7 +36,12 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
         nameTextView.text = patientName
     }
 
+    override fun setTitle(title: String?) {
+        titleTextView.text = title
+    }
+
     override fun fillFields(observation: ObservationDTO?) {
+        observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + FormatTimeDateUtil.getFormattedDateTime(observation?.dateTime)
         personValueTextView.setText(observation?.employee)
         noteEditText.setText(observation?.note)
     }
@@ -46,7 +51,7 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
         deleteImageView.setOnClickListener {
             AnimUtils.fadeIn(300, deleteDialogLayout)
             whatToDeleteTextView.text = ResUtil.getString(R.string.observation)
-            whenToDeleteTextView.text = DataTimeFormatUtil.getFormattedDateTime(observation?.dateTime)
+            whenToDeleteTextView.text = FormatTimeDateUtil.getFormattedDateTime(observation?.dateTime)
             setupDeleteDialogButtons()
         }
     }

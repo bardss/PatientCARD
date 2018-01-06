@@ -34,6 +34,17 @@ class RecommendationsActivity : BaseActivity(), RecommendationsView {
         presenter.getRecommendations()
     }
 
+    override fun clickEditRecommendation(recommendation: RecommendationDTO?) {
+        presenter.openEditRecommendation(recommendation)
+    }
+
+    override fun openEditRecommendation(patientId: String?, patientName: String?, recommendation: RecommendationDTO?) {
+        startActivity(Intent(this, AddRecommendationActivity::class.java)
+                .putExtra(IntentKeys.PATIENT_ID, patientId)
+                .putExtra(IntentKeys.PATIENT_NAME, patientName)
+                .putExtra(IntentKeys.RECOMMENDATION, recommendation))
+    }
+
     override fun setupButtoms(patientId: String?, patientName: String?) {
         addFab.setOnClickListener {
             startActivity(Intent(this, AddRecommendationActivity::class.java)
@@ -44,7 +55,7 @@ class RecommendationsActivity : BaseActivity(), RecommendationsView {
 
     private fun setupRecommendationsList() {
         recommendationsRecyclerView.layoutManager = LinearLayoutManager(this)
-        recommendationsAdapter = RecommendationsAdapter()
+        recommendationsAdapter = RecommendationsAdapter(this)
         recommendationsRecyclerView.adapter = recommendationsAdapter
     }
 

@@ -2,6 +2,7 @@ package com.patientcard.logic.model.transportobjects
 
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
+import java.io.Serializable
 
 data class RecommendationDTO(
         var id: Long? = 0,
@@ -11,4 +12,5 @@ data class RecommendationDTO(
         var morning: LocalTime? = null,
         var noon: LocalTime? = null,
         var evening: LocalTime? = null,
-        var night: LocalTime? = null)
+        var night: LocalTime? = null
+) : Serializable

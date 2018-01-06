@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.ObservationDTO
-import com.patientcard.logic.utils.DataTimeFormatUtil
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import com.patientcard.logic.utils.ResUtil
 import kotlinx.android.synthetic.main.item_observations.view.*
 import java.util.*
@@ -26,10 +26,10 @@ class ObservationsAdapter(val context: Context) : RecyclerView.Adapter<Observati
         holder.personValueTextView.text = observationsList?.get(position)?.employee
         holder.noteValueTextView.text = observationsList?.get(position)?.note
         if (observationsList?.get(position)?.dateTime != null) {
-            holder.observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + DataTimeFormatUtil.getFormattedDateTime(observationsList?.get(position)?.dateTime!!)
+            holder.observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + FormatTimeDateUtil.getFormattedDateTime(observationsList?.get(position)?.dateTime!!)
         }
         holder.editImageView.setOnClickListener {
-            (context as ObservationsActivity).clickEditObservation(observationsList?.get(position))
+            (context as ObservationsView).clickEditObservation(observationsList?.get(position))
         }
     }
 

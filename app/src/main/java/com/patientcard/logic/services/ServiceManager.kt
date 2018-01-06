@@ -120,6 +120,30 @@ object ServiceManager {
                 Action0 { Timber.e("OnCompleted") })
     }
 
+    fun editRecommendation(receiver: PutRecommendationReciever, recommendation: RecommendationDTO) {
+        setupRequest(ServiceProvider
+                .recommendationService
+                .editRecommendation(recommendation),
+                Action1 { receiver.onPutRecommendationSuccess(it as RecommendationDTO) },
+                Action1 {
+                    handleError(it)
+                    receiver.onPutRecommendationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
+    fun deleteRecommendation(receiver: DeleteRecommendationReciever, recommendationId: String) {
+        setupRequest(ServiceProvider
+                .recommendationService
+                .deleteRecommendation(recommendationId),
+                Action1 { receiver.onDeleteRecommendationSuccess() },
+                Action1 {
+                    handleError(it)
+                    receiver.onDeleteRecommendationError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
+
     fun deleteObservations(receiver: DeleteObservationReciever, observationId: String) {
         setupRequest(ServiceProvider
                 .observationsService

@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
-import com.patientcard.logic.utils.DataTimeFormatUtil
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import kotlinx.android.synthetic.main.item_short_fever.view.*
 import java.util.*
 
@@ -24,7 +24,7 @@ class ShortFeverAdapter(private val recyclerViewHeight: Int) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemLinearLayout.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, recyclerViewHeight/6)
-        holder.dateTextView.text = DataTimeFormatUtil.getFormattedDate(feverCard?.get(position)?.date) + "\n" + feverCard?.get(position)?.timeOfDay?.stringValue
+        holder.dateTextView.text = FormatTimeDateUtil.getFormattedDate(feverCard?.get(position)?.date) + "\n" + feverCard?.get(position)?.timeOfDay?.stringValue
         holder.temperatureTextView.text = feverCard?.get(position)?.temperature?.toString()
         holder.pulseTextView.text = feverCard?.get(position)?.pulse?.toString()
     }

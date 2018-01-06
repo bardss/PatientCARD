@@ -10,6 +10,7 @@ import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.PickerDialogType
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
 import com.patientcard.logic.utils.AnimUtils
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import com.patientcard.logic.utils.PickerDialog
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
@@ -18,6 +19,7 @@ import com.patientcard.views.recommendations.RecommendationsActivity
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_add_recommendation.*
+import kotlinx.android.synthetic.main.dialog_delete.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
 
@@ -41,6 +43,38 @@ class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
 
     override fun setPatientName(patientName: String?) {
         nameTextView.text = patientName
+    }
+
+    override fun setTitle(title: String?) {
+        titleTextView.text = title
+    }
+
+    override fun setupDeleteIcon(recommendation: RecommendationDTO?) {
+        deleteImageView.visibility = View.VISIBLE
+        deleteImageView.setOnClickListener {
+            AnimUtils.fadeIn(300, deleteDialogLayout)
+            whatToDeleteTextView.text = ResUtil.getString(R.string.recommendation)
+            whenToDeleteTextView.text = FormatTimeDateUtil.getFormattedDate(recommendation?.date)
+            setupDeleteDialogButtons()
+        }
+    }
+
+    private fun setupDeleteDialogButtons() {
+        cancelButton.setOnClickListener {
+            AnimUtils.fadeOut(300, deleteDialogLayout)
+        }
+        deleteButton.setOnClickListener {
+            presenter.deleteRecommendation()
+        }
+    }
+
+    override fun fillFields(recommendation: RecommendationDTO?) {
+        recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + FormatTimeDateUtil.getFormattedDate(recommendation?.date)
+        noteEditText.setText(recommendation?.description)
+        morningTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.morning))
+        noonTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.noon))
+        eveningTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.evening))
+        nightTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.night))
     }
 
     private fun setupSaveRecommendationClick() {

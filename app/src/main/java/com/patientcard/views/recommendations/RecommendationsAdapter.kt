@@ -1,18 +1,19 @@
 package com.patientcard.views.recommendations
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
-import com.patientcard.logic.utils.DataTimeFormatUtil
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import com.patientcard.logic.utils.ResUtil
 import kotlinx.android.synthetic.main.item_recommendations.view.*
 import java.util.*
 
 
-class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
+class RecommendationsAdapter(var context: Context) : RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
 
     var recommendationsList: List<RecommendationDTO>? = null
 
@@ -22,12 +23,15 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewH
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + DataTimeFormatUtil.getFormattedDate(recommendationsList?.get(position)?.date)
+        holder.recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + FormatTimeDateUtil.getFormattedDate(recommendationsList?.get(position)?.date)
         holder.drugTextView.text = recommendationsList?.get(position)?.description
-        holder.morningTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.morning)
-        holder.noonTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.noon)
-        holder.eveningTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.evening)
-        holder.nightTimeTextView.text = DataTimeFormatUtil.getFormattedTime(recommendationsList?.get(position)?.night)
+        holder.morningTimeTextView.text = FormatTimeDateUtil.getFormattedTime(recommendationsList?.get(position)?.morning)
+        holder.noonTimeTextView.text = FormatTimeDateUtil.getFormattedTime(recommendationsList?.get(position)?.noon)
+        holder.eveningTimeTextView.text = FormatTimeDateUtil.getFormattedTime(recommendationsList?.get(position)?.evening)
+        holder.nightTimeTextView.text = FormatTimeDateUtil.getFormattedTime(recommendationsList?.get(position)?.night)
+        holder.editImageView.setOnClickListener {
+            (context as RecommendationsView).clickEditRecommendation(recommendationsList?.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +45,7 @@ class RecommendationsAdapter : RecyclerView.Adapter<RecommendationsAdapter.ViewH
         val noonTimeTextView = view.noonTimeTextView
         val eveningTimeTextView = view.eveningTimeTextView
         val nightTimeTextView = view.nightTimeTextView
+        val editImageView = view.editImageView
     }
 
     fun setRecommendations(recommendations: List<RecommendationDTO>) {

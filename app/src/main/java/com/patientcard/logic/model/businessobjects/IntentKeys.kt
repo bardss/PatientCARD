@@ -7,4 +7,5 @@ object IntentKeys {
     val FEVER_CARD: String? = "fever_card"
     val PATIENT_NAME: String? = "patient_name"
     val OBSERVATION: String? = "observation"
+    val RECOMMENDATION: String? = "recommendation"
 }

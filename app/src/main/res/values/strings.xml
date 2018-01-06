@@ -54,4 +54,6 @@
     <string name="are_you_sure_you_want_to_delete">Jesteś pewien, że chcesz usunąć</string>
     <string name="from_day">z dnia</string>
     <string name="delete">USUŃ</string>
+    <string name="edit_observation">EDYTUJ OBSERWACJE</string>
+    <string name="edit_recommendation">EDYTUJ REKOMENDACJE</string>
 </resources>

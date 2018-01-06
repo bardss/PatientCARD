@@ -6,7 +6,7 @@ import org.threeten.bp.LocalDateTime
 import org.threeten.bp.LocalTime
 import org.threeten.bp.format.DateTimeFormatter
 
-object DataTimeFormatUtil {
+object FormatTimeDateUtil {
 
     fun getFormattedDate(date: LocalDate?): String? {
         val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")

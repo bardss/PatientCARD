@@ -7,4 +7,6 @@ interface RecommendationsView : BaseView {
     fun setRecommendationsList(recommendations: List<RecommendationDTO>)
     fun setupButtoms(patientId: String?, patientName: String?)
     fun setPatientName(patientName: String?)
+    fun clickEditRecommendation(recommendation: RecommendationDTO?)
+    fun openEditRecommendation(patientId: String?, patientName: String?, recommendation: RecommendationDTO?)
 }

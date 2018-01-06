@@ -32,6 +32,9 @@ class AddObservationPresenterImpl : BaseAbstractPresenter<AddObservationView>(),
         if (model.observation != null) {
             view?.fillFields(model.observation)
             view?.setupDeleteIcon(model.observation)
+            view?.setTitle(ResUtil.getString(R.string.edit_observation))
+        } else {
+            view?.setTitle(ResUtil.getString(R.string.add_observation))
         }
     }
 

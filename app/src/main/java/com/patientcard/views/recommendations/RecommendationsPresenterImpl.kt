@@ -34,6 +34,10 @@ class RecommendationsPresenterImpl : BaseAbstractPresenter<RecommendationsView>(
         }
     }
 
+    override fun openEditRecommendation(recommendation: RecommendationDTO?) {
+        view?.openEditRecommendation(model.patientId, model.patientName, recommendation)
+    }
+
     override fun onGetRecommendationsError() {
         view?.stopProgressDialog()
     }

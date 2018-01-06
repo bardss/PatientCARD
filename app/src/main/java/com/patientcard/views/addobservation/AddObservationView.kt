@@ -8,4 +8,5 @@ interface AddObservationView : BaseView {
     fun setPatientName(patientName: String?)
     fun fillFields(observation: ObservationDTO?)
     fun setupDeleteIcon(observation: ObservationDTO?)
+    fun setTitle(title: String?)
 }

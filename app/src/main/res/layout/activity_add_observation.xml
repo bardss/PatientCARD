@@ -40,12 +40,12 @@
                 android:textSize="21sp" />
 
             <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topAccentView"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/patientAvatarImageView"
-                android:text="@string/add_observation"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
