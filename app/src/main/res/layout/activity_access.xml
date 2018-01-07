@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <com.patientcard.views.customviews.TitilliumLightTextView
+        android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,6 +21,7 @@
         android:orientation="vertical">
 
         <com.patientcard.views.customviews.TitilliumLightTextView
+            android:id="@+id/emailTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -34,6 +36,7 @@
             android:layout_marginRight="20dp">
 
             <ImageView
+                android:id="@+id/emailImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
@@ -41,6 +44,7 @@
                 android:src="@drawable/login" />
 
             <com.patientcard.views.customviews.TitilliumLightEditText
+                android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -49,6 +53,7 @@
         </RelativeLayout>
 
         <com.patientcard.views.customviews.TitilliumLightTextView
+            android:id="@+id/passwordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -64,12 +69,14 @@
             android:layout_marginRight="20dp">
 
             <ImageView
+                android:id="@+id/passwordImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:src="@drawable/passoword" />
+                android:src="@drawable/password" />
 
             <com.patientcard.views.customviews.TitilliumLightEditText
+                android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -94,6 +101,7 @@
         android:foreground="?android:attr/selectableItemBackground">
 
         <com.patientcard.views.customviews.TitilliumLightTextView
+            android:id="@+id/loginTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -63,6 +63,7 @@
             android:foreground="?android:attr/selectableItemBackground">
 
             <ImageView
+                android:id="@+id/feverCardImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/feverMenuFrameLayout"
@@ -78,6 +79,7 @@
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/feverCardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -101,6 +103,7 @@
             android:foreground="?android:attr/selectableItemBackground">
 
             <ImageView
+                android:id="@+id/recommendationImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/recommendationsMenuFrameLayout"
@@ -116,10 +119,11 @@
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/recommendationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/medical_order_card"
+                    android:text="@string/recommendation_card"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
@@ -139,6 +143,7 @@
             android:foreground="?android:attr/selectableItemBackground">
 
             <ImageView
+                android:id="@+id/observationImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/observationsMenuFrameLayout"
@@ -154,10 +159,11 @@
                 android:background="@drawable/rounded_frame_accent_with_grey_border">
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/observationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/medical_observation_card"
+                    android:text="@string/observation_card"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 

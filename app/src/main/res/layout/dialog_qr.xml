@@ -6,6 +6,7 @@
     android:visibility="gone">
 
     <View
+        android:id="@+id/backgroundView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.9"
@@ -20,6 +21,7 @@
         android:padding="26dp">
 
         <com.patientcard.views.customviews.TitilliumRegularTextView
+            android:id="@+id/qrInputTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
@@ -53,6 +55,7 @@
             android:foreground="?android:attr/selectableItemBackground">
 
             <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/openTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

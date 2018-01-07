@@ -44,7 +44,7 @@
                 android:layout_below="@id/topAccentView"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/patientAvatarImageView"
-                android:text="@string/medical_observation_card"
+                android:text="@string/observation_card"
                 android:textColor="@android:color/black"
                 android:textSize="19sp" />
 
