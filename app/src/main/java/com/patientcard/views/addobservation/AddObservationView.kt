@@ -9,4 +9,5 @@ interface AddObservationView : BaseView {
     fun fillFields(observation: ObservationDTO?)
     fun setupDeleteIcon(observation: ObservationDTO?)
     fun setTitle(title: String?)
+    fun setObservationLabel()
 }

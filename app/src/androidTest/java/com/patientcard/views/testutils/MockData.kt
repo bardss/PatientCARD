@@ -23,6 +23,12 @@ object MockData {
         return observations
     }
 
+    fun getObservationsWithOneItem(): ArrayList<ObservationDTO> {
+        val observations = ArrayList<ObservationDTO>()
+        observations.add(ObservationDTO(1, 122075, "Jan Kowalski", LocalDateTime.now(), "Notatka 1"))
+        return observations
+    }
+
     fun getRecommendations(): ArrayList<RecommendationDTO> {
         val recommendations = ArrayList<RecommendationDTO>()
         recommendations.add(RecommendationDTO(1, 1, LocalDate.now(), "Notatka 1", LocalTime.parse("08:00"), LocalTime.parse("12:00"), LocalTime.parse("18:00"), LocalTime.parse("22:00")))

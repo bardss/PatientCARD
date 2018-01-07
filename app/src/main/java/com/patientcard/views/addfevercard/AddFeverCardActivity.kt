@@ -6,17 +6,18 @@ import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.FeverCardValueType
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
 import com.patientcard.logic.model.transportobjects.TimeOfDay
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.shortfever.ShortFeverActivity
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
-import kotlinx.android.synthetic.main.activity_add_fevercard.*
+import kotlinx.android.synthetic.main.activity_add_fever_card.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
 
-@ActivityView(layout = R.layout.activity_add_fevercard, presenter = AddFeverCardPresenterImpl::class)
+@ActivityView(layout = R.layout.activity_add_fever_card, presenter = AddFeverCardPresenterImpl::class)
 class AddFeverCardActivity : BaseActivity(), AddFeverCardView {
 
     @Presenter
@@ -24,6 +25,15 @@ class AddFeverCardActivity : BaseActivity(), AddFeverCardView {
 
     override fun providePresenter(): BasePresenter {
         return presenter
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setupLabel()
+    }
+
+    private fun setupLabel() {
+        dateTextView.text = ResUtil.getString(R.string.examination) + " " + FormatTimeDateUtil.getFormattedDate(LocalDate.now())
     }
 
     override fun setupButton() {

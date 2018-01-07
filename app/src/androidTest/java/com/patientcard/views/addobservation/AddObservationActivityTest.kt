@@ -1,4 +1,4 @@
-package com.patientcard.views.observations
+package com.patientcard.views.addobservation
 
 
 import MockData
@@ -17,6 +17,7 @@ import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.logic.services.ServiceProvider
 import com.patientcard.logic.services.api.ObservationApi
 import com.patientcard.logic.services.api.PatientApi
+import com.patientcard.logic.utils.FormatTimeDateUtil
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.qrrcode.QRCodeActivity
 import com.patientcard.views.testutils.RecyclerViewMatcher
@@ -29,10 +30,11 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
+import org.threeten.bp.LocalDateTime
 import rx.Observable
 
 @RunWith(AndroidJUnit4::class)
-class ObservationsActivityTest {
+class AddObservationActivityTest {
 
     @Rule @JvmField
     var mActivityTestRule: ActivityTestRule<QRCodeActivity> = ActivityTestRule(QRCodeActivity::class.java, true, false)
@@ -51,7 +53,7 @@ class ObservationsActivityTest {
     @Before
     fun initTestData() {
         patient = MockData.getPatient()
-        observations = MockData.getObservations()
+        observations = MockData.getObservationsWithOneItem()
 
         `when`(patientApi.getPatient("122075")).thenReturn(Observable.just(patient))
         ServiceProvider.patientService = patientApi
@@ -66,8 +68,8 @@ class ObservationsActivityTest {
     }
 
     @Test
-    fun observationsActivityTest() {
-        moveToObservations()
+    fun addObservationActivityTest() {
+        moveToAddObservations()
 
         closeKeyboard()
 
@@ -79,26 +81,41 @@ class ObservationsActivityTest {
 
         onView(withId(R.id.pageTitleTextView))
                 .check(matches(isCompletelyDisplayed()))
-                .check(matches(withText(ResUtil.getString(R.string.observation_card))))
+                .check(matches(withText(ResUtil.getString(R.string.add_observation))))
 
-        onView(withId(R.id.addFab))
+        onView(withId(R.id.checkFab))
                 .check(matches(isCompletelyDisplayed()))
 
-        onView(recyclerViewMatcher?.atPosition(0))
-                .check(matches(hasDescendant(withText(observations?.get(0)?.employee))))
+        onView(withId(R.id.observationDateTextView))
+                .check(matches(isCompletelyDisplayed()))
+                .check(matches(withText(getLabelWithDateString())))
 
-        onView(recyclerViewMatcher?.atPosition(0))
-                .check(matches(hasDescendant(withText(observations?.get(0)?.note))))
+        onView(withId(R.id.personLabelTextView))
+                .check(matches(isCompletelyDisplayed()))
+                .check(matches(withText(ResUtil.getString(R.string.person))))
 
-        onView(recyclerViewMatcher?.atPosition(1))
-                .check(matches(hasDescendant(withText(observations?.get(1)?.employee))))
+        onView(withId(R.id.personValueEditText))
+                .check(matches(isDisplayed()))
 
-        onView(recyclerViewMatcher?.atPosition(1))
-                .check(matches(hasDescendant(withText(observations?.get(1)?.note))))
+        onView(withId(R.id.observationLabelTextView))
+                .check(matches(isCompletelyDisplayed()))
+                .check(matches(withText(ResUtil.getString(R.string.note))))
+
+        onView(withId(R.id.drugEditText))
+                .check(matches(isDisplayed()))
+
+        onView(withId(R.id.microphoneImageView))
+                .check(matches(isCompletelyDisplayed()))
+
+        assertHasDrawable(R.id.microphoneImageView, R.drawable.microphone_not_working_icon)
 
     }
 
-    private fun moveToObservations() {
+    private fun getLabelWithDateString(): String {
+        return ResUtil.getString(R.string.observation) + " " + FormatTimeDateUtil.getFormattedDateTime(LocalDateTime.now())
+    }
+
+    private fun moveToAddObservations() {
         onView(withId(R.id.qrCodeEditText))
                 .check(matches(isCompletelyDisplayed()))
                 .perform(typeText(MockData.getQRCode()))
@@ -108,6 +125,9 @@ class ObservationsActivityTest {
                 .perform(click())
 
         onView(withId(R.id.observationsMenuFrameLayout))
+                .perform(click())
+
+        onView(withId(R.id.addFab))
                 .perform(click())
     }
 

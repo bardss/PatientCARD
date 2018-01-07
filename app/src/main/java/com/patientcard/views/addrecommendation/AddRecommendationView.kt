@@ -9,4 +9,5 @@ interface AddRecommendationView : BaseView {
     fun fillFields(recommendation: RecommendationDTO?)
     fun setupDeleteIcon(recommendation: RecommendationDTO?)
     fun setTitle(title: String?)
+    fun setLabel()
 }

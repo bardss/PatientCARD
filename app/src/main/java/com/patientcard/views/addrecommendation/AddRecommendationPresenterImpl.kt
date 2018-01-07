@@ -32,10 +32,12 @@ class AddRecommendationPresenterImpl : BaseAbstractPresenter<AddRecommendationVi
         if (model.recommendation != null) {
             view?.fillFields(model.recommendation)
             view?.setupDeleteIcon(model.recommendation)
-            view?.setTitle(ResUtil.getString(R.string.edit_observation))
+            view?.setTitle(ResUtil.getString(R.string.edit_recommendation))
         } else {
-            view?.setTitle(ResUtil.getString(R.string.add_observation))
-        }    }
+            view?.setTitle(ResUtil.getString(R.string.add_recommendation))
+            view?.setLabel()
+        }
+    }
 
     override fun saveRecommendation(recommendation: RecommendationDTO) {
         view?.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))

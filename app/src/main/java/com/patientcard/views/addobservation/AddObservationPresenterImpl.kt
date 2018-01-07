@@ -35,6 +35,7 @@ class AddObservationPresenterImpl : BaseAbstractPresenter<AddObservationView>(),
             view?.setTitle(ResUtil.getString(R.string.edit_observation))
         } else {
             view?.setTitle(ResUtil.getString(R.string.add_observation))
+            view?.setObservationLabel()
         }
     }
 

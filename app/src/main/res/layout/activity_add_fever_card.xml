@@ -39,6 +39,7 @@
                 android:textSize="21sp" />
 
             <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/pageTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topAccentView"
@@ -64,7 +65,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/new_fever_card"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -73,15 +73,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/rounded_frame_white_with_grey_border">
+
                 <LinearLayout
                     android:id="@+id/feverCardTableFrameLayout"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_alignParentTop="true"
                     android:background="@drawable/rounded_frame_white_with_grey_border"
                     android:orientation="horizontal">
 
                     <com.patientcard.views.customviews.TitilliumLightTextView
+                        android:id="@+id/pulseLabelTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -97,6 +98,7 @@
                         android:background="@color/colorPrimaryGrey" />
 
                     <com.patientcard.views.customviews.TitilliumLightTextView
+                        android:id="@+id/temperatureLabelTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

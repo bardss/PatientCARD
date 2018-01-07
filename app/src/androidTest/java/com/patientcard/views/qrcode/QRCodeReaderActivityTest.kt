@@ -30,7 +30,7 @@ class QRCodeReaderActivityTest {
 
     @Test
     fun qrCodeActivityTest() {
-        onView(withId(R.id.titleTextView))
+        onView(withId(R.id.pageTitleTextView))
                 .check(matches(isCompletelyDisplayed()))
                 .check(matches(withText(ResUtil.getString(R.string.scan_patient_qr_code))))
 

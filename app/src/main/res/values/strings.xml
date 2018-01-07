@@ -9,8 +9,9 @@
     <string name="pesel_placeholder">95011916435</string>
     <string name="fever_card">KARTA GORĄCZKOWA</string>
     <string name="add_examination">DODAJ BADANIE</string>
+    <string name="examination">Badanie</string>
     <string name="recommendation_card">KARTA ZLECEŃ LEKARSKICH</string>
-    <string name="add_medical_order">DODAJ ZLECENIE LEKARSKIE</string>
+    <string name="add_recommendation">DODAJ ZLECENIE LEKARSKIE</string>
     <string name="observation_card">KARTA CIĄGŁEJ OBSERWACJI</string>
     <string name="add_observation">DODAJ OBSERWACJE</string>
     <string name="new_fever_card">Nowe badanie</string>

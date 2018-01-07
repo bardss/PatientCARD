@@ -42,7 +42,7 @@
                 android:textSize="21sp" />
 
             <com.patientcard.views.customviews.TitilliumLightTextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/pageTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/topAccentView"
@@ -94,6 +94,7 @@
                 android:orientation="vertical">
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/drugLabelTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="16dp"
@@ -104,7 +105,7 @@
                     android:textSize="16sp" />
 
                 <com.patientcard.views.customviews.TitilliumLightEditText
-                    android:id="@+id/noteEditText"
+                    android:id="@+id/drugEditText"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginBottom="16dp"
@@ -142,6 +143,7 @@
                         android:paddingTop="8dp">
 
                         <com.patientcard.views.customviews.TitilliumLightTextView
+                            android:id="@+id/morningTimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/morning"
@@ -173,6 +175,7 @@
                         android:paddingTop="8dp">
 
                         <com.patientcard.views.customviews.TitilliumLightTextView
+                            android:id="@+id/noonTimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/noon"
@@ -204,6 +207,7 @@
                         android:paddingTop="8dp">
 
                         <com.patientcard.views.customviews.TitilliumLightTextView
+                            android:id="@+id/eveningTimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/evening"
@@ -235,6 +239,7 @@
                         android:paddingTop="8dp">
 
                         <com.patientcard.views.customviews.TitilliumLightTextView
+                            android:id="@+id/nightTimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/night"

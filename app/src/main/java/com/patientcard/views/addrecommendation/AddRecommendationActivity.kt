@@ -46,7 +46,11 @@ class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
     }
 
     override fun setTitle(title: String?) {
-        titleTextView.text = title
+        pageTitleTextView.text = title
+    }
+
+    override fun setLabel() {
+        recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + FormatTimeDateUtil.getFormattedDate(LocalDate.now())
     }
 
     override fun setupDeleteIcon(recommendation: RecommendationDTO?) {
@@ -70,7 +74,7 @@ class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
 
     override fun fillFields(recommendation: RecommendationDTO?) {
         recommendationDateTextView.text = ResUtil.getString(R.string.recommendation) + " " + FormatTimeDateUtil.getFormattedDate(recommendation?.date)
-        noteEditText.setText(recommendation?.description)
+        drugEditText.setText(recommendation?.description)
         morningTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.morning))
         noonTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.noon))
         eveningTimeEditText.setText(FormatTimeDateUtil.getFormattedTime(recommendation?.evening))
@@ -79,13 +83,13 @@ class AddRecommendationActivity : BaseActivity(), AddRecommendationView {
 
     private fun setupSaveRecommendationClick() {
         checkFab.setOnClickListener {
-            val validData = isEditTextEmpty(noteEditText)
+            val validData = isEditTextEmpty(drugEditText)
             if (validData) presenter.saveRecommendation(getRecommendation())
         }
     }
 
     private fun getRecommendation(): RecommendationDTO {
-        val note = noteEditText.text.toString()
+        val note = drugEditText.text.toString()
         val morning: LocalTime? = presenter.getLocalTimeFromString(morningTimeEditText.text.toString())
         val noon: LocalTime? = presenter.getLocalTimeFromString(noonTimeEditText.text.toString())
         val evening: LocalTime? = presenter.getLocalTimeFromString(eveningTimeEditText.text.toString())

@@ -38,7 +38,7 @@ class ObservationsAdapter(val context: Context) : RecyclerView.Adapter<Observati
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val personValueTextView = view.personValueTextView
+        val personValueTextView = view.personValueEditText
         val observationDateTextView = view.observationDateTextView
         val noteValueTextView = view.noteValueTextView
         val editImageView = view.editImageView

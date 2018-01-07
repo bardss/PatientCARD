@@ -23,6 +23,7 @@ import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_add_observation.*
 import kotlinx.android.synthetic.main.dialog_delete.*
+import org.threeten.bp.LocalDateTime
 
 @ActivityView(layout = R.layout.activity_add_observation, presenter = AddObservationPresenterImpl::class)
 class AddObservationActivity : BaseActivity(), AddObservationView {
@@ -49,13 +50,17 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
     }
 
     override fun setTitle(title: String?) {
-        titleTextView.text = title
+        pageTitleTextView.text = title
     }
 
     override fun fillFields(observation: ObservationDTO?) {
         observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + FormatTimeDateUtil.getFormattedDateTime(observation?.dateTime)
-        personValueTextView.setText(observation?.employee)
-        noteEditText.setText(observation?.note)
+        personValueEditText.setText(observation?.employee)
+        drugEditText.setText(observation?.note)
+    }
+
+    override fun setObservationLabel() {
+        observationDateTextView.text = ResUtil.getString(R.string.observation) + " " + FormatTimeDateUtil.getFormattedDateTime(LocalDateTime.now())
     }
 
     override fun setupDeleteIcon(observation: ObservationDTO?) {
@@ -79,14 +84,14 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
 
     private fun setupSaveObservationClick() {
         checkFab.setOnClickListener {
-            val validData = isEditTextEmpty(personValueTextView) && isEditTextEmpty(noteEditText)
+            val validData = isEditTextEmpty(personValueEditText) && isEditTextEmpty(drugEditText)
             if (validData) presenter.saveObservation(getObservation())
         }
     }
 
     private fun getObservation(): ObservationDTO {
-        val employee = personValueTextView.text.toString()
-        val note = noteEditText.text.toString()
+        val employee = personValueEditText.text.toString()
+        val note = drugEditText.text.toString()
         return ObservationDTO(null, null, employee, null, note)
     }
 
@@ -175,7 +180,7 @@ class AddObservationActivity : BaseActivity(), AddObservationView {
         override fun onPartialResults(partialResults: Bundle) {
             val result = "" + partialResults.get("results_recognition")!!
             if (result.length > 2) {
-                noteEditText.setText(result.substring(1, result.length - 1))
+                drugEditText.setText(result.substring(1, result.length - 1))
             }
         }
 

@@ -40,7 +40,7 @@
                 android:textSize="16sp" />
 
             <com.patientcard.views.customviews.TitilliumLightTextView
-                android:id="@+id/personValueTextView"
+                android:id="@+id/personValueEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp"
