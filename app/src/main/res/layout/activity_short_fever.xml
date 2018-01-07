@@ -17,7 +17,7 @@
             android:background="@color/colorAccent" />
 
         <ImageView
-            android:id="@+id/patientAvatarImageView"
+            android:id="@+id/pageIconImageView"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_centerVertical="true"
@@ -30,17 +30,18 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/topAccentView"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patientAvatarImageView"
+            android:layout_toEndOf="@id/pageIconImageView"
             android:textColor="@android:color/white"
             android:textSize="21sp" />
 
         <com.patientcard.views.customviews.TitilliumLightTextView
+            android:id="@+id/pageTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/topAccentView"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patientAvatarImageView"
-            android:text="@string/add_examination"
+            android:layout_toEndOf="@id/pageIconImageView"
+            android:text="@string/fever_card"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -90,6 +91,7 @@
                 android:orientation="horizontal">
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/dateLabelTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -105,6 +107,7 @@
                     android:background="@color/colorPrimaryGrey" />
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/pulseLabelTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -120,6 +123,7 @@
                     android:background="@color/colorPrimaryGrey" />
 
                 <com.patientcard.views.customviews.TitilliumLightTextView
+                    android:id="@+id/temperatureLabelTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

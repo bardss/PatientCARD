@@ -33,8 +33,6 @@ class ShortFeverAdapter(private val recyclerViewHeight: Int) : RecyclerView.Adap
         return if (feverCard == null || feverCard?.size == 0) 0 else 6
     }
 
-
-
     fun setFeverCard(feverCard: List<FeverCardDTO>) {
         Collections.sort<FeverCardDTO>(feverCard) { lhs, rhs -> rhs.date!!.compareTo(lhs.date) }
         this.feverCard = feverCard

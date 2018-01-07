@@ -1,7 +1,9 @@
 package com.patientcard.views.shortfever
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
@@ -12,6 +14,8 @@ import com.patientcard.views.feverchart.FeverChartActivity
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_short_fever.*
+
+
 
 
 
@@ -29,7 +33,7 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
 
     override fun onStart() {
         super.onStart()
-        setupShortFeverList()
+        setupShortFeverList(this)
     }
 
     override fun onResume() {
@@ -49,13 +53,20 @@ class ShortFeverActivity : BaseActivity(), ShortFeverView {
         }
     }
 
-    private fun setupShortFeverList() {
-        shortFeverRecyclerView.post({
-            shortFeverRecyclerView.layoutManager = LinearLayoutManager(this)
-            feverCardAdapter = ShortFeverAdapter(shortFeverRecyclerView.height)
-            shortFeverRecyclerView.adapter = feverCardAdapter
-            shortFeverRecyclerView.setOnTouchListener { _, _ -> true }
-        })
+    private fun setupShortFeverList(context: Context) {
+        shortFeverRecyclerView.viewTreeObserver.addOnGlobalLayoutListener(
+                object : OnGlobalLayoutListener {
+
+                    override fun onGlobalLayout() {
+                        shortFeverRecyclerView.layoutManager = LinearLayoutManager(context)
+                        feverCardAdapter = ShortFeverAdapter(shortFeverRecyclerView.height)
+                        shortFeverRecyclerView.adapter = feverCardAdapter
+                        shortFeverRecyclerView.setOnTouchListener { _, _ -> true }
+
+                        shortFeverRecyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this)
+                    }
+
+                })
     }
 
     override fun setFeverCard(feverCard: List<FeverCardDTO>) {

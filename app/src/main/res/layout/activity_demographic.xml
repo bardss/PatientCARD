@@ -15,7 +15,7 @@
             android:background="@color/colorAccent" />
 
         <ImageView
-            android:id="@+id/patientAvatarImageView"
+            android:id="@+id/pageIconImageView"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_centerVertical="true"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/topAccentView"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patientAvatarImageView"
+            android:layout_toEndOf="@id/pageIconImageView"
             android:textColor="@android:color/white"
             android:textSize="22sp" />
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/topAccentView"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/patientAvatarImageView"
+            android:layout_toEndOf="@id/pageIconImageView"
             android:textColor="@android:color/black"
             android:textSize="22sp" />
 

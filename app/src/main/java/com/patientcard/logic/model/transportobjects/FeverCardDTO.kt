@@ -9,4 +9,5 @@ data class FeverCardDTO(
         var date: LocalDate? = null,
         var timeOfDay: TimeOfDay = TimeOfDay.MORNING,
         var pulse: Int = 0,
-        var temperature: Int = 0) : Serializable
+        var temperature: Int = 0
+) : Serializable
