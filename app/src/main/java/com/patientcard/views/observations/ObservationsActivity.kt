@@ -2,6 +2,7 @@ package com.patientcard.views.observations
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.ObservationDTO
@@ -63,7 +64,12 @@ class ObservationsActivity : BaseActivity(), ObservationsView {
     }
 
     override fun setObservationList(observations: List<ObservationDTO>) {
+        emptyListLinearLayout.visibility = View.GONE
         observationsAdapter?.setObservations(observations)
+    }
+
+    override fun setupEmptyView() {
+        emptyListLinearLayout.visibility = View.VISIBLE
     }
 
 }

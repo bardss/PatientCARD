@@ -40,7 +40,11 @@ class ShortFeverPresenterImpl : BaseAbstractPresenter<ShortFeverView>(), ShortFe
     override fun onGetFeverCardSuccess(feverCard: List<FeverCardDTO>) {
         view?.stopProgressDialog()
         view?.setupButtons(feverCard as ArrayList<FeverCardDTO>, model.patientName, model.patientId)
-        view?.setFeverCard(feverCard)
+        if (!feverCard.isEmpty()) {
+            view?.setFeverCard(feverCard)
+        } else {
+            view?.setupEmptyView()
+        }
     }
 
 }

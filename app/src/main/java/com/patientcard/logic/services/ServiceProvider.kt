@@ -7,7 +7,7 @@ import com.patientcard.logic.services.api.RecommendationApi
 
 object ServiceProvider {
 
-    private var BASE_URL = "http://192.168.0.100:8080"
+    private var BASE_URL = "http://192.168.0.17:8080"
 
     var patientService: PatientApi = ServiceFactory.createRetrofitService(PatientApi::class.java, BASE_URL, false, false)
     var observationsService: ObservationApi = ServiceFactory.createRetrofitService(ObservationApi::class.java, BASE_URL, false, false)

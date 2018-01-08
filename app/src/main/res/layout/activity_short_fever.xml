@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -51,10 +51,10 @@
         android:id="@+id/graphFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/headerRelativeLayout"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/headerRelativeLayout"
         android:background="@drawable/rounded_frame_accent_with_grey_border">
 
         <com.patientcard.views.customviews.TitilliumLightTextView
@@ -70,9 +70,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/graphFrameLayout"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-        android:layout_below="@id/graphFrameLayout"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -140,7 +140,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/feverCardTableFrameLayout"
-                android:nestedScrollingEnabled="false"/>
+                android:nestedScrollingEnabled="false" />
+
+            <LinearLayout
+                android:id="@+id/emptyListLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/feverCardTableFrameLayout"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="22dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:alpha="0.5"
+                    android:src="@drawable/rounded_question_mark" />
+
+                <com.patientcard.views.customviews.TitilliumRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="@string/list_of_fever_card_is_empty"
+                    android:textColor="@color/colorPrimaryGrey"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -150,8 +177,8 @@
         android:id="@+id/addFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="22dp"
         android:visibility="visible"
@@ -159,6 +186,6 @@
         app:fab_addButtonColorNormal="@color/colorAccent"
         app:fab_addButtonColorPressed="@color/colorPrimary"
         app:fab_addButtonPlusIconColor="@android:color/white"
-        app:srcCompat="@drawable/add_icon"/>
+        app:srcCompat="@drawable/add_icon" />
 
 </RelativeLayout>

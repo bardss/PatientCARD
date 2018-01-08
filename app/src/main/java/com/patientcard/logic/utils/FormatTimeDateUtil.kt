@@ -9,8 +9,12 @@ import org.threeten.bp.format.DateTimeFormatter
 object FormatTimeDateUtil {
 
     fun getFormattedDate(date: LocalDate?): String? {
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        return date?.format(dtf)
+        return if (date != null) {
+            val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+            date.format(dtf)
+        } else {
+            ""
+        }
     }
 
     fun getFormattedTime(time: LocalTime?): String? {
@@ -23,8 +27,12 @@ object FormatTimeDateUtil {
     }
 
     fun getFormattedDateTime(dateTime: LocalDateTime?): String? {
-        val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
-        return dateTime?.format(dtf)
+        return if (dateTime != null) {
+            val dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+            return dateTime?.format(dtf)
+        } else {
+            ""
+        }
     }
 
 }

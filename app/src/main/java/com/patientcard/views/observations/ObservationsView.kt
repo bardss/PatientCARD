@@ -9,4 +9,5 @@ interface ObservationsView : BaseView {
     fun setPatientName(patientName: String?)
     fun clickEditObservation(observation: ObservationDTO?)
     fun openEditObservation(patientId: String?, patientName: String?, observation: ObservationDTO?)
+    fun setupEmptyView()
 }

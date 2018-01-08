@@ -43,7 +43,11 @@ class RecommendationsPresenterImpl : BaseAbstractPresenter<RecommendationsView>(
     }
 
     override fun onGetRecommendationsSuccess(recommendations: List<RecommendationDTO>) {
-        view?.setRecommendationsList(recommendations)
+        if (!recommendations.isEmpty()) {
+            view?.setRecommendationsList(recommendations)
+        } else {
+            view?.setupEmptyView()
+        }
         view?.stopProgressDialog()
     }
 

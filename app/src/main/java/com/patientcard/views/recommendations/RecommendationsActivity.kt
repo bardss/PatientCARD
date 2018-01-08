@@ -2,6 +2,7 @@ package com.patientcard.views.recommendations
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.RecommendationDTO
@@ -60,7 +61,12 @@ class RecommendationsActivity : BaseActivity(), RecommendationsView {
     }
 
     override fun setRecommendationsList(recommendations: List<RecommendationDTO>) {
+        emptyListLinearLayout.visibility = View.GONE
         recommendationsAdapter?.setRecommendations(recommendations)
+    }
+
+    override fun setupEmptyView() {
+        emptyListLinearLayout.visibility = View.VISIBLE
     }
 
     override fun setPatientName(patientName: String?) {

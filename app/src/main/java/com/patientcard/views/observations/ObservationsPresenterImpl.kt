@@ -35,7 +35,11 @@ class ObservationsPresenterImpl : BaseAbstractPresenter<ObservationsView>(), Obs
     }
 
     override fun onGetObservationsSuccess(observations: List<ObservationDTO>) {
-        view?.setObservationList(observations)
+        if (!observations.isEmpty()) {
+            view?.setObservationList(observations)
+        } else {
+            view?.setupEmptyView()
+        }
         view?.stopProgressDialog()
     }
 

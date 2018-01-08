@@ -57,4 +57,7 @@
     <string name="delete">USUŃ</string>
     <string name="edit_observation">EDYTUJ OBSERWACJE</string>
     <string name="edit_recommendation">EDYTUJ REKOMENDACJE</string>
+    <string name="list_of_observations_is_empty">Lista obserwacji jest pusta!</string>
+    <string name="list_of_recommendations_is_empty">Lista zleceń jest pusta!</string>
+    <string name="list_of_fever_card_is_empty">Karta gorączkowa jest pusta!</string>
 </resources>

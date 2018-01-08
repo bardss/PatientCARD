@@ -9,4 +9,5 @@ interface RecommendationsView : BaseView {
     fun setPatientName(patientName: String?)
     fun clickEditRecommendation(recommendation: RecommendationDTO?)
     fun openEditRecommendation(patientId: String?, patientName: String?, recommendation: RecommendationDTO?)
+    fun setupEmptyView()
 }
