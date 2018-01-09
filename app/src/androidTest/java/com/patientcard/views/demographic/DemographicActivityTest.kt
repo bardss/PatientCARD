@@ -1,7 +1,7 @@
 package com.patientcard.views.demographic
 
 
-import MockData
+import UITestData
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -41,7 +41,7 @@ class DemographicActivityTest {
 
     @Before
     fun initTestData() {
-        patient = MockData.getPatient()
+        patient = UITestData.getPatient()
 
         `when`(patientApi.getPatient("122075")).thenReturn(Observable.just(patient))
         ServiceProvider.patientService = patientApi
@@ -91,7 +91,7 @@ class DemographicActivityTest {
     private fun moveToDemographic() {
         onView(withId(R.id.qrCodeEditText))
                 .check(matches(isCompletelyDisplayed()))
-                .perform(typeText(MockData.getQRCode()))
+                .perform(typeText(UITestData.getQRCode()))
 
         onView(withId(R.id.openButton))
                 .check(matches(isCompletelyDisplayed()))

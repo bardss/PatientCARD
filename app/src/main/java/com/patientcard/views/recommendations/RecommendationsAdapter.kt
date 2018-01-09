@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_recommendations.view.*
 import java.util.*
 
 
-class RecommendationsAdapter(var context: Context) : RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
+class RecommendationsAdapter(var context: Context?) : RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
 
     var recommendationsList: List<RecommendationDTO>? = null
 
@@ -30,12 +30,18 @@ class RecommendationsAdapter(var context: Context) : RecyclerView.Adapter<Recomm
         holder.eveningTimeTextView.text = FormatTimeDateUtil.getFormattedTime(recommendationsList?.get(position)?.evening)
         holder.nightTimeTextView.text = FormatTimeDateUtil.getFormattedTime(recommendationsList?.get(position)?.night)
         holder.editImageView.setOnClickListener {
-            (context as RecommendationsView).clickEditRecommendation(recommendationsList?.get(position))
+            if (context != null && context is RecommendationsView) {
+                (context as RecommendationsView).clickEditRecommendation(getListItem(position))
+            }
         }
     }
 
     override fun getItemCount(): Int {
         return if (recommendationsList == null) 0 else recommendationsList?.size!!
+    }
+
+    fun getListItem(position: Int): RecommendationDTO? {
+        return recommendationsList?.get(position)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

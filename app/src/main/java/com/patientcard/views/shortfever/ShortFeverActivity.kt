@@ -16,10 +16,6 @@ import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_short_fever.*
 
-
-
-
-
 @ActivityView(layout = R.layout.activity_short_fever, presenter = ShortFeverPresenterImpl::class)
 class ShortFeverActivity : BaseActivity(), ShortFeverView {
 

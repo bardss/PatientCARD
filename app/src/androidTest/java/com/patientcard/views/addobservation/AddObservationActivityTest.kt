@@ -1,7 +1,7 @@
 package com.patientcard.views.addobservation
 
 
-import MockData
+import UITestData
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -52,8 +52,8 @@ class AddObservationActivityTest {
 
     @Before
     fun initTestData() {
-        patient = MockData.getPatient()
-        observations = MockData.getObservationsWithOneItem()
+        patient = UITestData.getPatient()
+        observations = UITestData.getObservationsWithOneItem()
 
         `when`(patientApi.getPatient("122075")).thenReturn(Observable.just(patient))
         ServiceProvider.patientService = patientApi
@@ -118,7 +118,7 @@ class AddObservationActivityTest {
     private fun moveToAddObservations() {
         onView(withId(R.id.qrCodeEditText))
                 .check(matches(isCompletelyDisplayed()))
-                .perform(typeText(MockData.getQRCode()))
+                .perform(typeText(UITestData.getQRCode()))
 
         onView(withId(R.id.openButton))
                 .check(matches(isCompletelyDisplayed()))

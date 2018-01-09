@@ -1,7 +1,7 @@
 package com.patientcard.views.addfevercard
 
 
-import MockData
+import UITestData
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -54,8 +54,8 @@ class AddFeverCardActivityTest {
 
     @Before
     fun initTestData() {
-        patient = MockData.getPatient()
-        feverCardList = MockData.getFeverCardList()
+        patient = UITestData.getPatient()
+        feverCardList = UITestData.getFeverCardList()
 
         `when`(patientApi.getPatient("122075")).thenReturn(Observable.just(patient))
         ServiceProvider.patientService = patientApi
@@ -120,7 +120,7 @@ class AddFeverCardActivityTest {
     private fun moveToAddFeverCard() {
         onView(withId(R.id.qrCodeEditText))
                 .check(matches(isCompletelyDisplayed()))
-                .perform(typeText(MockData.getQRCode()))
+                .perform(typeText(UITestData.getQRCode()))
 
         onView(withId(R.id.openButton))
                 .check(matches(isCompletelyDisplayed()))

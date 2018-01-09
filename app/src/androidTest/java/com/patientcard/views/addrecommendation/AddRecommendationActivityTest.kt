@@ -1,7 +1,7 @@
 package com.patientcard.views.addrecommendation
 
 
-import MockData
+import UITestData
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -52,8 +52,8 @@ class AddRecommendationActivityTest {
 
     @Before
     fun initTestData() {
-        patient = MockData.getPatient()
-        recommendations = MockData.getRecommendations()
+        patient = UITestData.getPatient()
+        recommendations = UITestData.getRecommendations()
 
         `when`(patientApi.getPatient("122075")).thenReturn(Observable.just(patient))
         ServiceProvider.patientService = patientApi
@@ -122,7 +122,7 @@ class AddRecommendationActivityTest {
     private fun moveToAddRecommendations() {
         onView(withId(R.id.qrCodeEditText))
                 .check(matches(isCompletelyDisplayed()))
-                .perform(typeText(MockData.getQRCode()))
+                .perform(typeText(UITestData.getQRCode()))
 
         onView(withId(R.id.openButton))
                 .check(matches(isCompletelyDisplayed()))
