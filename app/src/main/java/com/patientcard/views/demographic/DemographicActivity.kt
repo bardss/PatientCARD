@@ -4,6 +4,8 @@ import android.content.Intent
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.PatientDTO
+import com.patientcard.logic.utils.AnimUtils
+import com.patientcard.views.access.AccessActivity
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.observations.ObservationsActivity
@@ -16,6 +18,7 @@ import com.yanzhenjie.permission.PermissionListener
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_demographic.*
+import kotlinx.android.synthetic.main.dialog_logout.*
 
 @ActivityView(layout = R.layout.activity_demographic, presenter = DemographicPresenterImpl::class)
 class DemographicActivity : BaseActivity(), DemographicView {
@@ -25,6 +28,41 @@ class DemographicActivity : BaseActivity(), DemographicView {
 
     override fun providePresenter(): BasePresenter {
         return presenter
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setupScanQRButton()
+        setupLogoutButton()
+        setupLogoutDialogButtons()
+    }
+
+    private fun setupLogoutButton() {
+        doctorImageView.setOnClickListener {
+            AnimUtils.fadeIn(300, logoutDialogLayout)
+        }
+        doctorNameTextView.setOnClickListener {
+            AnimUtils.fadeIn(300, logoutDialogLayout)
+        }
+    }
+
+    private fun setupLogoutDialogButtons() {
+        logoutButton.setOnClickListener {
+            AnimUtils.fadeIn(300, logoutDialogLayout)
+            logout()
+        }
+        backButton.setOnClickListener {
+            AnimUtils.fadeOut(300, logoutDialogLayout)
+        }
+    }
+
+    private fun setupScanQRButton() {
+        qrCodeImageView.setOnClickListener {
+            checkPermissionAndOpenQReader()
+        }
+        qrCodeTextView.setOnClickListener {
+            checkPermissionAndOpenQReader()
+        }
     }
 
     override fun fillFields(patient: PatientDTO) {
@@ -48,6 +86,14 @@ class DemographicActivity : BaseActivity(), DemographicView {
                     .putExtra(IntentKeys.PATIENT_ID, qrCode)
                     .putExtra(IntentKeys.PATIENT_NAME, name))
         }
+    }
+
+    private fun logout() {
+        presenter.deleteToken()
+        startActivity(Intent(this, AccessActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+        finish()
     }
 
     override fun onBackPressed() {

@@ -1,176 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="110dp">
-
-        <View
-            android:id="@+id/topAccentView"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/colorAccent" />
-
-        <ImageView
-            android:id="@+id/pageIconImageView"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/patient_avatar" />
-
-        <com.patientcard.views.customviews.TitilliumLightTextView
-            android:id="@+id/nameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/topAccentView"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/pageIconImageView"
-            android:textColor="@android:color/white"
-            android:textSize="22sp" />
-
-        <com.patientcard.views.customviews.TitilliumLightTextView
-            android:id="@+id/patientCodeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/topAccentView"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/pageIconImageView"
-            android:textColor="@android:color/black"
-            android:textSize="22sp" />
-
-    </RelativeLayout>
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/feverMenuRelativeLayout"
+            android:id="@+id/toolbarRelativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_frame_white_with_grey_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_height="30dp"
+            android:background="@color/colorAccent"
+            android:paddingTop="5dp">
 
             <ImageView
-                android:id="@+id/feverCardImageView"
-                android:layout_width="match_parent"
+                android:id="@+id/qrCodeImageView"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:layout_above="@id/feverMenuFrameLayout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/fever_icon" />
+                android:layout_marginStart="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/qr_code_icon" />
 
-            <FrameLayout
-                android:id="@+id/feverMenuFrameLayout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/rounded_frame_accent_with_grey_border">
+            <com.patientcard.views.customviews.TitilliumRegularTextView
+                android:id="@+id/qrCodeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/qrCodeImageView"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:text="@string/scan_qr_code"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
-                <com.patientcard.views.customviews.TitilliumLightTextView
-                    android:id="@+id/feverCardTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/fever_card"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
+            <com.patientcard.views.customviews.TitilliumRegularTextView
+                android:id="@+id/doctorNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
-            </FrameLayout>
+            <ImageView
+                android:id="@+id/doctorImageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:layout_toStartOf="@id/doctorNameTextView"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/patient_avatar" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/recommendationsMenuRelativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_frame_white_with_grey_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_height="110dp">
+
+            <View
+                android:id="@+id/topAccentView"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@color/colorAccent" />
 
             <ImageView
-                android:id="@+id/recommendationImageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/recommendationsMenuFrameLayout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/recommendations_icon" />
+                android:id="@+id/pageIconImageView"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/patient_avatar" />
 
-            <FrameLayout
-                android:id="@+id/recommendationsMenuFrameLayout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/rounded_frame_accent_with_grey_border">
+            <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/topAccentView"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/pageIconImageView"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
 
-                <com.patientcard.views.customviews.TitilliumLightTextView
-                    android:id="@+id/recommendationTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/recommendation_card"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-
-            </FrameLayout>
+            <com.patientcard.views.customviews.TitilliumLightTextView
+                android:id="@+id/patientCodeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topAccentView"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/pageIconImageView"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/observationsMenuRelativeLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_frame_white_with_grey_border"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/observationImageView"
+            <RelativeLayout
+                android:id="@+id/feverMenuRelativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/observationsMenuFrameLayout"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/observations_icon" />
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_frame_white_with_grey_border"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
 
-            <FrameLayout
-                android:id="@+id/observationsMenuFrameLayout"
+                <ImageView
+                    android:id="@+id/feverCardImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/feverMenuFrameLayout"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/fever_icon" />
+
+                <FrameLayout
+                    android:id="@+id/feverMenuFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/rounded_frame_accent_with_grey_border">
+
+                    <com.patientcard.views.customviews.TitilliumLightTextView
+                        android:id="@+id/feverCardTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/fever_card"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/recommendationsMenuRelativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/rounded_frame_accent_with_grey_border">
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_frame_white_with_grey_border"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
 
-                <com.patientcard.views.customviews.TitilliumLightTextView
-                    android:id="@+id/observationTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/observation_card"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
+                <ImageView
+                    android:id="@+id/recommendationImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/recommendationsMenuFrameLayout"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/recommendations_icon" />
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/recommendationsMenuFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/rounded_frame_accent_with_grey_border">
 
-        </RelativeLayout>
+                    <com.patientcard.views.customviews.TitilliumLightTextView
+                        android:id="@+id/recommendationTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/recommendation_card"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/observationsMenuRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_frame_white_with_grey_border"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/observationImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/observationsMenuFrameLayout"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/observations_icon" />
+
+                <FrameLayout
+                    android:id="@+id/observationsMenuFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/rounded_frame_accent_with_grey_border">
+
+                    <com.patientcard.views.customviews.TitilliumLightTextView
+                        android:id="@+id/observationTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/observation_card"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <include layout="@layout/dialog_logout"/>
+
+</RelativeLayout>

@@ -24,4 +24,12 @@ object Database {
     fun putLogin(login: String) {
         Paper.book().write(DatabaseKeys.LOGIN.name, login)
     }
+
+    fun putDoctorName(): String {
+        return Paper.book().read(DatabaseKeys.DOCTOR_NAME.name) ?: return ""
+    }
+
+    fun getDoctorName(doctorName: String) {
+        Paper.book().write(DatabaseKeys.DOCTOR_NAME.name, doctorName)
+    }
 }

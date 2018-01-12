@@ -2,6 +2,7 @@ package com.patientcard.views.demographic
 
 import android.content.Intent
 import com.patientcard.R
+import com.patientcard.logic.database.Database
 import com.patientcard.logic.model.businessobjects.IntentKeys
 import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.logic.services.ServiceManager
@@ -21,6 +22,10 @@ class DemographicPresenterImpl : BaseAbstractPresenter<DemographicView>(), Demog
     override fun onViewAttached(view: DemographicView?) {
         super.onViewAttached(view)
         getPatientDetails()
+    }
+
+    override fun deleteToken() {
+        Database.deleteToken()
     }
 
     private fun getPatientDetails() {

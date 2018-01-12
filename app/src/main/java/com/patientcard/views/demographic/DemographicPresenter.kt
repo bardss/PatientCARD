@@ -6,5 +6,6 @@ import com.patientcard.views.base.BasePresenter
 interface DemographicPresenter : BasePresenter {
 
     override fun initExtras(intent: Intent)
+    fun deleteToken()
 }
 
