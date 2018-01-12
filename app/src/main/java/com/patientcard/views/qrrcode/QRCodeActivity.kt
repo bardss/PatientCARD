@@ -29,8 +29,8 @@ class QRCodeActivity : BaseActivity(), QRCodeView {
         return presenter
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         qrReader?.initAndStart(qrReaderSurfaceView)
     }
 
@@ -59,5 +59,6 @@ class QRCodeActivity : BaseActivity(), QRCodeView {
     private fun openPatientDemographic(qrCode: String) {
         startActivity(Intent(this, DemographicActivity::class.java)
                 .putExtra(IntentKeys.QR_CODE, qrCode))
+        finish()
     }
 }

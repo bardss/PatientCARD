@@ -17,4 +17,11 @@ object Database {
         Paper.book().delete(DatabaseKeys.TOKEN.name)
     }
 
+    fun getLogin(): String {
+        return Paper.book().read(DatabaseKeys.LOGIN.name) ?: return ""
+    }
+
+    fun putLogin(login: String) {
+        Paper.book().write(DatabaseKeys.LOGIN.name, login)
+    }
 }

@@ -28,6 +28,10 @@ class AccessActivity : BaseActivity(), AccessView {
         setupLoginButton()
     }
 
+    override fun fillLogin(login: String) {
+        loginEditText.setText(login)
+    }
+
     private fun setupLoginButton() {
         loginButton.setOnClickListener {
             val login = loginEditText.text.toString()
@@ -40,7 +44,6 @@ class AccessActivity : BaseActivity(), AccessView {
         startActivity(Intent(this, QRCodeActivity::class.java)
                 .putExtra(IntentKeys.CAMERA_PERMISSION, cameraPermission))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-        finish()
     }
 
     override fun checkPermission(){

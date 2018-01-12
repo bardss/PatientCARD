@@ -7,8 +7,12 @@ import com.patientcard.logic.model.transportobjects.PatientDTO
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.observations.ObservationsActivity
+import com.patientcard.views.qrrcode.QRCodeActivity
 import com.patientcard.views.recommendations.RecommendationsActivity
 import com.patientcard.views.shortfever.ShortFeverActivity
+import com.yanzhenjie.permission.AndPermission
+import com.yanzhenjie.permission.Permission
+import com.yanzhenjie.permission.PermissionListener
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_demographic.*
@@ -46,4 +50,33 @@ class DemographicActivity : BaseActivity(), DemographicView {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        checkPermissionAndOpenQReader()
+    }
+
+    private fun openQRReaderActivity(cameraPermission: Boolean) {
+        startActivity(Intent(this, QRCodeActivity::class.java)
+                .putExtra(IntentKeys.CAMERA_PERMISSION, cameraPermission))
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        finish()
+    }
+
+    private fun checkPermissionAndOpenQReader(){
+        AndPermission
+                .with(this)
+                .requestCode(0)
+                .permission(Permission.CAMERA)
+                .callback(object : PermissionListener {
+                    override fun onSucceed(requestCode: Int, grantPermissions: List<String>) {
+                        openQRReaderActivity(true)
+                    }
+
+                    override fun onFailed(requestCode: Int, deniedPermissions: List<String>) {
+                        openQRReaderActivity(false)
+                    }
+                })
+                .start()
+
+    }
 }

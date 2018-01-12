@@ -1,4 +1,6 @@
 package com.patientcard.views.access
 
-class AccessModel
+class AccessModel {
+    var login: String = ""
+}
 

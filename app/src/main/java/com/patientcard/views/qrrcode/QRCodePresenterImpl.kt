@@ -15,7 +15,10 @@ class QRCodePresenterImpl : BaseAbstractPresenter<QRCodeView>(), QRCodePresenter
 
     override fun onViewAttached(view: QRCodeView?) {
         super.onViewAttached(view)
-        setupViews()
+        if (model.isInitializing) {
+            setupViews()
+            model.isInitializing = false
+        }
     }
 
     private fun setupViews() {

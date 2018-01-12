@@ -1,5 +1,6 @@
 package com.patientcard.logic.database
 
-enum class DatabaseKeys() {
-    TOKEN
+enum class DatabaseKeys {
+    TOKEN,
+    LOGIN
 }
