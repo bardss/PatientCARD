@@ -6,6 +6,7 @@ import com.patientcard.views.base.BasePresenter
 interface AccessPresenter : BasePresenter {
 
     override fun initExtras(intent: Intent)
+    fun loginDoctor(login: String, password: String)
 
 }
 

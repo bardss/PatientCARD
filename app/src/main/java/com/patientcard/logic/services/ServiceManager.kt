@@ -4,10 +4,7 @@ import android.widget.Toast
 import com.google.gson.Gson
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.ResponseErrorMessage
-import com.patientcard.logic.model.transportobjects.FeverCardDTO
-import com.patientcard.logic.model.transportobjects.ObservationDTO
-import com.patientcard.logic.model.transportobjects.PatientDTO
-import com.patientcard.logic.model.transportobjects.RecommendationDTO
+import com.patientcard.logic.model.transportobjects.*
 import com.patientcard.logic.services.receivers.*
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.logic.utils.ToastUtil
@@ -23,6 +20,18 @@ import timber.log.Timber
 import java.lang.Exception
 
 object ServiceManager {
+
+    fun loginDoctor(receiver: LoginDoctorReciever, login: String, password: String) {
+        setupRequest(ServiceProvider
+                .oauthApi
+                .loginDoctor(login, password, "patientCard", "password"),
+                Action1 { receiver.onLoginDoctorSuccess(it as TokenDTO) },
+                Action1 {
+                    handleError(it)
+                    receiver.onLoginDoctorError()
+                },
+                Action0 { Timber.e("OnCompleted") })
+    }
 
     fun getPatient(receiver: GetPatientReciever, qrCode: String) {
         setupRequest(ServiceProvider
@@ -165,10 +174,8 @@ object ServiceManager {
 
     private fun handleError(error: Throwable) {
         val msg = getResponseMessage(error)
-
         if (error is HttpException) {
             val context = ApplicationContext.appContext
-
             if (error.code() != 401 && error.code() != 404) {
                 if (error.code() == 409 && msg != null && !msg.isEmpty()) {
                     ToastUtil.show(context, msg, Toast.LENGTH_LONG)

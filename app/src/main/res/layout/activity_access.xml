@@ -44,7 +44,7 @@
                 android:src="@drawable/login" />
 
             <com.patientcard.views.customviews.TitilliumLightEditText
-                android:id="@+id/emailEditText"
+                android:id="@+id/loginEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"

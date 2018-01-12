@@ -36,7 +36,7 @@
     <string name="person_placeholder">Roman Karczoch</string>
     <string name="note">Notatka:</string>
     <string name="long_text_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim…</string>
-    <string name="sth_wrong_check_internet_connection">Coś poszło nie ta. Sprawdź połączenie internetowe..</string>
+    <string name="sth_wrong_check_internet_connection">Coś poszło nie ta. Sprawdź połączenie internetowe.</string>
     <string name="authorization_error">Problem autoryzacji. Zaloguj się ponownie.</string>
     <string name="enter_patient_qr_code">Wpisz QR Code pacjenta</string>
     <string name="open">OTWÓRZ</string>

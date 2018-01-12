@@ -35,7 +35,7 @@ class AccessActivityTest {
 
         assertHasDrawable(R.id.emailImageView, R.drawable.login)
 
-        onView(withId(R.id.emailEditText))
+        onView(withId(R.id.loginEditText))
                 .check(matches(isCompletelyDisplayed()))
 
         onView(withId(R.id.passwordTextView))

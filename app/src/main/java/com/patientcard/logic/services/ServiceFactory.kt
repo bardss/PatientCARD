@@ -1,8 +1,10 @@
 package com.patientcard.logic.services
 
 import com.google.gson.*
+import com.patientcard.logic.database.Database
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.threeten.bp.LocalDate
@@ -54,25 +56,36 @@ object ServiceFactory {
     private fun getGson(): Gson {
         return GsonBuilder()
                 .setLenient()
-                .registerTypeAdapter(LocalDateTime::class.java, JsonDeserializer { json, typeOfT, context -> LocalDateTime.parse(json.asString) })
-                .registerTypeAdapter(LocalDateTime::class.java, JsonSerializer<LocalDateTime> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
-                .registerTypeAdapter(LocalDate::class.java, JsonDeserializer { json, typeOfT, context -> LocalDate.parse(json.asString) })
-                .registerTypeAdapter(LocalDate::class.java, JsonSerializer<LocalDate> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
-                .registerTypeAdapter(LocalTime::class.java, JsonDeserializer { json, typeOfT, context -> LocalTime.parse(json.asString) })
-                .registerTypeAdapter(LocalTime::class.java, JsonSerializer<LocalTime> { src, typeOfSrc, context -> JsonPrimitive(src.toString()) })
+                .registerTypeAdapter(LocalDateTime::class.java, JsonDeserializer { json, _, _ -> LocalDateTime.parse(json.asString) })
+                .registerTypeAdapter(LocalDateTime::class.java, JsonSerializer<LocalDateTime> { src, _, _ -> JsonPrimitive(src.toString()) })
+                .registerTypeAdapter(LocalDate::class.java, JsonDeserializer { json, _, _ -> LocalDate.parse(json.asString) })
+                .registerTypeAdapter(LocalDate::class.java, JsonSerializer<LocalDate> { src, _, _ -> JsonPrimitive(src.toString()) })
+                .registerTypeAdapter(LocalTime::class.java, JsonDeserializer { json, _, _ -> LocalTime.parse(json.asString) })
+                .registerTypeAdapter(LocalTime::class.java, JsonSerializer<LocalTime> { src, _, _ -> JsonPrimitive(src.toString()) })
                 .serializeNulls()
                 .create()
     }
 }
 
-class AddHeaderInterceptor(internal var isRefreshToken: Boolean) : Interceptor {
+class AddHeaderInterceptor(private var isRefreshToken: Boolean) : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val builder = chain.request().newBuilder()
+        addAuthorizationHeader(builder, isRefreshToken)
 
         return chain.proceed(builder.build())
+    }
+
+    private fun addAuthorizationHeader(builder: Request.Builder, isRefreshToken: Boolean) {
+        if (!isRefreshToken) {
+            val token = Database.getToken()
+            val accessToken = token.access_token
+            builder.addHeader("Authorization", "Bearer " + accessToken)
+        } else {
+            builder.addHeader("Authorization", ServiceProvider.AuthorizationHeader)
+        }
     }
 
 }

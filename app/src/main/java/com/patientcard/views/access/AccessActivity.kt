@@ -29,7 +29,11 @@ class AccessActivity : BaseActivity(), AccessView {
     }
 
     private fun setupLoginButton() {
-        loginButton.setOnClickListener { checkPermission() }
+        loginButton.setOnClickListener {
+            val login = loginEditText.text.toString()
+            val password = passwordEditText.text.toString()
+            presenter.loginDoctor(login, password)
+        }
     }
 
     private fun openQRReaderActivity(cameraPermission: Boolean) {
@@ -39,7 +43,7 @@ class AccessActivity : BaseActivity(), AccessView {
         finish()
     }
 
-    private fun checkPermission(){
+    override fun checkPermission(){
         AndPermission
                 .with(this)
                 .requestCode(0)
