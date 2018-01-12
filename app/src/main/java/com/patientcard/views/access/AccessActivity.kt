@@ -3,6 +3,7 @@ package com.patientcard.views.access
 import android.content.Intent
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.IntentKeys
+import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import com.patientcard.views.qrrcode.QRCodeActivity
@@ -61,6 +62,11 @@ class AccessActivity : BaseActivity(), AccessView {
                     }
                 })
                 .start()
-
     }
+
+    override fun setInputErrors() {
+        loginEditText.error = ResUtil.getString(R.string.wrong_login_or_password)
+        passwordEditText.error = ResUtil.getString(R.string.wrong_login_or_password)
+    }
+    
 }

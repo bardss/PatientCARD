@@ -28,7 +28,7 @@ object ServiceManager {
                 Action1 { receiver.onLoginDoctorSuccess(it as TokenDTO) },
                 Action1 {
                     handleError(it)
-                    receiver.onLoginDoctorError()
+                    receiver.onLoginDoctorError(it)
                 },
                 Action0 { Timber.e("OnCompleted") })
     }
@@ -176,7 +176,7 @@ object ServiceManager {
         val msg = getResponseMessage(error)
         if (error is HttpException) {
             val context = ApplicationContext.appContext
-            if (error.code() != 401 && error.code() != 404) {
+            if (error.code() != 404 && error.code() != 401 && error.code() != 404) {
                 if (error.code() == 409 && msg != null && !msg.isEmpty()) {
                     ToastUtil.show(context, msg, Toast.LENGTH_LONG)
                 } else {

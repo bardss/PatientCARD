@@ -8,6 +8,7 @@ import com.patientcard.logic.services.ServiceManager
 import com.patientcard.logic.services.receivers.LoginDoctorReciever
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseAbstractPresenter
+import retrofit2.HttpException
 
 class AccessPresenterImpl : BaseAbstractPresenter<AccessView>(), AccessPresenter, LoginDoctorReciever {
 
@@ -40,7 +41,10 @@ class AccessPresenterImpl : BaseAbstractPresenter<AccessView>(), AccessPresenter
         view?.stopProgressDialog()
     }
 
-    override fun onLoginDoctorError() {
+    override fun onLoginDoctorError(error: Throwable) {
+        if (error is HttpException && error.code() == 400) {
+            view?.setInputErrors()
+        }
         view?.stopProgressDialog()
     }
     

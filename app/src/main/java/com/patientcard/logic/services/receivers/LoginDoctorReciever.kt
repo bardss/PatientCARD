@@ -6,5 +6,5 @@ interface LoginDoctorReciever {
 
     fun onLoginDoctorSuccess(tokenDTO: TokenDTO)
 
-    fun onLoginDoctorError()
+    fun onLoginDoctorError(error: Throwable)
 }

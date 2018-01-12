@@ -64,4 +64,5 @@
     <string name="back">COFNIJ</string>
     <string name="logout">WYLOGUJ</string>
     <string name="are_you_sure_that_you_want_to_logout">Jesteś pewien, że chcesz się WYLOGOWAĆ?</string>
+    <string name="wrong_login_or_password">Niepoprawny LOGIN lub HASŁO</string>
 </resources>
