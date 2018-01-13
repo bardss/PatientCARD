@@ -4,7 +4,7 @@ import com.patientcard.logic.services.api.*
 
 object ServiceProvider {
 
-    private var BASE_URL = "http://192.168.0.101:8080"
+    private var BASE_URL = "http://192.168.8.108:8080"
     var AuthorizationHeader = "Basic cGF0aWVudENhcmQ6c2VjcmV0"
 
     var patientService: PatientApi = ServiceFactory.createRetrofitService(PatientApi::class.java, BASE_URL, false, true)

@@ -6,7 +6,6 @@ import android.graphics.Typeface
 import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
-import com.blankj.utilcode.util.ConvertUtils
 import com.patientcard.R
 import com.patientcard.logic.model.businessobjects.PickerDialogType
 import kotlinx.android.synthetic.main.layout_picker.view.*
@@ -69,14 +68,14 @@ class PickerDialog(context: Context, private val pickerType: PickerDialogType) :
             PickerDialogType.DATE_PICKER -> {
                 firstWheelDivider.text = "—"
                 secondWheelDivider.text = "—"
-                firstWheelPicker.layoutParams.width = ConvertUtils.dp2px(50F)
-                secondWheelPicker.layoutParams.width = ConvertUtils.dp2px(130F)
-                thirdWheelPicker.layoutParams.width = ConvertUtils.dp2px(70F)
+                firstWheelPicker.layoutParams.width = DpPxUtil.dp2px(50F).toInt()
+                secondWheelPicker.layoutParams.width = DpPxUtil.dp2px(130F).toInt()
+                thirdWheelPicker.layoutParams.width = DpPxUtil.dp2px(70F).toInt()
             }
             PickerDialogType.TIME_PICKER -> {
                 firstWheelDivider.text = ":"
-                firstWheelPicker.layoutParams.width = ConvertUtils.dp2px(75F)
-                secondWheelPicker.layoutParams.width = ConvertUtils.dp2px(75F)
+                firstWheelPicker.layoutParams.width = DpPxUtil.dp2px(75F).toInt()
+                secondWheelPicker.layoutParams.width = DpPxUtil.dp2px(75F).toInt()
             }
         }
     }

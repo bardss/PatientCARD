@@ -14,15 +14,15 @@ object ResUtil {
     }
 
     fun getColor(resourceId: Int): Int? {
-        return ApplicationContext.appContext?.getResources()?.getColor(resourceId)
+        return ApplicationContext.appContext?.resources?.getColor(resourceId)
     }
 
     fun getBoolean(resourceId: Int): Boolean? {
-        return ApplicationContext.appContext?.getResources()?.getBoolean(resourceId)
+        return ApplicationContext.appContext?.resources?.getBoolean(resourceId)
     }
 
     fun getDimen(resourceId: Int): Float? {
-        return ApplicationContext.appContext?.getResources()?.getDimension(resourceId)
+        return ApplicationContext.appContext?.resources?.getDimension(resourceId)
     }
 
 }

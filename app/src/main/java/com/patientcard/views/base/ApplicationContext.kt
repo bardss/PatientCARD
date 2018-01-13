@@ -15,7 +15,6 @@ class ApplicationContext : MultiDexApplication() {
         MultiDex.install(this)
         AndroidThreeTen.init(this)
         Paper.init(this)
-//        Utils.init(this)
     }
 
     companion object {

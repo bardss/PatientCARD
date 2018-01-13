@@ -52,7 +52,6 @@ dependencies {
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
     implementation 'com.github.rey5137:material:1.2.4'
     implementation 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
-    implementation 'com.blankj:utilcode:1.8.2'
     implementation 'io.paperdb:paperdb:2.6'
 
     //retrofit
