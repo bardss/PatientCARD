@@ -3,6 +3,7 @@ package com.patientcard.logic.services
 import android.widget.Toast
 import com.google.gson.Gson
 import com.patientcard.R
+import com.patientcard.logic.database.Database
 import com.patientcard.logic.model.businessobjects.ResponseErrorMessage
 import com.patientcard.logic.model.transportobjects.*
 import com.patientcard.logic.services.receivers.*
@@ -15,6 +16,7 @@ import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.functions.Action0
 import rx.functions.Action1
+import rx.functions.Func1
 import rx.schedulers.Schedulers
 import timber.log.Timber
 import java.lang.Exception
@@ -167,9 +169,16 @@ object ServiceManager {
 
     private fun setupRequest(observable: Observable<*>, onNext: Action1<Any>, onError: Action1<Throwable>, onCompleted: Action0): Subscription {
         return observable
+                .retryWhen(getRefreshNotificationHandler())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext, onError, onCompleted)
+    }
+
+    private fun refreshToken(refreshToken: String?): Observable<*> {
+        return ServiceProvider.oauthApi.refreshToken(refreshToken!!,"patientCard", "refresh_token")
+                .subscribeOn(Schedulers.newThread())
+                .doOnNext { token -> Database.putToken(token) }
     }
 
     private fun handleError(error: Throwable) {
@@ -201,6 +210,20 @@ object ServiceManager {
 
         }
         return msg
+    }
+
+    private fun getRefreshNotificationHandler(): Func1<Observable<out Throwable>, Observable<Any>> {
+        return Func1 { observable ->
+            observable
+                    .zipWith(Observable.range(1, 3)) { error, _ -> error }
+                    .flatMap(Func1<Any, Observable<*>> { error ->
+                        if (error is HttpException && error.code() == 401) {
+                            val refreshToken = Database.getToken().refresh_token
+                            return@Func1 refreshToken(refreshToken)
+                        }
+                        Observable.error<Any>(error as Throwable)
+                    })
+        }
     }
 
 }

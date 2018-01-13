@@ -15,4 +15,11 @@ interface OAuthApi {
             @Query("grant_type") grant_type: String
             ): Observable<TokenDTO>
 
+    @POST("/oauth/token")
+    fun refreshToken(
+            @Query("refresh_token") refresh_token: String,
+            @Query("client_id") client_id: String,
+            @Query("grant_type") grant_type: String
+    ): Observable<TokenDTO>
+
 }
