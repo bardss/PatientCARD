@@ -3,7 +3,6 @@ package com.patientcard.views.base
 import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
-import com.blankj.utilcode.util.Utils
 import com.jakewharton.threetenabp.AndroidThreeTen
 import io.paperdb.Paper
 
@@ -16,7 +15,7 @@ class ApplicationContext : MultiDexApplication() {
         MultiDex.install(this)
         AndroidThreeTen.init(this)
         Paper.init(this)
-        Utils.init(this)
+//        Utils.init(this)
     }
 
     companion object {
