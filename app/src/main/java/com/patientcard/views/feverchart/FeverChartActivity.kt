@@ -5,13 +5,14 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.patientcard.R
 import com.patientcard.logic.model.transportobjects.FeverCardDTO
-import com.patientcard.logic.utils.FormatTimeDateUtil.getFormattedDate
 import com.patientcard.logic.utils.ResUtil
 import com.patientcard.views.base.BaseActivity
 import com.patientcard.views.base.BasePresenter
 import easymvp.annotation.ActivityView
 import easymvp.annotation.Presenter
 import kotlinx.android.synthetic.main.activity_fever_chart.*
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 @ActivityView(layout = R.layout.activity_fever_chart, presenter = FeverChartPresenterImpl::class)
 class FeverChartActivity : BaseActivity(), FeverChartView {
@@ -26,13 +27,13 @@ class FeverChartActivity : BaseActivity(), FeverChartView {
     override fun setupFeverGraph(feverCard: ArrayList<FeverCardDTO>?) {
         val pulsePoints = arrayOfNulls<DataPoint>(feverCard?.size!!)
         for (i in 0 until feverCard.size) {
-            pulsePoints[i] = DataPoint(i.toDouble(), feverCard[i].pulse.toDouble())
+            pulsePoints[feverCard.size-(i+1)] = DataPoint(feverCard.size-(i+1).toDouble(), feverCard[i].pulse.toDouble())
         }
         val seriesPulse = LineGraphSeries<DataPoint>(pulsePoints)
 
         val temperaturePoints = arrayOfNulls<DataPoint>(feverCard.size)
         for (i in 0 until feverCard.size) {
-            temperaturePoints[i] = DataPoint(i.toDouble(), feverCard[i].temperature.toDouble())
+            temperaturePoints[feverCard.size-(i+1)] = DataPoint(feverCard.size-(i+1).toDouble(), feverCard[i].temperature.toDouble())
         }
         val seriesTemperature = LineGraphSeries<DataPoint>(temperaturePoints)
 
@@ -56,10 +57,18 @@ class FeverChartActivity : BaseActivity(), FeverChartView {
         val staticLabelsFormatter = StaticLabelsFormatter(feverGraphView)
         val labels = arrayOfNulls<String>(feverCard.size)
         for (i in 0 until feverCard.size) {
-            labels[i] = getFormattedDate(feverCard[i].date) + "\n" + feverCard[i].timeOfDay.stringValue
+            labels[feverCard.size-(i+1)] = getFormattedDate(feverCard[i].date) + "\n" + feverCard[i].timeOfDay.stringValue
         }
         staticLabelsFormatter.setHorizontalLabels(labels)
         feverGraphView.gridLabelRenderer.labelFormatter = staticLabelsFormatter
     }
 
+    fun getFormattedDate(date: LocalDate?): String? {
+        return if (date != null) {
+            val dtf = DateTimeFormatter.ofPattern("dd.MM")
+            date.format(dtf)
+        } else {
+            ""
+        }
+    }
 }
